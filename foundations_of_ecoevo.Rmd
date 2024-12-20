@@ -1,0 +1,388 @@
+---
+title: "Foundations of ecological and evolutionary change"
+author: |
+  | A. Bradley Duthie$^{1,a,*}$ and Victor J. Luque$^{2,a}$
+date: '[1] Department of Biological and Environmental Sciences, University of Stirling, Stirling, Scotland [2] Department of Philosophy, University of Valencia, Valencia, Spain [*] Corresponding author: alexander.duthie@stir.ac.uk [a] Equal contribution'
+output:
+  pdf_document:
+      keep_tex: yes
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes:
+- \usepackage{fancyhdr}
+bibliography: refs.bib
+link-citations: yes
+linkcolor: blue
+biblio-style: apalike
+---
+
+
+Abstract
+=====================================
+
+**Biological evolution is realised through the same mechanisms of birth and death that underlie change in population density.**
+**The deep interdependence between ecology and evolution is well-established, but much theory in each discipline has been developed in isolation.**
+**While recent work has accomplished eco-evolutionary synthesis, a gap remains between the logical foundations of ecology and evolution.**
+**We bridge this gap with a new equation that defines a summed value for a characteristic across individuals in a population, from which the fundamental equations of population ecology and evolutionary biology (the Price equation) are derived.**
+**We thereby unify the fundamental equations of population ecology and biological evolution under a general framework.**
+**Our unification further demonstrates the equivalence between mean population growth rate and evolutionary fitness, shows how ecological and evolutionary change are reflected in the first and second statistical moments of fitness, respectively, and links this change to ecosystem function.**
+**Finally, we outline how our proposed framework can be used to unify social evolution and density-dependent population growth.**
+
+
+
+
+Introduction
+=====================================
+
+Theoretical unification of phenomena is a powerful tool for scientific advancement. 
+Such unification has been a major goal in scientific research throughout history [@Kitcher1993], and its value is perhaps most evident in reconciling unconnected models and revealing new and unexpected empirical predictions. 
+In theoretical physics, Newton's unification of celestial and terrestrial motion, and Maxwell's unification of electricity and magnetism, are among the most important advances in scientific history. 
+Likewise, in the life sciences, the modern synthesis of natural selection and Mendelian inheritance revolutionised how mechanisms underlying evolution and genetics are understood and applied [@Gayon2019].
+The analogy to physics is imperfect because evolution encompasses non-biological systems with non-genetic inheritance [e.g., @Price1995; @Shennan2011; @MacCallum2012; @Lewens2015], but to illustrate our point, we restrict our focus to biological evolution.
+Following the modern synthesis, patterns in evolutionary biology and genetics could be interpreted through a common framework.
+
+Selection, mutation, recombination, migration, and drift all have predictable consequences for both phenotypes and genotypes in a population.
+These mechanisms are therefore foundational to understanding evolution and genetics, and their roles in explaining evolutionary and genetic phenomena are no more conceptually pluralistic than that of gravity in explaining celestial and terrestrial motion.
+Instead, biologists understand that each of these mechanisms will jointly affect genetic composition and evolutionary change in a population.
+For example, all else being equal, drift will lead to a loss of both heterozygosity and adaptive phenotypes.
+This constrains the possible relations that can exist between genetic composition and evolutionary change and therefore clarifies the scope of hypotheses that are biologically coherent [@Caswell1988].
+It would obviously be mistaken to model a population in which drift had inconsistent effects on evolution and genetics, but such mistakes would surely be common without the foundational theory required to unify the two subjects.
+The absence of this theory is almost unthinkable in modern biology.
+Evolution and genetics are arguably as intertwined in biology as electricity and magnetism are in physics.
+
+In contrast, theory underlying ecology and evolution has not been so tightly intertwined.
+Until recently, population ecology and evolution in particular have taken almost parallel paths for developing theory.
+Although many revelatory models exist to connect ecological and evolutionary phenomena [e.g., @Lion2018; @Patel2018; @Govaert2019], the foundational assumptions and equations of ecology and evolution in these models remain mostly separated conceptually. 
+But like the mechanisms driving evolutionary and genetic change, those that drive ecological and evolutionary change are well-established with predictable joint consequences.
+In evolution, natural selection, drift, and gene flow are all instantiated through a combination of different ecological factors [@Connor2004].
+Most notably, change in population density and phenotype  are both caused by individual birth and death [@Turchin2001].
+This should allow biologists to place ecological and evolutionary change on a shared theoretical foundation.
+
+We believe that such a foundation exists for population ecology and evolutionary biology, and that it can bridge the fundamental equations of both subjects and serve as a starting point for understanding change in any population.
+@Turchin2001 argues for a simple birth and death model (Box 1) as a fundamental equation of population ecology, and for exponential growth to consequently be as fundamental to ecology as Newton's first law of motion is to physics.
+@Turchin2001 argues that general principles are needed to establish a logical foundation for population ecology. 
+In evolutionary biology, the Price equation (Box 2) is almost universally regarded as fundamental [@Price1970; @Rice2004; @Gardner2008; @Frank2015a;  @Luque2016; @Luque2021].
+It exhaustively and exactly describes evolutionary change for any closed evolving population [@Price1970;  @Luque2016; @Lehtonen2020], and it serves as the starting point for all other fundamental equations in evolution [@Queller2017].
+We believe that this logical foundation can be made sufficiently broad to encompass both population and evolutionary change.
+
+We propose an equation from which the fundamental ecological and evolutionary equations can be derived.
+Derivation follows by adding assumptions that are specific to population ecology or evolution in the same way that key equations of population genetics (e.g., average excess) or quantitative genetics (e.g., Breeder's equation) can be derived from the Price equation [@Queller2017].
+We hope that our equation can provide a starting point for building a shared logical framework between ecology and evolution.
+
+
+
+*******************
+
+> **Box 1:** The number of individuals in any closed population ($N$) at any given time ($t + 1$) is determined by the existing number of individuals ($N_{t}$), plus the number of births ($Births$) minus the number of deaths ($Deaths$), $$N_{t+1} = N_{t} + Births - Deaths.$$ This equation is necessarily true for any closed population. Despite its simplicity, it is a general equation for defining population change and a starting point for understanding population ecology. @Turchin2001 notes that a consequence of this fundamental equation is the tendency for populations to grow exponentially (technically geometrically in the above case where time is discrete). This inherent underlying tendency towards exponential growth persists even as the complexities of real populations, such as structure, stochasticity, or density-dependent effects are added to population models [@Turchin2001]. Given the assumption that all individuals in the population are identical, a per capita rate of birth, $Births = bN_{t}$ and death, $Deaths = dN_{t}$ can be defined. Rearranging and defining $\lambda = 1 + b - d$ gives, $N_{t+1} = N_{t}\lambda$. Here $\lambda$ is the finite rate of increase [@Gotelli2001], and note that because $0 \leq d \leq 1$, $\lambda \geq 0$. Verbally, the change in size of any closed population equals its existing size times its finite rate of increase.
+
+*******************
+
+
+*******************
+
+> **Box 2:** The Price equation is an abstract formula to represent evolutionary change. Formulated originally in the early 1970s by George Price [@Price1970; @Price1972], it postulates some basic properties that all evolutionary systems must satisfy: change over time, ancestor and descendant relations, and a character or phenotype [@Rice2004]. Using simple algebraic language, the Price equation represents evolutionary change with the predominant notation, $$\bar{w}\Delta\bar{z} = \mathrm{Cov}\left(w, z\right) + \mathrm{E}\left(w\Delta z\right).$$ In the above equation, $\Delta\bar{z}$ is the change in the average character value $z$ over a time step of arbitrary length, $w$ is an individual's absolute fitness, and $\bar{w}$ average population fitness. On the right-hand side of the equation, the first term is the covariance between a character value $z$ and fitness $w$, which reflects $\bar{z}$ change attributable to differential survival and reproduction. The second term is the expected value of $\Delta z$, which reflects the extent to which offspring deviate from parents in $z$ [@Rice2004; @Okasha2006; @Frank2012]. A more specific version of the covariance term was already known within the quantitative and population genetics tradition [@Robertson1966], usually representing the action of natural selection. The Price equation adds an expectation term and abstracts away from any specific mechanisms of replication or reproduction, or mechanisms of inheritance. Its definitional nature and lack of substantive biological assumptions has been portrayed both as a strength [@Rice2004; @Frank2012; @Luque2016; @Baravalle2022], and its greatest weakness. The abstract nature of the Price equation places it at the top of the hierarchy of fundamental theorems of evolution from which the rest (Robertson's theorem, Fischer's fundamental theorem, breeder's equation, Hamilton's rule, adaptive dynamics, etc.) can be easily derived [@Queller2017; @Lehtonen2016; @Lehtonen2018]. This abstractness is also key to developing a more general view of evolution [@Rice2020; @Luque2021; @Edelaar2023]. In contrast, some researchers consider the Price equation just a triviality (even tautological), and useless without further modelling assumptions [@VanVeelen2005; @VanVeelen2012]. The debate remains open [@VanVeelen2020; @Baravalle2024].
+
+
+*******************
+
+
+A foundation for biological evolution and population ecology
+====================================================
+
+To fully unify biological evolution and population ecology, we must reconcile the general equation for population change (Box 1) with the Price equation (Box 2).
+Previous theory has produced mathematical synthesis between ecological and evolutionary equations [e.g., @Page2002; @Collins2009], but not established a unified conceptual framework for joint ecological and evolutionary change.
+For example, @Page2002 demonstrate a mathematical equivalence between the Price equation and a general equation for community dynamics. 
+In both equations, the relative frequencies of different ecological (species) or evolutionary (phenotype) variants map to their respective ecological (population growth) or evolutionary (fitness) change in a way that is mathematically equivalent.
+@Collins2009 use the Price equation to build a general quantitative framework that partitions phenotypic change into ecological, evolutionary, and physiological components.
+The average change in a community-wide trait (e.g., carbon uptake) is exactly and generally partitioned into change attributable to changes in species composition, expected evolution of lineages within species, and expected change in lineage physiology across all species.
+Both @Page2002 and @Collins2009 use relative species abundances, meaning that species frequencies must sum to one.
+This is useful for demonstrating mathematical equivalence [@Page2002] or expected change in a community-wide trait [@Collins2009], but a different approach is needed to recover absolute change in population size and thereby recover a joint foundation for ecology and evolution.
+
+The Price equation is critical for partitioning different components of biological change [@Price1970; @Frank1997; @Gardner2008; @Luque2016; @Lehtonen2018; @Queller2017].
+It has also been highly useful for integrating evolutionary theory across disciplines [@Fox2006; @Brantingham2007; @MacCallum2012; @Frank2015; @Godsoe2021; @Ulrich2024].
+These properties would seem to make it an intuitive starting point for a logical foundation of ecology and evolution, perhaps through some kind of mathematical equivalence [e.g., @Page2002] or addition of terms [e.g., @Collins2009], or through the use of its recursive structure [e.g., @Kerr2009; @Frank2012].
+But despite its flexibility, the Price equation still relies on relative frequencies, which must by definition sum to one [@Frank2015].
+This is because the Price equation describes the average change in a population; the frequency of entities is scaled thereby conserving total probability [@Frank2015; @Frank2016].
+But to recover the fundamental principle of exponential population growth [@Turchin2001], this scaling must be avoided in a fundamental equation of ecology and evolution.
+
+We therefore begin with the most fundamental axioms underlying the ecology and evolution of living systems [@Rice2004; @Rice2009].
+In such systems, diversity is discontinuous and can be defined in terms of discrete entities [@Dobzhansky1970].
+Our framework is general enough that entities can be anything discrete, but we will focus on each entity $i$ as an individual organism.
+Individuals give rise to new individuals through birth such that $\beta_{i}$ is the number of births attributable to $i$.
+Individuals are removed from the population through death such that $\delta_{i}$ is an indicator variable that takes a value of 1 (death of $i$) or 0 (persistence of $i$).
+All individuals are defined by some characteristic $z_{i}$, and $\Delta z_{i}$ defines any change in $z_{i}$ from one time step $t$ to the next $t + 1$.
+The total number of individuals in the population is $N$.
+From this foundation, we can define $\Omega$ to be a summed characteristic across $N$ entities,
+
+$$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right).
+\tag{1}
+$$
+
+
+From eqn 1, we can derive the most fundamental equations of population ecology (Box 1) and evolutionary biology (Box 2) through an appropriate interpretation of $z_{i}$.
+
+
+Population ecology
+====================================================
+
+To recover the general equation for population ecology (Box 1), we define $z_{i}$ as the identity of $i$ belonging to the population.
+In other words, we set $z_{i} = 1$ to simply indicate that $i$ is a member of the population.
+Further, we assume that individuals do not change species by setting $\Delta z_{i} = 0$.
+In this case,
+
+$$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right).$$
+
+Since we assume that individuals are identical, we can drop the subscript $i$ such that $\beta_{i} = \beta$ and $\delta_{i} = \delta$.
+Summing from 1 to $N$, we can rewrite the above,
+
+$$\Omega = N\left(1 + \beta - \delta \right).$$
+
+We can now interpret $\Omega$ as the population size at $t+1$, $N_{t+1}$ and note that $N\beta$, $N\delta$, and $N$ are the total births, total deaths, and size of the population at $t$, respectively,
+
+$$N_{t+1} = N_{t} + Births - Deaths.
+\tag{2}
+$$
+
+If we define $\lambda = 1 + \beta - \delta$ (Box 1), then we can rewrite,
+
+$$N_{t+1} = N_{t}\lambda.
+\tag{3}
+$$
+
+We therefore recover the general equation for population ecology (eqn 2) and the fundamental property of exponential growth in populations [eqn 3, @Turchin2001].
+
+
+Evolutionary biology
+====================================================
+
+Recovering the Price equation requires a few more steps.
+We start by defining individual fitness,
+
+$$w_{i} = \beta_{i} - \delta_{i} + 1.
+\tag{4}
+$$
+
+In this definition, the longevity of the individual matters.
+An individual that survives from $t$ to $t + 1$ has a higher fitness than one that dies, even if both have the same reproductive output.
+With this definition of fitness (eqn 4), we substitute,
+
+$$\Omega = \sum_{i=1}^{N} \left(w_{i}z_{i} + w_{i}\Delta z_{i} \right).
+\tag{5}
+$$
+
+We can break eqn 5 down further and multiply each side by $1/N$,
+
+$$\frac{1}{N}\Omega = \frac{1}{N}\sum_{i=1}^{N} \left(w_{i}z_{i} \right) + \frac{1}{N}\sum_{i=1}^{N}\left( w_{i}\Delta z_{i} \right).
+\tag{6}
+$$
+
+We can rewrite the terms on the right-hand side of eqn 6 as expected values and remove the subscripts,
+
+$$\frac{1}{N}\Omega = \mathrm{E}\left(w z \right) + \mathrm{E}\left( w \Delta z  \right).
+\tag{7}
+$$
+
+Now we must consider the total conservation of probability [@Frank2015; @Frank2016].
+In eqn 7, $\Omega$ is the total sum trait values ($z_{i}$) across the entire population at $t + 1$ divided by the number of individuals ($N$) in the population at $t$.
+But the size of the population can change from $t$ to $t + 1$.
+To recover mean trait change for the Price equation (and therefore conserve total probability), we need to account for this change in population size.
+The left-hand side of eqn 7 describes contributions to the sum trait value from the new population at $t + 1$.
+But we cannot treat $\Omega/N$ as the mean of $z$ at $t+1$ ($\bar{z}'$) because we need to weigh $N$ by the mean fitness of the population at $t$ to account for any change in population size from $t$ to $t+1$.
+
+For example, if mean fitness at $t$ is 2 (i.e., $\bar{w} = 2$), then half as many individuals will have contributed to $\Omega$ in $t + 1$ than would have if $\bar{w} = 1$ (i.e., there are $N$ individuals at $t$ and $2N$ individuals at $t + 1$).
+We therefore need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by the mean fitness $\bar{w}$ (at $t$) to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$.
+Consequently, 
+
+$$\Omega = N\bar{w}\bar{z}'
+\tag{8}
+$$
+
+Equation 8 conserves the total probability and now clarifies $\Omega$ as a summed trait value, which equals expected population growth at $t$ times mean trait value at $t + 1$.
+This is consistent with the population ecology derivation from the previous section where $z_{i} = 1$ by definition, and $\Omega = N_{t+1}$ (note $\lambda = \bar{w}$).
+We can therefore rewrite eqn 7,
+
+$$\bar{w}\bar{z}' = \mathrm{E}\left(w z \right) + \mathrm{E}\left( w \Delta z  \right).
+\tag{9}
+$$
+
+We can rearrange eqn 9 to derive the Price equation by expressing covariance as, $\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y)$, and therefore $\mathrm{E}(XY) = \mathrm{Cov}(X,Y) + \mathrm{E}(X)\mathrm{E}(Y)$.
+Substituting into eqn 9,
+
+$$\bar{w}\bar{z}' = \mathrm{Cov}\left(w ,z \right) + \bar{w}\bar{z} + \mathrm{E}\left( w \Delta z  \right).$$
+
+From here,
+
+$$\bar{w}\left(\bar{z}' - \bar{z}\right) = \mathrm{Cov}\left(w ,z \right) + \mathrm{E}\left( w \Delta z  \right).$$
+
+Since $\Delta \bar{z} = \left(\bar{z}' - \bar{z}\right)$,
+
+$$\bar{w}\Delta \bar{z} = \mathrm{Cov}\left(w ,z \right) + \mathrm{E}\left( w \Delta z  \right).
+\tag{10}
+$$
+
+From eqn 1, which describes fundamental birth and death processes in a population, we can derive both the most fundamental model of population ecology (eqn 2; Box 1) and the fundamental equation of evolution (eqn 10; Box 2).
+We might also consider $\Omega$ to be a quantity of ecosystem function, in that it is the summed effect of the traits ($z_{i}$) of individual entities ($i$) in the population.
+For example, $z$ might be interpreted as biomass or photosynthetic rate.
+
+Discussion
+====================================================
+
+A classical sign of scientific progress is the ability to connect disparate theories and models to show how empirical and theoretical models are logical (mathematical) consequences of more fundamental ones [@Nagel1961].
+Conceptual unification therefore has a critical role in advancing scientific theory [@Morrison2000].
+Showing how apparently disparate phenomena follow from the same shared principles reveals what is most fundamental about the natural world and provides a foundation for further scientific investigation and the construction of more coherent and predictive models.
+Our eqn 1 provides a foundation for the conceptual unification of the fundamental equations of population ecology and evolution.
+
+Rather than making simplifying assumptions, as is the approach for most ecological and evolutionary models, we focus on fundamental axioms that are universal to closed biological systems: discrete individuals, birth, death, and change over time.
+We define an abstract sum ($\Omega$), to which all individuals within the population contribute.
+From the simple assumptions of population identity ($z_{i} = 1$) and invariability ($\Delta z_{i} = 0$), we recover the most general equation of population ecology (Box 1) and principle of exponential growth ($N_{t+1} = \lambda N_{t}$).
+By defining individual fitness ($w_{i}$) and applying the total conservation of probability to individual frequencies [@Frank2015; @Frank2016], we recover the most fundamental equation of evolution (Box 2).
+We therefore deliver a general framework to unify fundamental equations of ecological and evolutionary change.
+
+The Price equation provides a complete and exact description of evolution in any closed evolving system [@Price1970; @Frank2012].
+It is derived by rearranging the mathematical notation defining changes in the frequencies and characteristics of any type of entity [e.g., individuals, alleles, @Price1970; @Gardner2008; @Luque2016].
+This derivation partitions total characteristic change into different components, making it possible to isolate evolutionary mechanisms (e.g., selection) and levels of biological organisation [e.g., group, individual, @Frank1995; @Kerr2009; @Frank2012; @Luque2016; @Okasha2020].
+Because of its abstract nature and lack of any system-specific assumptions, the Price equation makes no predictions about what will happen in any particular system [@Gardner2020].
+Its role is not to predict, but to formally and completely define and separate components of evolutionary change. 
+The same is true of the general equation for population change (eqns 2 and 3), at least as we have used it here where it serves to define what population growth means in ecology.
+This equation formally and completely describes population change in terms of births and deaths.
+In eqn 1, we therefore have a fundamental equation from which we can derive complete ecological and evolutionary change in any closed biological population.
+We anticipate that this will be useful for eco-evolutionary theory in the same way that the Price equation is useful for evolutionary theory: facilitating specific model development and identifying new conceptual insights, unresolved errors, and sources of model disagreements.
+
+
+<!---
+
+Our unification and derivation of fundamental equations of ecology and evolution recovers and formalises well-known properties of biological systems.
+The expressions $\beta_{i} - \delta_{i} + 1$ and $z_{i} - \Delta z_{i}$ can be interpreted to represent the ecological and evolutionary components of a system, respectively.
+When focused only on change in population size, we set $z_{i} = 1$ and $\Delta z_{i} = 0$, then we can derive the fundamentals of population ecology without considering evolution.
+Interestingly, the same is not true when focused only on evolutionary change.
+If we set $\beta_{i} = 0$ and $\delta_{i} = 0$ (no birth or death), then there is no variance in fitness ($w_{i} = 1$ for all individuals), and evolution does not occur (note that evolution can still occur in a population at equilibrium where the birth rate and death rate are the same).
+Fundamentally, evolutionary change is therefore enacted through ecological change, i.e., individual births and deaths, but ecological change does not necessarily imply evolution.
+And while the link to population change is intuitive from the structure of eqn 1, the link to the Price equation is much less intuitive, especially after eqn 5 in our derivation.
+The Price equation describes change in any evolving system, not just biological systems [@Fox2006; @Brantingham2007; @Bell2009a; @MacCallum2012; @Frank2015].
+It is perhaps unsurprising that a derivation of ecological and evolutionary change from a common starting point requires relatively more labour to recover the Price equation.
+
+
+--->
+
+Our unification demonstrates the equivalence between the finite rate of increase $\lambda$ [Box 1, @Gotelli2001] and population mean evolutionary fitness $\bar{w}$ (Box 2).
+The population growth equation $N_{t+1} = N_{t}\lambda$ could therefore be rewritten as $N_{t+1} = N_{t}\bar{w}$.
+We do not claim to be the first to notice this equivalence between population growth and mean population fitness.
+Indeed, the relationship between population growth rate and evolutionary fitness has been proposed and applied many times before [e.g., @Fisher1930; @Charlesworth1980; @Lande1982; @Roff2008; @Lion2018].
+For example, @Lande1982 explicitly concludes mean absolute fitness per unit time is $\bar{w} = e^{r}$, where $r = ln(\lambda)$.
+We show this from first principles and clarify the relationship between fitness and population growth.
+Over an arbitrary length of time, fitness is properly defined as $w_{i} = \beta_{i} - \delta_{i} + 1$.
+Over an individual's lifetime (which, by definition, includes death), fitness is therefore $\beta_{i}$.
+Interestingly, the rate of change in ecology and evolution are reflected in the first and second statistical moments of fitness, respectively.
+Population growth rate reflects mean fitness $\bar{w}$, while the rate of evolutionary change reflects the variance in fitness $\mathrm{Var}(w)$ [i.e., Fisher's fundamental theorem, @Frank1997; @Rice2004; @Queller2017].
+
+
+Our unification may also help explain, at least partially, some of the success of classical population genetic models. 
+For decades, population genetics (and to some extent quantitative genetics) has been accused of being a reductionistic view of evolution, reducing everything to changes in allele frequencies and abstracting away from individuals and their environments [e.g., the ecological interactions, @MacColl2011]. 
+This has been a line of argumentation by some defenders of the so-called Extended Synthesis [@Pigliucci2009], especially in relation to niche construction [@Odling-smee2003].
+Famously, @Mayr1960 characterized population genetics as a simple input and output of genes, analogous to "the adding of certain beans to a beanbag and the withdrawing of others" (also called "beanbag genetics"). 
+
+Historical critics of population genetics could not articulate a clear explanation for why it works so well despite all of its idealisations and simplifications.
+From the Price equation, we are able to recover classical population and quantitative genetic models [@Queller2017] and develop new ones [@Rice2004; @Rice2020; @Luque2016; @Lion2018].
+Our eqn 1 contains ecology at its core, and we show how the Price equation logically follows from it after accounting for absolute population growth (eqn 8).
+We therefore conclude that population and quantitative genetic equations contain ecology (no matter how hidden), and the ecological nature of evolution is implicit in population and quantitative genetic models.
+
+
+We have focused on the dynamics of a closed population, and in doing so leave ecological and evolutionary change attributable to migration for future work.
+In population ecology, immigration and emigration can be incorporated by adding a term for each to the right-hand side of the equation in Box 1 [@Gotelli2001].
+In evolution, because the Price equation relies on mapping ancestor-descendant relationships, accounting for migration is more challenging.
+@Kerr2009 demonstrate how the Price equation can be extended to allow for arbitrary links between ancestors and descendants, thereby extending the Price equation to allow for immigration and emigration. 
+@Frank2012 presents a simplified version of @Kerr2009 that allows some fraction of descendants to be unconnected to ancestors.
+In both ecology and evolution, accounting for migration is done through the use of additional terms on the right-hand side of the equations.
+
+<!---
+
+PROBLEM HERE: TRYING TO RECOVER THE LOGISTIC GROWTH IN DISCRETE TIME
+
+=======================================
+
+Our fundamental equation is complete and exact.
+It therefore implicitly includes any effects of density dependence in population growth (see Box 1).
+Starting from eqn 1, we can partition ecological change into density-independent and density-dependent effects by multiplying the expression $\left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right)$ within the summation by $\left(1 + \sum_{j=1}^{N} \alpha_{ij}z_{j}\right)$, where $j$ indexes the same individuals as $i$ and $\alpha_{ij}$ defines the effect $j$ has on the contribution of $i$ to $\Omega$. 
+This partition can be used to recover 
+
+
+OR............. BELIEVE THAT THE BELOW IS THE CORRECT ONE!!
+
+Our fundamental equation is complete and exact.
+It therefore implicitly includes any effects of density dependence in population growth (see Box 1).
+Starting from eqn 1, we can partition ecological change into density-independent and density-dependent effects by first defining $a_{ij}$ as the effect that the characteristic of $j$ ($z_{j}$) has on the contribution of $i$ to $\Omega$. 
+Within the summation of eqn 1, we can then include a new term summing across all individuals in the population, $\sum_{j=1}^{N} a_{ij}z_{j}\right)$.
+This sums the effect of each individual on a focal individual $i$.
+If we define $\alpha = E\left( a_{ij}\right)$, then we can 
+
+--->
+
+
+
+Our fundamental equation is complete and exact.
+It therefore implicitly includes any effects of density dependence on population growth (see Box 1), or any social effects on evolutionary change (see Box 2).
+We can make both of these effects explicit with the same partition in the summation on the right-hand side of eqn 1.
+To do this, we multiply the expression $\left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right)$ by $\left(1 - \sum_{j=1}^{N} a_{ij}\left(z_{j} + \Delta z_{j}\right)\right)$, where $j$ indexes the same individuals as $i$, and $a_{ij}$ defines the effect $j$ has on the contribution of $i$ to $\Omega$. 
+In evolutionary terms, $a_{ij}$ defines how $j$ modulates the fitness of $i$ ($w_{i}$).
+In ecological terms, $a_{ij}$ defines how $j$ modulates the contribution of $i$ to total population growth.
+If we define $\alpha$ as the summed effect of all individuals on a focal $i$ (i.e., $\alpha = \sum_{j=1}^{N} a_{ij}$), then we can partition ecological change into density-independent and density-dependent effects and derive a discrete time logistic growth equation.
+We save these derivations for a future investigations focused on evolutionary and community ecology.
+
+We have shown that we can derive the fundamental equations of population ecology and biological evolution from a single unifying equation.
+Lastly, we propose our eqn 1 as a potential starting point for defining ecosystem function and further conceptual unification between ecology, evolution, and ecosystem function.
+The Price equation has previously been used to investigate ecosystem function [@Loreau2001; @Fox2006], but not with any attempt towards conceptual unification with evolutionary biology.
+For example, @Fox2006 applied the abstract properties of the Price equation to partition total change in ecosystem function into separate components attributable to species richness, species composition, and context dependent effects.
+This approach provides a framework for comparing the effects of biodiversity on ecosystem function in empirical systems [e.g., @Fox2006; @Winfree2015; @Mateo-Tomas2017].
+Instead, our eqn 1 defines $\Omega$ as total ecosystem function contributed by a focal population (e.g., biomass production, decomposition, photosynthetic rate).
+It is therefore possible to investigate ecological, evolutionary, and ecosystem function change from the same shared framework.
+
+<!---
+
+NOTE 1
+==================
+
+Need to discuss that evolution *is* possible without ecology, if we imagine a set of RNA molecules that are all identical in an environment with no birth or death. We might have some change in RNA sequence (and therefore structure) that is evolution; this evolution will be in the \Delta z as non-zero -- the covariance of the Price equation will still be zero, but the expectation term will be nonzero because expected fitness is 1 (because you get credit for surviving from time step t to t+1). Hence, no adaptive evolution (selection) is possible without ecology, but mutation can happen (or selection at lower levels of biological organisation).
+
+So evolution is possible without ecology and vice versa, however unlikely.
+
+NOTE 2
+================
+
+We can partition \Delta z in the original equation however we want, and it just gets back to new terms attached to the Price equation at the end
+
+Need to try to derive what happens when we partition fitness into birth, death, and survival component
+
+--->
+
+
+
+Acknowledgements
+====================================================
+
+This manuscript was supported by joint funding between the French Foundation for Research on Biodiversity (FRB) Centre for the Synthesis and Analysis of Biodiversity (CESAB) and the German Centre for Integrative Biodiversity Research (sDiv).
+It was written as part of the Unification of Modern Coexistence Theory and Price Equation (UNICOP) project.
+Victor J. Luque was also supported by the Spanish Ministry of Science and Innovation (Project: PID2021-128835NB-I00), and the Conselleria  d’Innovaci$\'{o}$, Universitats, Ci$\`{e}$ncia i Societat Digital – Generalitat  Valenciana (Project: CIGE/2023/16).
+We are grateful for many conversations with S$\'{e}$bastien Lion, Kelsey Lyberger, Swati Patel, and especially Lynn Govaert, whose questions helped us clarify the relationship between population growth and fitness.
+Brad Duthie would also like to thank Brent Danielson and Stan Harpole.
+Victor J. Luque would also like to thank Lorenzo Baravalle, Pau Carazo, Santiago Ginnobili, Manuel Serra, and Ariel Roff$\'{e}$.
+
+
+
+References
+====================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

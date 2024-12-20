@@ -1,0 +1,192 @@
+---
+title: "A unifying equation of ecology and evolution"
+author: "Brad and Victor"
+date: "2024-03-05"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+bibliography: refs.bib
+---
+
+Background
+=====================================
+
+Theoretical unification of phenomena once assumed to be disparate is a powerful tool for scientific advancement. 
+Such unification has therefore been a major goal in scientific research throughout history [@Kitcher1993], and its value is perhaps most evident in reconciling unconnected models and revealing new and unexpected empirical predictions. 
+In theoretical physics, Newton's unification of celestial and terrestrial motion, and Maxwell's unification of electricity and magnetism, are among the most important advances in scientific history. 
+Likewise, in the life sciences, the modern synthesis of natural selection and Mendelian inheritance revolutionised how mechanisms underlying evolution are understood and applied.
+
+Three major evolutionary mechanisms (natural selection, genetic drift, and gene flow) are instantiated through a combination of different ecological factors [@Connor2004].
+Most notably, change in both the traits and size of a closed population are caused by individual birth and death.
+
+Nevertheless, until relatively recently, evolutionary biology and population ecology have taken almost parallel paths for developing theory.
+Although many models now exist to connect evolutionary and ecological phenomena [e.g., @Lion2018; @Patel2018; @Govaert2019], the foundational assumptions and equations of evolution and ecology in these models remain mostly separated conceptually. 
+Here we propose the foundation for a different approach. 
+Instead of joining existing fundamental models of ecology and evolution, we propose a new equation from which the most general equations of population ecology, evolution, and ecosystem function can be derived.
+
+The fundamental equation of ecology, evolution, and ecosystem function
+====================================================
+
+Our objective is to start with the most fundamental axioms underlying both ecology and evolution in all systems [@Rice2004; @Rice2009].
+All such systems include entities (e.g., individuals, but our framework is sufficiently general such that entities can be anything discrete).
+Entities are introduced into the population through birth and removed from it through death.
+Entities are defined by some property, which might be a species identity (ecology) or a trait (evolution).
+
+Let $\beta_{i}$ be the number of births attributable to entity $i$.
+Let $\delta_{i}$ indicate the death (1) or survival (0) of $i$.
+Let $z_{i}$ be a property attributable to $i$, and $\Delta z_{i}$ be any change in $z_{i}$ from one time step $t$ to the next $t + 1$.
+Let the number of entities in the population be $N$.
+Finally, let $\Omega$ be a summed property across $N$ entities, 
+
+$$\Omega = \sum_{i=1}^{N} \left(\beta_{i}\left(z_{i} + \Delta z_{i} \right) - \delta_{i}\left(z_{i} + \Delta z_{i} \right) + \left(z_{i} + \Delta z_{i} \right)\right).$$
+
+From the above equation, we can derive the most fundamental equations of population ecology and evolutionary biology through an appropriate interpretation of $z_{i}$.
+
+Population ecology
+====================================================
+
+Assume that $z_{i}$ defines the identity of $i$ belonging to the population.
+In other words, we set $z_{i} = 1$ to simply indicate that $i$ is a member of the population.
+Further, we make the standard population ecology assumption that entities (now specifically individual organisms) are identical and do not change species.
+To define this formally, we set $\Delta z_{i} = 0$ and note that we can drop the subscript $i$ such that $\beta_{i} = \beta$ and $\delta_{i} = \delta$.
+In this case, we have,
+
+$$\Omega = \sum_{i=1}^{N} \left(\beta - \delta + 1 \right).$$
+
+Summing up from 1 to $N$, we can rewrite the above,
+
+$$\Omega = N\left(\beta - \delta + 1 \right).$$
+
+We can now interpret $\Omega$ as the population size in $t+1$, $N_{t+1}$, and note that $N\beta$, $N\delta$, and $N$ are the total births, total deaths, and size of the population at $t$, respectively,
+
+$$N_{t+1} = births - deaths + N_{t}.$$
+
+Alternatively, if we define $\lambda = 1 + \beta - \delta$, then we can rewrite,
+
+$$N_{t+1} = N_{t}\lambda.$$
+
+This equation is fundamental in the sense that the change in size of every closed population is attributable to births minus deaths. 
+We can build upon this by structuring the population (e.g., into age or stage classes), or by including space or density-dependent effects, but all of these different mechanisms of population change are ultimately realised through the birth and death of individuals.
+Consequently, the above equation describes the change in every closed population from one time step to the next.
+
+It is worth pointing out now that $\lambda$ is going to come out as equivalent to mean fitness $\bar{w}$ in working out the link to the Price equation below.
+We could therefore write the above as, $N_{t+1} = N_{t}\bar{w}$ with $w = \bar{w}$ then being the fitness of all individuals in the population.
+Next, we will derive the Price equation from the fundamental equation.
+
+Evolutionary change
+====================================================
+
+Deriving Price takes a few more steps.
+We can start by rearranging the original equation,
+
+$$\Omega = \sum_{i=1}^{N} \left(z_{i}\left(\beta_{i} - \delta_{i} + 1\right) + \Delta z_{i}\left(\beta_{i} - \delta_{i} + 1\right) \right).$$
+
+
+As noted in the previous section, we can define fitness,
+
+$$w_{i} = \beta_{i} - \delta_{i} + 1$$
+
+The fitness of an individual from one time step to the next equals the number of offspring of the individual ($\beta_{i}$), minus 1 if the individual has died ($\delta_{i} = 1$) or 0 if the individual has not died, plus 1.
+Note that in addition to offspring number, the longevity of the individual matters in terms of fitness.
+If the individual dies, then fitness is simply $\beta_{i}$.
+If the individual lives, then fitness is $\beta_{i} + 1$.
+This is conceptually satisfying because an individual that lives from $t$ to $t + 1$ should have higher fitness than an individual that dies, even if both have the same reproductive output.
+With this definition of fitness, we substitute,
+
+$$\Omega = \sum_{i=1}^{N} \left(w_{i}z_{i} + w_{i}\Delta z_{i} \right).$$
+
+We can break this down further,
+
+$$\Omega = \sum_{i=1}^{N} \left(w_{i}z_{i} \right) + \sum_{i=1}^{N}\left( w_{i}\Delta z_{i} \right).$$
+
+We can multiply each side by $1/N$,
+
+$$\frac{1}{N}\Omega = \frac{1}{N}\sum_{i=1}^{N} \left(w_{i}z_{i} \right) + \frac{1}{N}\sum_{i=1}^{N}\left( w_{i}\Delta z_{i} \right).$$
+
+On the right-hand side of the equation above, this gives us the expected values within the summation,
+
+$$\frac{1}{N}\Omega = E\left(w_{i}z_{i}\right) + E\left( w_{i}\Delta z_{i} \right).$$
+
+The left-hand side requires a bit more explanation.
+What we have above is the total sum trait values $z$ across the entire population at $t + 1$ divided by the number of individuals ($N$) in the population at $t$.
+What we need is the mean $z$ across $N$ in our *original* population. 
+In other words, dividing $\Omega$ by $N$ will include contributions to the sum trait value from the *new* population at $t + 1$ on the left-hand side of the equation.
+We therefore cannot treat $\Omega/N$ as the mean of $z'$ because we need to weigh $N$ by the mean fitness of the population at $t$ to account for any change in population size from $t$ to $t+1$.
+For example, if mean fitness is 2 (i.e., $\bar{w} = 2$), then half as many individuals from $t$ will have contributed to $\Omega$ in $t + 1$ (i.e., there are $N$ individuals at $t$ and $2N$ individuals at $t + 1$).
+We therefore need to multiply the mean trait value of $\bar{z}'$ (at $t + 1$) by the mean fitness of $\bar{w}$ at $t$ to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$.
+Consequently, $\Omega = N\bar{w}\bar{z}'$.
+That is, the number of individuals at $t$, times the mean fitness at $t$, times the mean of $z$ at $t + 1$ ($\bar{z}'$).
+We can therefore rewrite,
+
+$$\bar{w}\bar{z}' = E\left(w_{i}z_{i}\right) + E\left( w_{i}\Delta z_{i} \right).$$
+
+Rearranging this now to derive the Price equation is not difficult. 
+First, note that we can express covariance as, $Cov(X,Y) = E(XY) - E(X)E(Y)$, and therefore $E(XY) = Cov(X,Y) + E(X)E(Y)$.
+Substituting into the above,
+
+$$\bar{w}\bar{z}' = Cov\left(w_{i},z_{i}\right) + \bar{w}\bar{z} + E\left( w_{i}\Delta z_{i} \right).$$
+
+From here,
+
+$$\bar{w}\bar{z}' - \bar{w}\bar{z} = Cov\left(w_{i},z_{i}\right) + E\left( w_{i}\Delta z_{i} \right).$$
+
+Pulling fitness out of the left-hand side,
+
+$$\bar{w}\left(\bar{z}' - \bar{z}\right) = Cov\left(w_{i},z_{i}\right) + E\left( w_{i}\Delta z_{i} \right).$$
+
+Since we define $\Delta z_{i} = \left(z_{i}' - z_{i}\right)$,
+
+$$\bar{w}\Delta z_{i} = Cov\left(w_{i},z_{i}\right) + E\left( w_{i}\Delta z_{i} \right).$$
+
+From the starting point of the first equation for $\Omega$, which describes fundamental birth and death processes in a population, we can derive both the most fundamental geomemetric growth model of population ecology and the fundamental equation of evolution.
+By itself, we could also consider $\Omega$ to be a quantity of ecosystem function, in that it is the summed effect of the traits ($z_{i}$) of individual entities ($i$) in the population.
+For example, $z$ might be interpreted as biomass or photosynthetic rate.
+
+Discussion
+====================================================
+
+To my knowledge, a fundamental equation from which geometric growth, the Price equation, and ecosystem function models can be derived has not been attempted or demonstrated.
+@Page2002 showed some nice equivalences between replicator equations, Lotka-Volterra, and the Price equation, but not in quite the unifying way that I think we show here.
+
+I believe that there is conceptual and philosophical merit in this work.
+The equation certainly was not obvious at the outset of this effort, although if correct and useful, it will almost certainly appear obvious in hindsight.
+In working through this result, there are some issues that I think become clearer with this unifying approach.
+For example, the equivalence between mean fitness ($\bar{w}$) and population growth rate ($\lambda$) is confirmed from first principles [@Lion2018]. 
+
+Assumptions of ecological and evolutionary models are also made clearer, I think.
+And with this formalism, we can more clearly identify the kinds of processes that are enacted through ecology, evolution, or both.
+For example, demographic stochasticity, which is defined by fluctuations caused by the probabilistic nature of birth and death, will clearly affect $\Omega$ and therefore have joint effects on population ecology and evolution.
+Any model that includes demographic stochasticity should therefore do so in a way that has consistent and simultaneous effects on both population and evolutionary dynamics.
+In contrast, some processes are relevant to only ecology or evolution.
+
+In population ecology, the assumption that individuals within a species are identical and do not change is formalised by setting $z_{i} = 1$, $\Delta z_{i} = 0$, $\beta_{i} = \beta$, and $\delta_{i} = \delta$. 
+Expansions from the equation for geometric growth could be made to model population structure.
+The Price equation is established as the fundamental equation of evolution, and our work here shows how evolutionary change is grounded in the birth and death of discrete entities.
+
+There are other avenues of potential interest.
+For example, it is potentially interesting that the derivation of geometric growth takes considerably fewer steps than the Price equation.
+It also seems relevant that neither the ecology nor evolution seem to take precedence, in the sense that one is more fundamental and derived from the other.
+It also might be interesting to think more about the conservation of total probability [@Frank2020] and where it first becomes relevant above.
+
+
+
+
+References
+====================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

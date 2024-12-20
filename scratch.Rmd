@@ -1,0 +1,15 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+@Turchin2001 argues convincingly for exponential (or geometric, if discrete) growth being the first law of population dyanmics.
+It certainly is universal, at least as it is expressed in a similar fashion to Newton's laws of motion.
+This paper also makes the case for why the logistic growth model is not so universal, and really just a special case.
+But the basic $N = B - D$ is clear, and there is a nice counterfactual for spontaneous generation and how its existence would change this fundamental equation.
+Basically, in our own equation below, we are making the assumption (without stating it, though we should) that individuals do not spontaneously generate; they must be introduced from existing individuals $i$ through birth.
+@Turchin2001 does a good job of explaining why $N = B - D$ is really the best we do.
+He distinguishes between postulates (axioms) and predictions (theorems), and he insists that "we need a set of general principles to place populations on a firm logical foundation".
+I believe that we need a set of general principles to place population ecology and evolution on *the same* shared foundation.
