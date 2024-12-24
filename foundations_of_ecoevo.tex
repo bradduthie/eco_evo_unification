@@ -7,6 +7,7 @@
 ]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
+\usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -37,7 +38,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Foundations of ecological and evolutionary change},
+  pdftitle={Darwin's Dream: Unifying ecological and evolutionary change},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -87,11 +88,14 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{fancyhdr}
+\usepackage{lineno}
+\linenumbers
+\modulolinenumbers[2]
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{Foundations of ecological and evolutionary change}
+\title{Darwin's Dream: Unifying ecological and evolutionary change}
 \author{A. Bradley Duthie\(^{1,a,*}\) and Victor J. Luque\(^{2,a}\)}
 \date{{[}1{]} Department of Biological and Environmental Sciences,
 University of Stirling, Stirling, Scotland {[}2{]} Department of
@@ -103,6 +107,7 @@ Corresponding author:
 \begin{document}
 \maketitle
 
+\setstretch{2}
 \hypertarget{abstract}{%
 \section{Abstract}\label{abstract}}
 
@@ -124,6 +129,23 @@ the first and second statistical moments of fitness, respectively, and
 links this change to ecosystem function.} \textbf{Finally, we outline
 how our proposed framework can be used to unify social evolution and
 density-dependent population growth.}
+
+\textbf{Key words:} Ecology, Evolution, Eco-Evolutionary Theory,
+Fundamental Theorem, Price Equation, Population Growth
+
+\hypertarget{non-technical-summary}{%
+\section{Non-technical Summary}\label{non-technical-summary}}
+
+Biologists have long known that the ecology of population size is
+inextricably linked with the evolution of population traits.
+Nevertheless, the foundational theory underlying ecological and
+evolutionary change have been historically separated, with recent
+attempts to bridge this theoretical divide using eco-evolutionary
+modelling. We discover a new equation from first principles that
+provides a universal and complete definition for eco-evolutionary
+change. This equation thereby offers a unified framework for ecology and
+evolution, which also recovers the foundational theory of ecology and
+evolution as developed in isolation.
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -567,9 +589,9 @@ which all individuals within the population contribute. From the simple
 assumptions of population identity (\(z_{i} = 1\)) and invariability
 (\(\Delta z_{i} = 0\)), we recover the most general equation of
 population ecology (Box 1) and principle of exponential growth
-(\(N_{t+1} = \lambda N_{t}\)). By defining individual fitness
-(\(w_{i}\)) and applying the total conservation of probability to
-individual frequencies (\protect\hyperlink{ref-Frank2015}{Frank 2015},
+(\(N_{t+1} = N_{t}\lambda\)). By defining individual fitness (\(w_{i}\))
+and applying the total conservation of probability to individual
+frequencies (\protect\hyperlink{ref-Frank2015}{Frank 2015},
 \protect\hyperlink{ref-Frank2016}{2016}), we recover the most
 fundamental equation of evolution (Box 2). We therefore deliver a
 general framework to unify fundamental equations of ecological and
@@ -749,6 +771,19 @@ helped us clarify the relationship between population growth and
 fitness. Brad Duthie would also like to thank Brent Danielson and Stan
 Harpole. Victor J. Luque would also like to thank Lorenzo Baravalle, Pau
 Carazo, Santiago Ginnobili, Manuel Serra, and Ariel Roff\(\'{e}\).
+
+\hypertarget{author-contributions}{%
+\section{Author Contributions}\label{author-contributions}}
+
+Both authors came up with the question idea. Following many discussions
+between the authors, ABD proposed the initial equation with subsequent
+exploration and development from both authors. Both authors contributed
+to the writing.
+
+\hypertarget{competing-interests}{%
+\section{Competing Interests}\label{competing-interests}}
+
+The authors declare no competing interests.
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
