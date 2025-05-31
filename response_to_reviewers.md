@@ -239,7 +239,7 @@ We now clarify this historical view (Line XXX)
 
 
 
-Reviewer 2 minor comment 4 [ ]
+Reviewer 2 minor comment 4 [X]
 =========================
 
 
