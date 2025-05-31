@@ -6,7 +6,6 @@
 \documentclass[
 ]{article}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
@@ -14,9 +13,13 @@
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -53,28 +56,38 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
   \fi
   % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{fancyhdr}
 \usepackage{lineno}
@@ -83,11 +96,11 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
-  pdftitle={Darwin's Dream: Unifying ecological and evolutionary change},
+  pdftitle={Foundations of ecological and evolutionary change},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -95,7 +108,7 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-\title{Darwin's Dream: Unifying ecological and evolutionary change}
+\title{Foundations of ecological and evolutionary change}
 \author{A. Bradley Duthie\(^{1,a,*}\) and Victor J. Luque\(^{2,a}\)}
 \date{{[}1{]} Department of Biological and Environmental Sciences,
 University of Stirling, Stirling, Scotland {[}2{]} Department of
@@ -108,8 +121,7 @@ Corresponding author:
 \maketitle
 
 \setstretch{2}
-\hypertarget{abstract}{%
-\section{Abstract}\label{abstract}}
+\section{Abstract}\label{abstract}
 
 Biological evolution is realised through the same mechanisms of birth
 and death that underlie change in population density. The deep
@@ -132,29 +144,27 @@ unify social evolution and density-dependent population growth.
 \textbf{Key words:} Ecology, Evolution, Eco-Evolutionary Theory,
 Fundamental Theorem, Price Equation, Population Growth
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}
 
 Theoretical unification of phenomena is a powerful tool for scientific
 advancement. Such unification has been a major goal in scientific
-research throughout history (\protect\hyperlink{ref-Kitcher1993}{Kitcher
-1993}), and its value is perhaps most evident in reconciling unconnected
-models and revealing new and unexpected empirical predictions. In
-theoretical physics, Newton's unification of celestial and terrestrial
-motion, and Maxwell's unification of electricity and magnetism, are
-among the most important advances in scientific history. Likewise, in
-the life sciences, the modern synthesis of natural selection and
-Mendelian inheritance revolutionised how mechanisms underlying evolution
-and genetics are understood and applied
-(\protect\hyperlink{ref-Gayon2019}{Gayon and Huneman 2019}). The analogy
-to physics is imperfect because evolution encompasses non-biological
-systems with non-genetic inheritance
-(\protect\hyperlink{ref-Price1995}{Price 1995};
-\protect\hyperlink{ref-Shennan2011}{Shennan 2011};
-\protect\hyperlink{ref-MacCallum2012}{MacCallum et al. 2012};
-\protect\hyperlink{ref-Lewens2015}{Lewens 2015}), but to illustrate our
-point, we restrict our focus to biological evolution. Following the
-modern synthesis, patterns in evolutionary biology and genetics could be
+research throughout history (\citeproc{ref-Kitcher1993}{Kitcher 1993}),
+and its value is perhaps most evident in reconciling unconnected models
+and revealing new and unexpected empirical predictions. In theoretical
+physics, Newton's unification of celestial and terrestrial motion, and
+Maxwell's unification of electricity and magnetism, are among the most
+important advances in scientific history. Likewise, in the life
+sciences, the modern synthesis of natural selection and Mendelian
+inheritance revolutionised how mechanisms underlying evolution and
+genetics are understood and applied (\citeproc{ref-Gayon2019}{Gayon and
+Huneman 2019}). The analogy to physics is imperfect because evolution
+encompasses non-biological systems with non-genetic inheritance
+(\citeproc{ref-Price1995}{Price 1995};
+\citeproc{ref-Shennan2011}{Shennan 2011};
+\citeproc{ref-MacCallum2012}{MacCallum et al. 2012};
+\citeproc{ref-Lewens2015}{Lewens 2015}), but to illustrate our point, we
+restrict our focus to biological evolution. Following the modern
+synthesis, patterns in evolutionary biology and genetics could be
 interpreted through a common framework.
 
 Selection, mutation, recombination, migration, and drift all have
@@ -169,69 +179,65 @@ example, all else being equal, drift will lead to a loss of both
 heterozygosity and adaptive phenotypes. This constrains the possible
 relations that can exist between genetic composition and evolutionary
 change and therefore clarifies the scope of hypotheses that are
-biologically coherent (\protect\hyperlink{ref-Caswell1988}{Caswell
-1988}). It would obviously be mistaken to model a population in which
-drift had inconsistent effects on evolution and genetics, but such
-mistakes would surely be common without the foundational theory required
-to unify the two subjects. The absence of this theory is almost
-unthinkable in modern biology. Evolution and genetics are arguably as
-intertwined in biology as electricity and magnetism are in physics.
+biologically coherent (\citeproc{ref-Caswell1988}{Caswell 1988}). It
+would obviously be mistaken to model a population in which drift had
+inconsistent effects on evolution and genetics, but such mistakes would
+surely be common without the foundational theory required to unify the
+two subjects. The absence of this theory is almost unthinkable in modern
+biology. Evolution and genetics are arguably as intertwined in biology
+as electricity and magnetism are in physics.
 
 In contrast, theory underlying ecology and evolution has not been so
 tightly intertwined. Until recently, population ecology and evolution in
 particular have taken almost parallel paths for developing theory.
 Although many revelatory models exist to connect ecological and
-evolutionary phenomena (\protect\hyperlink{ref-Lion2018}{Lion 2018};
-\protect\hyperlink{ref-Patel2018}{Patel et al. 2018};
-\protect\hyperlink{ref-Govaert2019}{Govaert et al. 2019}), the
-foundational assumptions and equations of ecology and evolution in these
-models remain mostly separated conceptually. But like the mechanisms
-driving evolutionary and genetic change, those that drive ecological and
+evolutionary phenomena (\citeproc{ref-Lion2018}{Lion 2018};
+\citeproc{ref-Patel2018}{Patel et al. 2018};
+\citeproc{ref-Govaert2019}{Govaert et al. 2019}), the foundational
+assumptions and equations of ecology and evolution in these models
+remain mostly separated conceptually. But like the mechanisms driving
+evolutionary and genetic change, those that drive ecological and
 evolutionary change are well-established with predictable joint
 consequences. In evolution, natural selection, drift, and gene flow are
 all instantiated through a combination of different ecological factors
-(\protect\hyperlink{ref-Connor2004}{Connor and Hartl 2004}). Most
-notably, change in population density and phenotype are both caused by
-individual birth and death (\protect\hyperlink{ref-Turchin2001}{Turchin
-2001}). This should allow biologists to place ecological and
-evolutionary change on a shared theoretical foundation.
+(\citeproc{ref-Connor2004}{Connor and Hartl 2004}). Most notably, change
+in population density and phenotype are both caused by individual birth
+and death (\citeproc{ref-Turchin2001}{Turchin 2001}). This should allow
+biologists to place ecological and evolutionary change on a shared
+theoretical foundation.
 
 We believe that such a foundation exists for population ecology and
 evolutionary biology, and that it can bridge the fundamental equations
 of both subjects and serve as a starting point for understanding change
-in any population. Turchin (\protect\hyperlink{ref-Turchin2001}{2001})
-argues for a simple birth and death model (Box 1) as a fundamental
-equation of population ecology, and for exponential growth to
-consequently be as fundamental to ecology as Newton's first law of
-motion is to physics. Turchin
-(\protect\hyperlink{ref-Turchin2001}{2001}) argues that general
+in any population. Turchin (\citeproc{ref-Turchin2001}{2001}) argues for
+a simple birth and death model (Box 1) as a fundamental equation of
+population ecology, and for exponential growth to consequently be as
+fundamental to ecology as Newton's first law of motion is to physics.
+Turchin (\citeproc{ref-Turchin2001}{2001}) argues that general
 principles are needed to establish a logical foundation for population
 ecology. In evolutionary biology, the Price equation (Box 2) is almost
-universally regarded as fundamental
-(\protect\hyperlink{ref-Price1970}{Price 1970};
-\protect\hyperlink{ref-Rice2004}{Rice 2004};
-\protect\hyperlink{ref-Gardner2008}{Gardner 2008};
-\protect\hyperlink{ref-Frank2015a}{Frank 2017};
-\protect\hyperlink{ref-Luque2016}{Luque 2017};
-\protect\hyperlink{ref-Luque2021}{Luque and Baravalle 2021}). It
+universally regarded as fundamental (\citeproc{ref-Price1970}{Price
+1970}; \citeproc{ref-Rice2004}{Rice 2004};
+\citeproc{ref-Gardner2008}{Gardner 2008};
+\citeproc{ref-Frank2015a}{Frank 2017}; \citeproc{ref-Luque2016}{Luque
+2017}; \citeproc{ref-Luque2021}{Luque and Baravalle 2021}). It
 exhaustively and exactly describes evolutionary change for any closed
-evolving population (\protect\hyperlink{ref-Price1970}{Price 1970};
-\protect\hyperlink{ref-Luque2016}{Luque 2017};
-\protect\hyperlink{ref-Lehtonen2020}{Lehtonen et al. 2020}), and it
-serves as the starting point for all other fundamental equations in
-evolution (\protect\hyperlink{ref-Queller2017}{Queller 2017}). We
-believe that this logical foundation can be made sufficiently broad to
-encompass both population and evolutionary change.
+evolving population (\citeproc{ref-Price1970}{Price 1970};
+\citeproc{ref-Luque2016}{Luque 2017};
+\citeproc{ref-Lehtonen2020}{Lehtonen et al. 2020}), and it serves as the
+starting point for all other fundamental equations in evolution
+(\citeproc{ref-Queller2017}{Queller 2017}). We believe that this logical
+foundation can be made sufficiently broad to encompass both population
+and evolutionary change.
 
 We propose an equation from which the fundamental ecological and
 evolutionary equations can be derived. Derivation follows by adding
 assumptions that are specific to population ecology or evolution in the
 same way that key equations of population genetics (e.g., average
 excess) or quantitative genetics (e.g., Breeder's equation) can be
-derived from the Price equation
-(\protect\hyperlink{ref-Queller2017}{Queller 2017}). We hope that our
-equation can provide a starting point for building a shared logical
-framework between ecology and evolution.
+derived from the Price equation (\citeproc{ref-Queller2017}{Queller
+2017}). We hope that our equation can provide a starting point for
+building a shared logical framework between ecology and evolution.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -244,19 +250,18 @@ number of individuals (\(N_{t}\)), plus the number of births
 for any closed population. Despite its simplicity, it is a general
 equation for defining population change and a starting point for
 understanding population ecology. Turchin
-(\protect\hyperlink{ref-Turchin2001}{2001}) notes that a consequence of
-this fundamental equation is the tendency for populations to grow
+(\citeproc{ref-Turchin2001}{2001}) notes that a consequence of this
+fundamental equation is the tendency for populations to grow
 exponentially (technically geometrically in the above case where time is
 discrete). This inherent underlying tendency towards exponential growth
 persists even as the complexities of real populations, such as
 structure, stochasticity, or density-dependent effects are added to
-population models (\protect\hyperlink{ref-Turchin2001}{Turchin 2001}).
-Given the assumption that all individuals in the population are
-identical, a per capita rate of birth, \(Births = bN_{t}\) and death,
-\(Deaths = dN_{t}\) can be defined. Rearranging and defining
-\(\lambda = 1 + b - d\) gives, \(N_{t+1} = N_{t}\lambda\). Here
-\(\lambda\) is the finite rate of increase
-(\protect\hyperlink{ref-Gotelli2001}{Gotelli 2001}), and note that
+population models (\citeproc{ref-Turchin2001}{Turchin 2001}). Given the
+assumption that all individuals in the population are identical, a per
+capita rate of birth, \(Births = bN_{t}\) and death, \(Deaths = dN_{t}\)
+can be defined. Rearranging and defining \(\lambda = 1 + b - d\) gives,
+\(N_{t+1} = N_{t}\lambda\). Here \(\lambda\) is the finite rate of
+increase (\citeproc{ref-Gotelli2001}{Gotelli 2001}), and note that
 because \(0 \leq d \leq 1\), \(\lambda \geq 0\). Verbally, the change in
 size of any closed population equals its existing size times its finite
 rate of increase.
@@ -269,13 +274,13 @@ rate of increase.
 \begin{quote}
 \textbf{Box 2:} The Price equation is an abstract formula to represent
 evolutionary change. Formulated originally in the early 1970s by George
-Price (\protect\hyperlink{ref-Price1970}{Price 1970},
-\protect\hyperlink{ref-Price1972}{1972}), it postulates some basic
-properties that all evolutionary systems must satisfy: change over time,
-ancestor and descendant relations, and a character or phenotype
-(\protect\hyperlink{ref-Rice2004}{Rice 2004}). Using simple algebraic
-language, the Price equation represents evolutionary change with the
-predominant notation,
+Price (\citeproc{ref-Price1970}{Price 1970},
+\citeproc{ref-Price1972}{1972}), it postulates some basic properties
+that all evolutionary systems must satisfy: change over time, ancestor
+and descendant relations, and a character or phenotype
+(\citeproc{ref-Rice2004}{Rice 2004}). Using simple algebraic language,
+the Price equation represents evolutionary change with the predominant
+notation,
 \[\bar{w}\Delta\bar{z} = \mathrm{Cov}\left(w, z\right) + \mathrm{E}\left(w\Delta z\right).\]
 In the above equation, \(\Delta\bar{z}\) is the change in the average
 character value \(z\) over a time step of arbitrary length, \(w\) is an
@@ -285,124 +290,113 @@ covariance between a character value \(z\) and fitness \(w\), which
 reflects \(\bar{z}\) change attributable to differential survival and
 reproduction. The second term is the expected value of \(\Delta z\),
 which reflects the extent to which offspring deviate from parents in
-\(z\) (\protect\hyperlink{ref-Rice2004}{Rice 2004};
-\protect\hyperlink{ref-Okasha2006}{Okasha 2006};
-\protect\hyperlink{ref-Frank2012}{Frank 2012}). A more specific version
-of the covariance term was already known within the quantitative and
-population genetics tradition
-(\protect\hyperlink{ref-Robertson1966}{Robertson 1966}), usually
-representing the action of natural selection. The Price equation adds an
-expectation term and abstracts away from any specific mechanisms of
-replication or reproduction, or mechanisms of inheritance. Its
-definitional nature and lack of substantive biological assumptions has
-been portrayed both as a strength (\protect\hyperlink{ref-Rice2004}{Rice
-2004}; \protect\hyperlink{ref-Frank2012}{Frank 2012};
-\protect\hyperlink{ref-Luque2016}{Luque 2017};
-\protect\hyperlink{ref-Baravalle2022}{Baravalle and Luque 2022}), and
-its greatest weakness. The abstract nature of the Price equation places
-it at the top of the hierarchy of fundamental theorems of evolution from
-which the rest (Robertson's theorem, Fischer's fundamental theorem,
+\(z\) (\citeproc{ref-Rice2004}{Rice 2004};
+\citeproc{ref-Okasha2006}{Okasha 2006}; \citeproc{ref-Frank2012}{Frank
+2012}). A more specific version of the covariance term was already known
+within the quantitative and population genetics tradition
+(\citeproc{ref-Robertson1966}{Robertson 1966}), usually representing the
+action of natural selection. The Price equation adds an expectation term
+and abstracts away from any specific mechanisms of replication or
+reproduction, or mechanisms of inheritance. Its definitional nature and
+lack of substantive biological assumptions has been portrayed both as a
+strength (\citeproc{ref-Rice2004}{Rice 2004};
+\citeproc{ref-Frank2012}{Frank 2012}; \citeproc{ref-Luque2016}{Luque
+2017}; \citeproc{ref-Baravalle2022}{Baravalle and Luque 2022}), and its
+greatest weakness. The abstract nature of the Price equation places it
+at the top of the hierarchy of fundamental theorems of evolution from
+which the rest (Robertson's theorem, Fisher's fundamental theorem,
 breeder's equation, Hamilton's rule, adaptive dynamics, etc.) can be
-easily derived (\protect\hyperlink{ref-Lehtonen2016}{Lehtonen 2016},
-\protect\hyperlink{ref-Lehtonen2018}{2018};
-\protect\hyperlink{ref-Queller2017}{Queller 2017}). This abstractness is
-also key to developing a more general view of evolution
-(\protect\hyperlink{ref-Rice2020}{Rice 2020};
-\protect\hyperlink{ref-Luque2021}{Luque and Baravalle 2021};
-\protect\hyperlink{ref-Edelaar2023}{Edelaar et al. 2023}). In contrast,
-some researchers consider the Price equation just a triviality (even
+easily derived (\citeproc{ref-Lehtonen2016}{Lehtonen 2016},
+\citeproc{ref-Lehtonen2018}{2018}; \citeproc{ref-Queller2017}{Queller
+2017}). This abstractness is also key to developing a more general view
+of evolution (\citeproc{ref-Rice2020}{Rice 2020};
+\citeproc{ref-Luque2021}{Luque and Baravalle 2021};
+\citeproc{ref-Edelaar2023}{Edelaar et al. 2023}). In contrast, some
+researchers consider the Price equation just a triviality (even
 tautological), and useless without further modelling assumptions
-(\protect\hyperlink{ref-VanVeelen2005}{van Veelen 2005};
-\protect\hyperlink{ref-VanVeelen2012}{van Veelen et al. 2012}). The
-debate remains open (\protect\hyperlink{ref-VanVeelen2020}{van Veelen
-2020}; \protect\hyperlink{ref-Baravalle2024}{Baravalle et al. 2024}).
+(\citeproc{ref-VanVeelen2005}{van Veelen 2005};
+\citeproc{ref-VanVeelen2012}{van Veelen et al. 2012}). The debate
+remains open (\citeproc{ref-VanVeelen2020}{van Veelen 2020};
+\citeproc{ref-Baravalle2024}{Baravalle et al. 2024}).
 \end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{a-foundation-for-biological-evolution-and-population-ecology}{%
 \section{A foundation for biological evolution and population
-ecology}\label{a-foundation-for-biological-evolution-and-population-ecology}}
+ecology}\label{a-foundation-for-biological-evolution-and-population-ecology}
 
 To fully unify biological evolution and population ecology, we must
 reconcile the general equation for population change (Box 1) with the
 Price equation (Box 2). Previous theory has produced mathematical
 synthesis between ecological and evolutionary equations
-(\protect\hyperlink{ref-Page2002}{Page and Nowak 2002};
-\protect\hyperlink{ref-Collins2009}{Collins and Gardner 2009}), but not
+(\citeproc{ref-Page2002}{Page and Nowak 2002};
+\citeproc{ref-Collins2009}{Collins and Gardner 2009}), but not
 established a unified conceptual framework for joint ecological and
 evolutionary change. For example, Page and Nowak
-(\protect\hyperlink{ref-Page2002}{2002}) demonstrate a mathematical
-equivalence between the Price equation and a general equation for
-community dynamics. In both equations, the relative frequencies of
-different ecological (species) or evolutionary (phenotype) variants map
-to their respective ecological (population growth) or evolutionary
-(fitness) change in a way that is mathematically equivalent. Collins and
-Gardner (\protect\hyperlink{ref-Collins2009}{2009}) use the Price
-equation to build a general quantitative framework that partitions
-phenotypic change into ecological, evolutionary, and physiological
-components. The average change in a community-wide trait (e.g., carbon
-uptake) is exactly and generally partitioned into change attributable to
-changes in species composition, expected evolution of lineages within
-species, and expected change in lineage physiology across all species.
-Both Page and Nowak (\protect\hyperlink{ref-Page2002}{2002}) and Collins
-and Gardner (\protect\hyperlink{ref-Collins2009}{2009}) use relative
-species abundances, meaning that species frequencies must sum to one.
-This is useful for demonstrating mathematical equivalence
-(\protect\hyperlink{ref-Page2002}{Page and Nowak 2002}) or expected
-change in a community-wide trait
-(\protect\hyperlink{ref-Collins2009}{Collins and Gardner 2009}), but a
-different approach is needed to recover absolute change in population
-size and thereby recover a joint foundation for ecology and evolution.
+(\citeproc{ref-Page2002}{2002}) demonstrate a mathematical equivalence
+between the Price equation and a general equation for community
+dynamics. In both equations, the relative frequencies of different
+ecological (species) or evolutionary (phenotype) variants map to their
+respective ecological (population growth) or evolutionary (fitness)
+change in a way that is mathematically equivalent. Collins and Gardner
+(\citeproc{ref-Collins2009}{2009}) use the Price equation to build a
+general quantitative framework that partitions phenotypic change into
+ecological, evolutionary, and physiological components. The average
+change in a community-wide trait (e.g., carbon uptake) is exactly and
+generally partitioned into change attributable to changes in species
+composition, expected evolution of lineages within species, and expected
+change in lineage physiology across all species. Both Page and Nowak
+(\citeproc{ref-Page2002}{2002}) and Collins and Gardner
+(\citeproc{ref-Collins2009}{2009}) use relative species abundances,
+meaning that species frequencies must sum to one. This is useful for
+demonstrating mathematical equivalence (\citeproc{ref-Page2002}{Page and
+Nowak 2002}) or expected change in a community-wide trait
+(\citeproc{ref-Collins2009}{Collins and Gardner 2009}), but a different
+approach is needed to recover absolute change in population size and
+thereby recover a joint foundation for ecology and evolution.
 
 The Price equation is critical for partitioning different components of
-biological change (\protect\hyperlink{ref-Price1970}{Price 1970};
-\protect\hyperlink{ref-Frank1997}{Frank 1997};
-\protect\hyperlink{ref-Gardner2008}{Gardner 2008};
-\protect\hyperlink{ref-Luque2016}{Luque 2017};
-\protect\hyperlink{ref-Queller2017}{Queller 2017};
-\protect\hyperlink{ref-Lehtonen2018}{Lehtonen 2018}). It has also been
-highly useful for integrating evolutionary theory across disciplines
-(\protect\hyperlink{ref-Fox2006}{Fox 2006};
-\protect\hyperlink{ref-Brantingham2007}{Brantingham 2007};
-\protect\hyperlink{ref-MacCallum2012}{MacCallum et al. 2012};
-\protect\hyperlink{ref-Frank2015}{Frank 2015};
-\protect\hyperlink{ref-Godsoe2021}{Godsoe et al. 2021};
-\protect\hyperlink{ref-Ulrich2024}{Ulrich et al. 2024}). These
+biological change (\citeproc{ref-Price1970}{Price 1970};
+\citeproc{ref-Frank1997}{Frank 1997}; \citeproc{ref-Gardner2008}{Gardner
+2008}; \citeproc{ref-Luque2016}{Luque 2017};
+\citeproc{ref-Queller2017}{Queller 2017};
+\citeproc{ref-Lehtonen2018}{Lehtonen 2018}). It has also been highly
+useful for integrating evolutionary theory across disciplines
+(\citeproc{ref-Fox2006}{Fox 2006};
+\citeproc{ref-Brantingham2007}{Brantingham 2007};
+\citeproc{ref-MacCallum2012}{MacCallum et al. 2012};
+\citeproc{ref-Frank2015}{Frank 2015}; \citeproc{ref-Godsoe2021}{Godsoe
+et al. 2021}; \citeproc{ref-Ulrich2024}{Ulrich et al. 2024}). These
 properties would seem to make it an intuitive starting point for a
 logical foundation of ecology and evolution, perhaps through some kind
-of mathematical equivalence (\protect\hyperlink{ref-Page2002}{Page and
-Nowak 2002}) or addition of terms
-(\protect\hyperlink{ref-Collins2009}{Collins and Gardner 2009}), or
-through the use of its recursive structure
-(\protect\hyperlink{ref-Kerr2009}{Kerr and Godfrey-Smith 2009};
-\protect\hyperlink{ref-Frank2012}{Frank 2012}). But despite its
-flexibility, the Price equation still relies on relative frequencies,
-which must by definition sum to one
-(\protect\hyperlink{ref-Frank2015}{Frank 2015}). This is because the
-Price equation describes the average change in a population; the
-frequency of entities is scaled thereby conserving total probability
-(\protect\hyperlink{ref-Frank2015}{Frank 2015},
-\protect\hyperlink{ref-Frank2016}{2016}). But to recover the fundamental
-principle of exponential population growth
-(\protect\hyperlink{ref-Turchin2001}{Turchin 2001}), this scaling must
-be avoided in a fundamental equation of ecology and evolution.
+of mathematical equivalence (\citeproc{ref-Page2002}{Page and Nowak
+2002}) or addition of terms (\citeproc{ref-Collins2009}{Collins and
+Gardner 2009}), or through the use of its recursive structure
+(\citeproc{ref-Kerr2009}{Kerr and Godfrey-Smith 2009};
+\citeproc{ref-Frank2012}{Frank 2012}). But despite its flexibility, the
+Price equation still relies on relative frequencies, which must by
+definition sum to one (\citeproc{ref-Frank2015}{Frank 2015}). This is
+because the Price equation describes the average change in a population;
+the frequency of entities is scaled thereby conserving total probability
+(\citeproc{ref-Frank2015}{Frank 2015}, \citeproc{ref-Frank2016}{2016}).
+But to recover the fundamental principle of exponential population
+growth (\citeproc{ref-Turchin2001}{Turchin 2001}), this scaling must be
+avoided in a fundamental equation of ecology and evolution.
 
 We therefore begin with the most fundamental axioms underlying the
-ecology and evolution of living systems
-(\protect\hyperlink{ref-Rice2004}{Rice 2004};
-\protect\hyperlink{ref-Rice2009}{Rice and Papadopoulos 2009}). In such
+ecology and evolution of living systems (\citeproc{ref-Rice2004}{Rice
+2004}; \citeproc{ref-Rice2009}{Rice and Papadopoulos 2009}). In such
 systems, diversity is discontinuous and can be defined in terms of
-discrete entities (\protect\hyperlink{ref-Dobzhansky1970}{Dobzhansky
-1970}). Our framework is general enough that entities can be anything
-discrete, but we will focus on each entity \(i\) as an individual
-organism. Individuals give rise to new individuals through birth such
-that \(\beta_{i}\) is the number of births attributable to \(i\).
-Individuals are removed from the population through death such that
-\(\delta_{i}\) is an indicator variable that takes a value of 1 (death
-of \(i\)) or 0 (persistence of \(i\)). All individuals are defined by
-some characteristic \(z_{i}\), and \(\Delta z_{i}\) defines any change
-in \(z_{i}\) from one time step \(t\) to the next \(t + 1\). The total
+discrete entities (\citeproc{ref-Dobzhansky1970}{Dobzhansky 1970}). Our
+framework is general enough that entities can be anything discrete, but
+we will focus on each entity \(i\) as an individual organism.
+Individuals give rise to new individuals through birth such that
+\(\beta_{i}\) is the number of births attributable to \(i\). Individuals
+are removed from the population through death such that \(\delta_{i}\)
+is an indicator variable that takes a value of 1 (death of \(i\)) or 0
+(persistence of \(i\)). All individuals are defined by some
+characteristic \(z_{i}\), and \(\Delta z_{i}\) defines any change in
+\(z_{i}\) from one time step \(t\) to the next \(t + 1\). The total
 number of individuals in the population is \(N\). From this foundation,
 we can define \(\Omega\) to be a summed characteristic across \(N\)
 entities,
@@ -415,8 +409,7 @@ From eqn 1, we can derive the most fundamental equations of population
 ecology (Box 1) and evolutionary biology (Box 2) through an appropriate
 interpretation of \(z_{i}\).
 
-\hypertarget{population-ecology}{%
-\section{Population ecology}\label{population-ecology}}
+\section{Population ecology}\label{population-ecology}
 
 To recover the general equation for population ecology (Box 1), we
 define \(z_{i}\) as the identity of \(i\) belonging to the population.
@@ -451,10 +444,9 @@ rewrite,
 
 We therefore recover the general equation for population ecology (eqn 2)
 and the fundamental property of exponential growth in populations
-(\protect\hyperlink{ref-Turchin2001}{Turchin 2001}) (eqn 3).
+(\citeproc{ref-Turchin2001}{Turchin 2001}) (eqn 3).
 
-\hypertarget{evolutionary-biology}{%
-\section{Evolutionary biology}\label{evolutionary-biology}}
+\section{Evolutionary biology}\label{evolutionary-biology}
 
 Recovering the Price equation requires a few more steps. We start by
 defining individual fitness,
@@ -486,16 +478,15 @@ values and remove the subscripts,
 \]
 
 Now we must consider the total conservation of probability
-(\protect\hyperlink{ref-Frank2015}{Frank 2015},
-\protect\hyperlink{ref-Frank2016}{2016}). In eqn 7, \(\Omega\) is the
-total sum trait values (\(z_{i}\)) across the entire population at
-\(t + 1\) divided by the number of individuals (\(N\)) in the population
-at \(t\). But the size of the population can change from \(t\) to
-\(t + 1\). To recover mean trait change for the Price equation (and
-therefore conserve total probability), we need to account for this
-change in population size. The left-hand side of eqn 7 describes
-contributions to the sum trait value from the new population at
-\(t + 1\). But we cannot treat \(\Omega/N\) as the mean of \(z\) at
+(\citeproc{ref-Frank2015}{Frank 2015}, \citeproc{ref-Frank2016}{2016}).
+In eqn 7, \(\Omega\) is the total sum trait values (\(z_{i}\)) across
+the entire population at \(t + 1\) divided by the number of individuals
+(\(N\)) in the population at \(t\). But the size of the population can
+change from \(t\) to \(t + 1\). To recover mean trait change for the
+Price equation (and therefore conserve total probability), we need to
+account for this change in population size. The left-hand side of eqn 7
+describes contributions to the sum trait value from the new population
+at \(t + 1\). But we cannot treat \(\Omega/N\) as the mean of \(z\) at
 \(t+1\) (\(\bar{z}'\)) because we need to weigh \(N\) by the mean
 fitness of the population at \(t\) to account for any change in
 population size from \(t\) to \(t+1\).
@@ -550,20 +541,19 @@ ecosystem function, in that it is the summed effect of the traits
 (\(z_{i}\)) of individual entities (\(i\)) in the population. For
 example, \(z\) might be interpreted as biomass or photosynthetic rate.
 
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\section{Discussion}\label{discussion}
 
 A classical sign of scientific progress is the ability to connect
 disparate theories and models to show how empirical and theoretical
 models are logical (mathematical) consequences of more fundamental ones
-(\protect\hyperlink{ref-Nagel1961}{Nagel 1961}). Conceptual unification
-therefore has a critical role in advancing scientific theory
-(\protect\hyperlink{ref-Morrison2000}{Morrison 2000}). Showing how
-apparently disparate phenomena follow from the same shared principles
-reveals what is most fundamental about the natural world and provides a
-foundation for further scientific investigation and the construction of
-more coherent and predictive models. Our eqn 1 provides a foundation for
-the conceptual unification of the fundamental equations of population
+(\citeproc{ref-Nagel1961}{Nagel 1961}). Conceptual unification therefore
+has a critical role in advancing scientific theory
+(\citeproc{ref-Morrison2000}{Morrison 2000}). Showing how apparently
+disparate phenomena follow from the same shared principles reveals what
+is most fundamental about the natural world and provides a foundation
+for further scientific investigation and the construction of more
+coherent and predictive models. Our eqn 1 provides a foundation for the
+conceptual unification of the fundamental equations of population
 ecology and evolution.
 
 Rather than making simplifying assumptions, as is the approach for most
@@ -576,74 +566,67 @@ assumptions of population identity (\(z_{i} = 1\)) and invariability
 population ecology (Box 1) and principle of exponential growth
 (\(N_{t+1} = N_{t}\lambda\)). By defining individual fitness (\(w_{i}\))
 and applying the total conservation of probability to individual
-frequencies (\protect\hyperlink{ref-Frank2015}{Frank 2015},
-\protect\hyperlink{ref-Frank2016}{2016}), we recover the most
-fundamental equation of evolution (Box 2). We therefore deliver a
-general framework to unify fundamental equations of ecological and
-evolutionary change.
+frequencies (\citeproc{ref-Frank2015}{Frank 2015},
+\citeproc{ref-Frank2016}{2016}), we recover the most fundamental
+equation of evolution (Box 2). We therefore deliver a general framework
+to unify fundamental equations of ecological and evolutionary change.
 
 The Price equation provides a complete and exact description of
-evolution in any closed evolving system
-(\protect\hyperlink{ref-Price1970}{Price 1970};
-\protect\hyperlink{ref-Frank2012}{Frank 2012}). It is derived by
+evolution in any closed evolving system (\citeproc{ref-Price1970}{Price
+1970}; \citeproc{ref-Frank2012}{Frank 2012}). It is derived by
 rearranging the mathematical notation defining changes in the
 frequencies and characteristics of any type of entity
-(\protect\hyperlink{ref-Price1970}{Price 1970};
-\protect\hyperlink{ref-Gardner2008}{Gardner 2008};
-\protect\hyperlink{ref-Luque2016}{Luque 2017}) (e.g., individuals,
-alleles). This derivation partitions total characteristic change into
-different components, making it possible to isolate evolutionary
-mechanisms (e.g., selection) and levels of biological organisation
-(e.g., group, individual) (\protect\hyperlink{ref-Frank1995}{Frank
-1995}, \protect\hyperlink{ref-Frank2012}{2012};
-\protect\hyperlink{ref-Kerr2009}{Kerr and Godfrey-Smith 2009};
-\protect\hyperlink{ref-Luque2016}{Luque 2017};
-\protect\hyperlink{ref-Okasha2020}{Okasha and Otsuka 2020}). Because of
-its abstract nature and lack of any system-specific assumptions, the
-Price equation makes no predictions about what will happen in any
-particular system (\protect\hyperlink{ref-Gardner2020}{Gardner 2020}).
-Its role is not to predict, but to formally and completely define and
-separate components of evolutionary change. The same is true of the
-general equation for population change (eqns 2 and 3), at least as we
-have used it here where it serves to define what population growth means
-in ecology. This equation formally and completely describes population
-change in terms of births and deaths. In eqn 1, we therefore have a
-fundamental equation from which we can derive complete ecological and
-evolutionary change in any closed biological population. We anticipate
-that this will be useful for eco-evolutionary theory in the same way
-that the Price equation is useful for evolutionary theory: facilitating
-specific model development and identifying new conceptual insights,
-unresolved errors, and sources of model disagreements.
+(\citeproc{ref-Price1970}{Price 1970};
+\citeproc{ref-Gardner2008}{Gardner 2008}; \citeproc{ref-Luque2016}{Luque
+2017}) (e.g., individuals, alleles). This derivation partitions total
+characteristic change into different components, making it possible to
+isolate evolutionary mechanisms (e.g., selection) and levels of
+biological organisation (e.g., group, individual)
+(\citeproc{ref-Frank1995}{Frank 1995}, \citeproc{ref-Frank2012}{2012};
+\citeproc{ref-Kerr2009}{Kerr and Godfrey-Smith 2009};
+\citeproc{ref-Luque2016}{Luque 2017}; \citeproc{ref-Okasha2020}{Okasha
+and Otsuka 2020}). Because of its abstract nature and lack of any
+system-specific assumptions, the Price equation makes no predictions
+about what will happen in any particular system
+(\citeproc{ref-Gardner2020}{Gardner 2020}). Its role is not to predict,
+but to formally and completely define and separate components of
+evolutionary change. The same is true of the general equation for
+population change (eqns 2 and 3), at least as we have used it here where
+it serves to define what population growth means in ecology. This
+equation formally and completely describes population change in terms of
+births and deaths. In eqn 1, we therefore have a fundamental equation
+from which we can derive complete ecological and evolutionary change in
+any closed biological population. We anticipate that this will be useful
+for eco-evolutionary theory in the same way that the Price equation is
+useful for evolutionary theory: facilitating specific model development
+and identifying new conceptual insights, unresolved errors, and sources
+of model disagreements.
 
 Our unification demonstrates the equivalence between the finite rate of
-increase \(\lambda\) (Box 1)
-(\protect\hyperlink{ref-Gotelli2001}{Gotelli 2001}) and population mean
-evolutionary fitness \(\bar{w}\) (Box 2). The population growth equation
-\(N_{t+1} = N_{t}\lambda\) could therefore be rewritten as
-\(N_{t+1} = N_{t}\bar{w}\). We do not claim to be the first to notice
-this equivalence between population growth and mean population fitness.
-Indeed, the relationship between population growth rate and evolutionary
-fitness has been proposed and applied many times before
-(\protect\hyperlink{ref-Fisher1930}{Fisher 1930};
-\protect\hyperlink{ref-Charlesworth1980}{Charlesworth 1980};
-\protect\hyperlink{ref-Lande1982}{Lande 1982};
-\protect\hyperlink{ref-Roff2008}{Roff 2008};
-\protect\hyperlink{ref-Lion2018}{Lion 2018}). For example, Lande
-(\protect\hyperlink{ref-Lande1982}{1982}) explicitly concludes mean
-absolute fitness per unit time is \(\bar{w} = e^{r}\), where
-\(r = ln(\lambda)\). We show this from first principles and clarify the
-relationship between fitness and population growth. Over an arbitrary
-length of time, fitness is properly defined as
-\(w_{i} = \beta_{i} - \delta_{i} + 1\). Over an individual's lifetime
-(which, by definition, includes death), fitness is therefore
-\(\beta_{i}\). Interestingly, the rate of change in ecology and
-evolution are reflected in the first and second statistical moments of
-fitness, respectively. Population growth rate reflects mean fitness
+increase \(\lambda\) (Box 1) (\citeproc{ref-Gotelli2001}{Gotelli 2001})
+and population mean evolutionary fitness \(\bar{w}\) (Box 2). The
+population growth equation \(N_{t+1} = N_{t}\lambda\) could therefore be
+rewritten as \(N_{t+1} = N_{t}\bar{w}\). We do not claim to be the first
+to notice this equivalence between population growth and mean population
+fitness. Indeed, the relationship between population growth rate and
+evolutionary fitness has been proposed and applied many times before
+(\citeproc{ref-Fisher1930}{Fisher 1930};
+\citeproc{ref-Charlesworth1980}{Charlesworth 1980};
+\citeproc{ref-Lande1982}{Lande 1982}; \citeproc{ref-Roff2008}{Roff
+2008}; \citeproc{ref-Lion2018}{Lion 2018}). For example, Lande
+(\citeproc{ref-Lande1982}{1982}) explicitly concludes mean absolute
+fitness per unit time is \(\bar{w} = e^{r}\), where \(r = ln(\lambda)\).
+We show this from first principles and clarify the relationship between
+fitness and population growth. Over an arbitrary length of time, fitness
+is properly defined as \(w_{i} = \beta_{i} - \delta_{i} + 1\). Over an
+individual's lifetime (which, by definition, includes death), fitness is
+therefore \(\beta_{i}\). Interestingly, the rate of change in ecology
+and evolution are reflected in the first and second statistical moments
+of fitness, respectively. Population growth rate reflects mean fitness
 \(\bar{w}\), while the rate of evolutionary change reflects the variance
 in fitness \(\mathrm{Var}(w)\) (i.e., Fisher's fundamental theorem)
-(\protect\hyperlink{ref-Frank1997}{Frank 1997};
-\protect\hyperlink{ref-Rice2004}{Rice 2004};
-\protect\hyperlink{ref-Queller2017}{Queller 2017}).
+(\citeproc{ref-Frank1997}{Frank 1997}; \citeproc{ref-Rice2004}{Rice
+2004}; \citeproc{ref-Queller2017}{Queller 2017}).
 
 Our unification may also help explain, at least partially, some of the
 success of classical population genetic models. For decades, population
@@ -651,12 +634,11 @@ genetics (and to some extent quantitative genetics) has been accused of
 being a reductionistic view of evolution, reducing everything to changes
 in allele frequencies and abstracting away from individuals and their
 environments (the ecological interactions)
-(\protect\hyperlink{ref-MacColl2011}{MacColl 2011}). This has been a
-line of argumentation by some defenders of the so-called Extended
-Synthesis (\protect\hyperlink{ref-Pigliucci2009}{Pigliucci 2009}),
-especially in relation to niche construction
-(\protect\hyperlink{ref-Odling-smee2003}{Odling-Smee et al. 2003}).
-Famously, Mayr (\protect\hyperlink{ref-Mayr1960}{1959}) characterized
+(\citeproc{ref-MacColl2011}{MacColl 2011}). This has been a line of
+argumentation by some defenders of the so-called Extended Synthesis
+(\citeproc{ref-Pigliucci2009}{Pigliucci 2009}), especially in relation
+to niche construction (\citeproc{ref-Odling-smee2003}{Odling-Smee et al.
+2003}). Famously, Mayr (\citeproc{ref-Mayr1960}{1959}) characterized
 population genetics as a simple input and output of genes, analogous to
 ``the adding of certain beans to a beanbag and the withdrawing of
 others'' (also called ``beanbag genetics'').
@@ -665,34 +647,32 @@ Historical critics of population genetics could not articulate a clear
 explanation for why it works so well despite all of its idealisations
 and simplifications. From the Price equation, we are able to recover
 classical population and quantitative genetic models
-(\protect\hyperlink{ref-Queller2017}{Queller 2017}) and develop new ones
-(\protect\hyperlink{ref-Rice2004}{Rice 2004},
-\protect\hyperlink{ref-Rice2020}{2020};
-\protect\hyperlink{ref-Luque2016}{Luque 2017};
-\protect\hyperlink{ref-Lion2018}{Lion 2018}). Our eqn 1 contains ecology
-at its core, and we show how the Price equation logically follows from
-it after accounting for absolute population growth (eqn 8). We therefore
-conclude that population and quantitative genetic equations contain
-ecology (no matter how hidden), and the ecological nature of evolution
-is implicit in population and quantitative genetic models.
+(\citeproc{ref-Queller2017}{Queller 2017}) and develop new ones
+(\citeproc{ref-Rice2004}{Rice 2004}, \citeproc{ref-Rice2020}{2020};
+\citeproc{ref-Luque2016}{Luque 2017}; \citeproc{ref-Lion2018}{Lion
+2018}). Our eqn 1 contains ecology at its core, and we show how the
+Price equation logically follows from it after accounting for absolute
+population growth (eqn 8). We therefore conclude that population and
+quantitative genetic equations contain ecology (no matter how hidden),
+and the ecological nature of evolution is implicit in population and
+quantitative genetic models.
 
 We have focused on the dynamics of a closed population, and in doing so
 leave ecological and evolutionary change attributable to migration for
 future work. In population ecology, immigration and emigration can be
 incorporated by adding a term for each to the right-hand side of the
-equation in Box 1 (\protect\hyperlink{ref-Gotelli2001}{Gotelli 2001}).
-In evolution, because the Price equation relies on mapping
+equation in Box 1 (\citeproc{ref-Gotelli2001}{Gotelli 2001}). In
+evolution, because the Price equation relies on mapping
 ancestor-descendant relationships, accounting for migration is more
-challenging. Kerr and Godfrey-Smith
-(\protect\hyperlink{ref-Kerr2009}{2009}) demonstrate how the Price
-equation can be extended to allow for arbitrary links between ancestors
-and descendants, thereby extending the Price equation to allow for
-immigration and emigration. Frank
-(\protect\hyperlink{ref-Frank2012}{2012}) presents a simplified version
-of Kerr and Godfrey-Smith (\protect\hyperlink{ref-Kerr2009}{2009}) that
-allows some fraction of descendants to be unconnected to ancestors. In
-both ecology and evolution, accounting for migration is done through the
-use of additional terms on the right-hand side of the equations.
+challenging. Kerr and Godfrey-Smith (\citeproc{ref-Kerr2009}{2009})
+demonstrate how the Price equation can be extended to allow for
+arbitrary links between ancestors and descendants, thereby extending the
+Price equation to allow for immigration and emigration. Frank
+(\citeproc{ref-Frank2012}{2012}) presents a simplified version of Kerr
+and Godfrey-Smith (\citeproc{ref-Kerr2009}{2009}) that allows some
+fraction of descendants to be unconnected to ancestors. In both ecology
+and evolution, accounting for migration is done through the use of
+additional terms on the right-hand side of the equations.
 
 Our fundamental equation is complete and exact. It therefore implicitly
 includes any effects of density dependence on population growth (see Box
@@ -721,26 +701,24 @@ Lastly, we propose our eqn 1 as a potential starting point for defining
 ecosystem function and further conceptual unification between ecology,
 evolution, and ecosystem function. The Price equation has previously
 been used to investigate ecosystem function
-(\protect\hyperlink{ref-Loreau2001}{Loreau and Hector 2001};
-\protect\hyperlink{ref-Fox2006}{Fox 2006}), but not with any attempt
-towards conceptual unification with evolutionary biology. For example,
-Fox (\protect\hyperlink{ref-Fox2006}{2006}) applied the abstract
-properties of the Price equation to partition total change in ecosystem
-function into separate components attributable to species richness,
-species composition, and context dependent effects. This approach
-provides a framework for comparing the effects of biodiversity on
-ecosystem function in empirical systems
-(\protect\hyperlink{ref-Fox2006}{Fox 2006};
-\protect\hyperlink{ref-Winfree2015}{Winfree et al. 2015};
-\protect\hyperlink{ref-Mateo-Tomas2017}{Mateo-Tomás et al. 2017}).
-Instead, our eqn 1 defines \(\Omega\) as total ecosystem function
-contributed by a focal population (e.g., biomass production,
-decomposition, photosynthetic rate). It is therefore possible to
-investigate ecological, evolutionary, and ecosystem function change from
-the same shared framework.
+(\citeproc{ref-Loreau2001}{Loreau and Hector 2001};
+\citeproc{ref-Fox2006}{Fox 2006}), but not with any attempt towards
+conceptual unification with evolutionary biology. For example, Fox
+(\citeproc{ref-Fox2006}{2006}) applied the abstract properties of the
+Price equation to partition total change in ecosystem function into
+separate components attributable to species richness, species
+composition, and context dependent effects. This approach provides a
+framework for comparing the effects of biodiversity on ecosystem
+function in empirical systems (\citeproc{ref-Fox2006}{Fox 2006};
+\citeproc{ref-Winfree2015}{Winfree et al. 2015};
+\citeproc{ref-Mateo-Tomas2017}{Mateo-Tomás et al. 2017}). Instead, our
+eqn 1 defines \(\Omega\) as total ecosystem function contributed by a
+focal population (e.g., biomass production, decomposition,
+photosynthetic rate). It is therefore possible to investigate
+ecological, evolutionary, and ecosystem function change from the same
+shared framework.
 
-\hypertarget{acknowledgements}{%
-\section{Acknowledgements}\label{acknowledgements}}
+\section{Acknowledgements}\label{acknowledgements}
 
 This manuscript was supported by joint funding between the French
 Foundation for Research on Biodiversity (FRB) Centre for the Synthesis
@@ -758,342 +736,338 @@ fitness. Brad Duthie would also like to thank Brent Danielson and Stan
 Harpole. Victor J. Luque would also like to thank Lorenzo Baravalle, Pau
 Carazo, Santiago Ginnobili, Manuel Serra, and Ariel Roff\(\'{e}\).
 
-\hypertarget{author-contributions}{%
-\section{Author Contributions}\label{author-contributions}}
+\section{Author Contributions}\label{author-contributions}
 
 Both authors came up with the question idea. Following many discussions
 between the authors, ABD proposed the initial equation with subsequent
 exploration and development from both authors. Both authors contributed
 to the writing.
 
-\hypertarget{competing-interests}{%
-\section{Competing Interests}\label{competing-interests}}
+\section{Competing Interests}\label{competing-interests}
 
 The authors declare no competing interests.
 
-\hypertarget{data-availability}{%
-\section{Data Availability}\label{data-availability}}
+\section{Data Availability}\label{data-availability}
 
 This work does not include any data.
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
+\section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-\hypertarget{refs}{}
+\phantomsection\label{refs}
 \begin{CSLReferences}{0}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-Baravalle2022}{}}%
+\bibitem[\citeproctext]{ref-Baravalle2022}
 Baravalle, L., and V. J. Luque. 2022.
 \href{https://doi.org/10.1387/theoria.21940}{Towards a pricean
 foundation for cultural evolutionary theory}. Theoria 37:209--231.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Baravalle2024}{}}%
+\bibitem[\citeproctext]{ref-Baravalle2024}
 Baravalle, L., A. Roffé, V. J. Luque, and S. Ginnobili. 2024.
 \href{https://doi.org/10.1007/s13752-024-00482-4}{The value of price}.
 Biological Theory.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Brantingham2007}{}}%
+\bibitem[\citeproctext]{ref-Brantingham2007}
 Brantingham, P. J. 2007. \href{https://doi.org/10.2307/40035853}{{A
 unified evolutionary model of archaeological style and function based on
 the Price equation}}. American Antiquity 72:395--416.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Caswell1988}{}}%
+\bibitem[\citeproctext]{ref-Caswell1988}
 Caswell, H. 1988.
 \href{https://doi.org/10.1016/0304-3800(88)90071-3}{Theory and models in
 ecology: A different perspective}. Ecological modelling 43:33--44.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Charlesworth1980}{}}%
+\bibitem[\citeproctext]{ref-Charlesworth1980}
 Charlesworth, B. 1980. Evolution in age-structured populations.
 Cambridge studies in mathematical biology. Cambridge University Press,
 Cambridge.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Collins2009}{}}%
+\bibitem[\citeproctext]{ref-Collins2009}
 Collins, S., and A. Gardner. 2009.
 \href{https://doi.org/10.1111/j.1461-0248.2009.01340.x}{{Integrating
 physiological, ecological and evolutionary change: A Price equation
 approach}}. Ecology Letters 12:744--757.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Connor2004}{}}%
+\bibitem[\citeproctext]{ref-Connor2004}
 Connor, J., and D. L. Hartl. 2004. {A premier of ecological genetics}.
 Sinauer Associates Incorporated.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Dobzhansky1970}{}}%
+\bibitem[\citeproctext]{ref-Dobzhansky1970}
 Dobzhansky, T. 1970. Genetics of the evolutionary process (Vol. 139).
 Columbia University Press.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Edelaar2023}{}}%
+\bibitem[\citeproctext]{ref-Edelaar2023}
 Edelaar, Pim, J. Otsuka, and V. J. Luque. 2023.
 \href{https://doi.org/10.1111/brv.12910}{{A generalised approach to the
 study and understanding of adaptive evolution}}. Biological Reviews
 98:352--375.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Fisher1930}{}}%
+\bibitem[\citeproctext]{ref-Fisher1930}
 Fisher, R. A. 1930. The genetical theory of natural selection. Oxford
 University Press, Oxford, UK.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Fox2006}{}}%
+\bibitem[\citeproctext]{ref-Fox2006}
 Fox, J. W. 2006.
 \href{https://doi.org/10.1890/0012-9658(2006)87\%5B2687:utpetp\%5D2.0.co;2}{{Using
 the price equation to partition the effects of biodiversity loss on
 ecosystem function}}. Ecology 87:2687--2696.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Frank1995}{}}%
+\bibitem[\citeproctext]{ref-Frank1995}
 Frank, S. A. 1995. \href{https://doi.org/10.1006/jtbi.1995.0148}{{George
 Price's contributions to evolutionary genetics}}. Journal of Theoretical
 Biology 175:373--388.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Frank1997}{}}%
+\bibitem[\citeproctext]{ref-Frank1997}
 ---------. 1997.
 \href{https://doi.org/10.1111/j.1558-5646.1997.tb05096.x}{{The Price
 equation, Fisher's fundamental theorem, kin selection, and causal
 analysis}}. Evolution 51:1712--1729.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Frank2012}{}}%
+\bibitem[\citeproctext]{ref-Frank2012}
 ---------. 2012.
 \href{https://doi.org/10.1111/j.1420-9101.2012.02498.x}{{Natural
 selection. IV. The Price equation}}. Journal of Evolutionary Biology
 25:1002--1019.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Frank2015}{}}%
+\bibitem[\citeproctext]{ref-Frank2015}
 ---------. 2015. \href{https://doi.org/10.3390/e17107087}{{D'Alembert's
 direct and inertial forces acting on populations: The price equation and
 the fundamental theorem of natural selection}}. Entropy 17:7087--7100.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Frank2016}{}}%
+\bibitem[\citeproctext]{ref-Frank2016}
 ---------. 2016. \href{https://doi.org/10.3390/e18050192}{{Common
 probability patterns arise from simple invariances}}. Entropy 18:1--22.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Frank2015a}{}}%
+\bibitem[\citeproctext]{ref-Frank2015a}
 ---------. 2017. \href{https://doi.org/10.1002/ece3.2922}{{Universal
 expressions of population change by the Price equation: natural
 selection, information, and maximum entropy production}}. Ecology and
 Evolution 1--16.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Gardner2008}{}}%
+\bibitem[\citeproctext]{ref-Gardner2008}
 Gardner, A. 2008. \href{https://doi.org/10.1016/j.cub.2008.01.005}{{The
 Price equation}}. Current Biology 18:198--202.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Gardner2020}{}}%
+\bibitem[\citeproctext]{ref-Gardner2020}
 ---------. 2020. \href{https://doi.org/10.1098/rstb.2019.0361}{{Price's
 equation made clear}}. Philosophical Transactions of the Royal Society
 B: Biological Sciences 375:20190361.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Gayon2019}{}}%
+\bibitem[\citeproctext]{ref-Gayon2019}
 Gayon, J., and P. Huneman. 2019.
 \href{https://doi.org/10.1007/s10739-019-09569-2}{The modern synthesis:
 Theoretical or institutional event?} Journal of the History of Biology
 52:519--535.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Godsoe2021}{}}%
+\bibitem[\citeproctext]{ref-Godsoe2021}
 Godsoe, W., K. E. Eisen, D. Stanton, and K. M. Sirianni. 2021.
 \href{https://doi.org/10.1007/s12080-020-00478-3}{Selection and
 biodiversity change}. Theoretical Ecology 14:367--379.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Gotelli2001}{}}%
+\bibitem[\citeproctext]{ref-Gotelli2001}
 Gotelli, N. J. 2001. A primer of ecology. Sinauer associate. Inc.
 Sunderland, MA.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Govaert2019}{}}%
+\bibitem[\citeproctext]{ref-Govaert2019}
 Govaert, L., E. A. Fronhofer, S. Lion, C. Eizaguirre, D. Bonte, M. Egas,
 A. P. Hendry, et al. 2019.
 \href{https://doi.org/10.1111/1365-2435.13241}{{Eco-evolutionary
 feedbacks---Theoretical models and perspectives}}. Functional Ecology
 33:13--30.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Kerr2009}{}}%
+\bibitem[\citeproctext]{ref-Kerr2009}
 Kerr, B., and P. Godfrey-Smith. 2009.
 \href{https://doi.org/10.1111/j.1558-5646.2008.00570.x}{{Generalization
 of the price equation for evolutionary change}}. Evolution 63:531--536.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Kitcher1993}{}}%
+\bibitem[\citeproctext]{ref-Kitcher1993}
 Kitcher, P. 1993. {The advancement of science}. Oxford University Press,
 New York.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lande1982}{}}%
+\bibitem[\citeproctext]{ref-Lande1982}
 Lande, R. 1982. \href{https://doi.org/10.2307/1936778}{{A quantitative
 genetic theory of life history evolution}}. Ecology 63:607--615.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lehtonen2016}{}}%
+\bibitem[\citeproctext]{ref-Lehtonen2016}
 Lehtonen, J. 2016.
 \href{https://doi.org/10.1016/j.tree.2016.07.006}{{Multilevel selection
 in kin selection language}}. Trends in Ecology and Evolution xx:1--11.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lehtonen2018}{}}%
+\bibitem[\citeproctext]{ref-Lehtonen2018}
 ---------. 2018. \href{https://doi.org/10.1086/694891}{{The Price
 equation, gradient dynamics, and continuous trait game theory}}.
 American Naturalist 191:146--153.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lehtonen2020}{}}%
+\bibitem[\citeproctext]{ref-Lehtonen2020}
 Lehtonen, J., S. Okasha, and H. Helanterä. 2020.
 \href{https://doi.org/10.1098/rstb.2019.0350}{{Fifty years of the Price
 equation}}. Philosophical Transactions of the Royal Society B:
 Biological Sciences 375:20190350.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lewens2015}{}}%
+\bibitem[\citeproctext]{ref-Lewens2015}
 Lewens, T. 2015.
 \href{https://doi.org/10.1093/acprof:oso/9780199674183.001.0001}{Cultural
 evolution: Conceptual challenges}. Oxford University Press.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Lion2018}{}}%
+\bibitem[\citeproctext]{ref-Lion2018}
 Lion, S. 2018. \href{https://doi.org/10.1086/694865}{{Theoretical
 approaches in evolutionary ecology: environmental feedback as a unifying
 perspective}}. American Naturalist 191.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Loreau2001}{}}%
+\bibitem[\citeproctext]{ref-Loreau2001}
 Loreau, M., and A. Hector. 2001.
 \href{https://doi.org/10.1038/35083573}{{Partitioning selection and
 complementarity in biodiversity experiments}}. Nature 412:72--76.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Luque2016}{}}%
+\bibitem[\citeproctext]{ref-Luque2016}
 Luque, V. J. 2017. \href{https://doi.org/10.1007/s10539-016-9538-y}{{One
 equation to rule them all: a philosophical analysis of the Price
 equation}}. Biology and Philosophy 32:1--29.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Luque2021}{}}%
+\bibitem[\citeproctext]{ref-Luque2021}
 Luque, V. J., and L. Baravalle. 2021.
 \href{https://doi.org/10.1007/s11229-021-03339-6}{{The mirror of
 physics: on how the price equation can unify evolutionary biology}}.
 Synthese 199:12439--12462.
 
-\leavevmode\vadjust pre{\hypertarget{ref-MacCallum2012}{}}%
+\bibitem[\citeproctext]{ref-MacCallum2012}
 MacCallum, R. M., M. Mauch, A. Burt, and A. M. Leroi. 2012.
 \href{https://doi.org/10.5061/dryad.h0228}{{Evolution of music by public
 choice}}. Proceedings of the National Academy of Sciences
 109:12081--12086.
 
-\leavevmode\vadjust pre{\hypertarget{ref-MacColl2011}{}}%
+\bibitem[\citeproctext]{ref-MacColl2011}
 MacColl, A. D. C. 2011.
 \href{https://doi.org/10.1016/j.tree.2011.06.009}{{The ecological causes
 of evolution}}. Trends in Ecology and Evolution 26:514--522.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Mateo-Tomas2017}{}}%
+\bibitem[\citeproctext]{ref-Mateo-Tomas2017}
 Mateo-Tomás, P., P. P. Olea, M. Moleón, N. Selva, and J. A.
 Sánchez-Zapata. 2017. \href{https://doi.org/10.1111/geb.12673}{{Both
 rare and common species support ecosystem services in scavenger
 communities}}. Global Ecology and Biogeography 26:1459--1470.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Mayr1960}{}}%
+\bibitem[\citeproctext]{ref-Mayr1960}
 Mayr, E. 1959. \href{https://doi.org/10.1101/SQB.1959.024.01.003}{Where
 are we? Genetics and twentieth century darwinism}. Pages 1--14
 \emph{in}Cold spring harbor symposia on quantitative biology (Vol. 24).
 
-\leavevmode\vadjust pre{\hypertarget{ref-Morrison2000}{}}%
+\bibitem[\citeproctext]{ref-Morrison2000}
 Morrison, M. 2000. Unifying scientific theories: Physical concepts and
 mathematical structures. Cambridge University Press.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Nagel1961}{}}%
+\bibitem[\citeproctext]{ref-Nagel1961}
 Nagel, E. 1961. The structure of science: Problems in the logic of
 scientific explanation. Harcourt, Brace \& World, New York, NY, USA.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Odling-smee2003}{}}%
+\bibitem[\citeproctext]{ref-Odling-smee2003}
 Odling-Smee, F. J., K. N. Laland, and M. W. Feldman. 2003. Niche
 construction: The neglected process in evolution. Princeton University
 Press.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Okasha2006}{}}%
+\bibitem[\citeproctext]{ref-Okasha2006}
 Okasha, S. 2006.
 \href{https://doi.org/10.1093/acprof:oso/9780199267972.001.0001}{Evolution
 and the levels of selection}. Oxford University Press.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Okasha2020}{}}%
+\bibitem[\citeproctext]{ref-Okasha2020}
 Okasha, S., and J. Otsuka. 2020.
 \href{https://doi.org/10.1098/rstb.2019.0365}{{The Price equation and
 the causal analysis of evolutionary change}}. Philosophical Transactions
 of the Royal Society B: Biological Sciences 375:20190365.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Page2002}{}}%
+\bibitem[\citeproctext]{ref-Page2002}
 Page, K. M., and M. A. Nowak. 2002.
 \href{https://doi.org/10.1006/jtbi.2002.3112}{Unifying evolutionary
 dynamics}. Journal of theoretical biology 219:93--98.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Patel2018}{}}%
+\bibitem[\citeproctext]{ref-Patel2018}
 Patel, S., M. H. Cortez, and S. J. Schreiber. 2018.
 \href{https://doi.org/10.1101/104505}{{Partitioning the effects of
 eco-evolutionary feedbacks on community stability}}. American Naturalist
 191:1--29.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Pigliucci2009}{}}%
+\bibitem[\citeproctext]{ref-Pigliucci2009}
 Pigliucci, M. 2009.
 \href{https://doi.org/10.1111/j.1749-6632.2009.04578.x}{{An extended
 synthesis for evolutionary biology}}. Annals of the New York Academy of
 Sciences 1168:218--228.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Price1970}{}}%
+\bibitem[\citeproctext]{ref-Price1970}
 Price, G. R. 1970. \href{https://doi.org/10.1038/227520a0}{{Selection
 and covariance}}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Price1972}{}}%
+\bibitem[\citeproctext]{ref-Price1972}
 ---------. 1972.
 \href{https://doi.org/10.1111/j.1469-1809.1957.tb01874.x}{{Extension of
 covariance selection mathematics}}. Annals of Human Genetics
 35:485--490.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Price1995}{}}%
+\bibitem[\citeproctext]{ref-Price1995}
 ---------. 1995. \href{https://doi.org/10.1006/jtbi.1995.0149}{{The
 nature of selection}}. Journal of Theoretical Biology 175:389--396.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Queller2017}{}}%
+\bibitem[\citeproctext]{ref-Queller2017}
 Queller, D. C. 2017. \href{https://doi.org/10.1086/690937}{{Fundamental
 theorems of evolution}}. American Naturalist 189:000--000.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Rice2004}{}}%
+\bibitem[\citeproctext]{ref-Rice2004}
 Rice, S. H. 2004. {Evolutionary theory: mathematical and conceptual
 foundations}. Sinauer Associates Incorporated.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Rice2020}{}}%
+\bibitem[\citeproctext]{ref-Rice2020}
 ---------. 2020.
 \href{https://doi.org/10.1098/rstb.2019.0353}{{Universal rules for the
 interaction of selection and transmission in evolution}}. Philosophical
 Transactions of the Royal Society B: Biological Sciences 375.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Rice2009}{}}%
+\bibitem[\citeproctext]{ref-Rice2009}
 Rice, S. H., and A. Papadopoulos. 2009.
 \href{https://doi.org/10.1371/journal.pone.0007130}{{Evolution with
 stochastic fitness and stochastic migration}}. PLoS One 4.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Robertson1966}{}}%
+\bibitem[\citeproctext]{ref-Robertson1966}
 Robertson, A. 1966. \href{https://doi.org/10.1017/S0003356100037752}{{A
 mathematical model of the culling process in dairy cattle}}. Animal
 Science 8:95--108.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Roff2008}{}}%
+\bibitem[\citeproctext]{ref-Roff2008}
 Roff, D. A. 2008.
 \href{https://doi.org/10.1007/s12041-008-0056-9}{{Defining fitness in
 evolutionary models}}. Journal of Genetics 87:339--348.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Shennan2011}{}}%
+\bibitem[\citeproctext]{ref-Shennan2011}
 Shennan, S. 2011. \href{https://doi.org/10.1098/rstb.2010.0380}{{Descent
 with modification and the archaeological record}}. Philosophical
 Transactions of the Royal Society B: Biological Sciences 366:1070--1079.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Turchin2001}{}}%
+\bibitem[\citeproctext]{ref-Turchin2001}
 Turchin, P. 2001.
 \href{https://doi.org/10.1034/j.1600-0706.2001.11310.x}{Does population
 ecology have general laws?} Oikos 94:17--26.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Ulrich2024}{}}%
+\bibitem[\citeproctext]{ref-Ulrich2024}
 Ulrich, W., N. J. Gotelli, G. Strona, and W. Godsoe. 2024.
 \href{https://doi.org/10.1016/j.ecolmodel.2024.110695}{Reconsidering the
 price equation: Benchmarking the analytical power of additive
 partitioning in ecology}. Ecological Modelling 491:110695.
 
-\leavevmode\vadjust pre{\hypertarget{ref-VanVeelen2005}{}}%
+\bibitem[\citeproctext]{ref-VanVeelen2005}
 van Veelen, M. 2005.
 \href{https://doi.org/10.1016/j.jtbi.2005.04.026}{{On the use of the
 Price equation}}. Journal of Theoretical Biology 237:412--426.
 
-\leavevmode\vadjust pre{\hypertarget{ref-VanVeelen2020}{}}%
+\bibitem[\citeproctext]{ref-VanVeelen2020}
 ---------. 2020. \href{https://doi.org/10.1098/rstb.2019.0355}{{The
 problem with the Price equation}}. Philosophical Transactions of the
 Royal Society B: Biological Sciences 375:20190355.
 
-\leavevmode\vadjust pre{\hypertarget{ref-VanVeelen2012}{}}%
+\bibitem[\citeproctext]{ref-VanVeelen2012}
 van Veelen, M., J. García, M. W. Sabelis, and M. Egas. 2012.
 \href{https://doi.org/10.1016/j.jtbi.2011.07.025}{{Group selection and
 inclusive fitness are not equivalent; the Price equation vs. models and
 statistics}}. Journal of Theoretical Biology 299:64--80.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Winfree2015}{}}%
+\bibitem[\citeproctext]{ref-Winfree2015}
 Winfree, R., J. W. Fox, N. M. Williams, J. R. Reilly, and D. P.
 Cariveau. 2015. \href{https://doi.org/10.1111/ele.12424}{{Abundance of
 common species, not species richness, drives delivery of a real-world
