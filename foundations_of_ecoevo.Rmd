@@ -1,5 +1,5 @@
 ---
-title: "Darwin's Dream: Unifying ecological and evolutionary change"
+title: "Foundations of ecological and evolutionary change"
 author: |
   | A. Bradley Duthie$^{1,a,*}$ and Victor J. Luque$^{2,a}$
 date: '[1] Department of Biological and Environmental Sciences, University of Stirling, Stirling, Scotland [2] Department of Philosophy, University of Valencia, Valencia, Spain [*] Corresponding author: alexander.duthie@stir.ac.uk [a] Equal contribution'
