@@ -1,3 +1,5 @@
+General response to reviewer comments
+================================================
 
 We thank both reviewers for their valuable comments and suggestions. They helped us to improve the presentation of a number of points that were not entirely clear in the previous version of the manuscript and focus our revision on better communicating the aim of our work. To summarise, it does not appear that the accuracy or novelty of our proposed equation is in question. But the motivation for seeking and reporting it clearly needs to be better communicated. Couching this motivation in terms of major historical breakthroughs in science has set an incorrect and unintended tone; the point was to explain why pursuing abstract unifying equations is a valid and important part of scientific theory (using the strongest cases available), not to suggest that what we've done is field-changing in its importance!
 
@@ -9,7 +11,7 @@ Our equation is general and realistic. It is also simple; it couldn't be anythin
 
 
 
-Reviewer 1 comment 1
+Reviewer 1 comment 1 [ ]
 ==================================
 
 The literature that is cited is VERY selective. There is a huge body of literature on linking ecological and evolutionary theory. High-dimensional matrix models have now been routinely used to link ecological and evolutionary dynamics by Barfield, Boots, Childs, Coulson, Ellner, Lion, Rees, Tuljapurkar and others. They have shown how by writing equations to dynamically track distributions of individual-level phenotypic traits and genotypes you can retrieve: the Price equation (including for structured populations) selection differentials and gradients, heritabilities, genetic covariances, the Euler-Lotka equation, equations for population growth, rates of evolutionary change, evolutionary end points, species interactions, and coexistence mechanisms. This literature needs citing and appropriately summarising. (It turns out it is straightforward to retrieve their equation from this modelling framework. if the authors did this, it will help reveal its limitations. One example is their delta zi terms get split into ontogenetic development among surviving individuals and genetic and non-genetic inheritance between parents and their offspring in age-structured populations).
@@ -37,9 +39,7 @@ Similarly, we attempt to define what is most fundamental to eco-evolutionary cha
 In summary, are familiar with the literature pointed out by Reviewer 1, and we would even (quite happily) argue that this literature includes models that are highly general tools for modelling complex eco-evolutionary dynamics. The whole point of introducing the paper the way that we did was to illustrate that we are trying to ask a different question than the ones in those papers. We obviously need to try a different approach, and we have done this using extensive revisions in our introduction that address the points made above.
 
 
-
-
-Reviewer 1 comment 2
+Reviewer 1 comment 2 [ ]
 ==================================
 
 The equation that is developed is not dynamically sufficient. This means that without modification it is fairly limited in describing what happens over an individual time step. This is no surprise, because the Price is simply a tautology that is also not dynamically sufficient. The authors may have derived an equation that is worthy of publication. They need to be honest on its limitations (also see point 1). 
@@ -53,7 +53,7 @@ We now state this more clearly in the text (Line XXX).
 Reviewer 1 is of course correct that our eqn 1 is not dynamically sufficient. It couldn't possibly be, for exactly the reason that Reviewer 1 points out. The Price equation is a tool for unifying evolutionary models and providing conceptual clarity, which is necessarily achieved at the cost of any and all predictive power for a given system. Models need to make (simplifying, specific system) assumptions to be predictive (Levins 1966, Frank 2012), and a fundamental equation, by its nature, needs to be free of such assumptions and focus only on what is essential. The worthiness of our equation rests entirely on its power to unify fundamental equations of ecology and evolution and provide conceptual clarity, and its limitations are the same as any other fundamental equation.
 
 
-Reviewer 1 comment 3
+Reviewer 1 comment 3 [ ]
 ==================================
 
 The authors massively overstate the importance of their equation, starting with the title of "Darwin's dream". There is no evidence I am aware of that Darwin ever thought much about equations. The authors then talk about scientific breakthroughs, attempting to place their equation with other great equations of science. Astonishing self-belief, and not warranted given how much has been done in this space already and the limitations of their formulae. The paper needs toning down significantly. The equation is mildly interesting, but it is not field-changing. This self belief may come from the authors having been working in an echo chamber. This is even hinted at in the acknowledgements and author contributions.
@@ -76,7 +76,7 @@ The fact that the theoretical foundations of ecology and evolution are logically
 
 
 
-Reviewer 2 comment 1  
+Reviewer 2 comment 1   [ ]
 ======================
 
 At the broadest level, I've always understood the Price Equation as explicitly including the birth-death process that would lead to the population growth rate equation from ecology. In the abstract sense, the Price Equation does not require ancestors and descendants to be different, and thus the relation between them necessarily captures births (when they are different) and deaths (when the ancestor is not among the descendants). This relationship allows mean fitness to capture the population growth rate, as first shown by Fisher (1930) and later by folks like Lande (1982) and Rice (2004). Day & Bonduriansky (2011) note that the total number of individuals in each time interval is the sum of all surviving parents and offspring; hence, they are Nt(births – deaths), which is Duthie & Luque’s equation 3. Now, a case could be made that stating this relationship in an obvious and explicit way is useful, but it seems to me that the original formulation of the Price Equation already subsumes population growth dynamics, so erecting an even broader equation isn’t necessary.
@@ -95,7 +95,7 @@ In our revision, we try to clarify the need for our equation more clearly.
 
 
 
-Reviewer 2 comment 2
+Reviewer 2 comment 2 [ ]
 ======================
 
 This leads me to my second point. The broader equation (1) is defined such that it introduces an abstract quantity (Omega), whose meaning depends on further definitions of variables. In its original formulation (1), it is meaningless. For example, if N = 3, beta = 1, delta = 1, z1 = 1, z2 = 2, and z3 = 3, and Deltaz = 0.5, then the first term in equation 1 reduces to 1, and the summation becomes a sum of z: 1.5 + 2.5 + 3.5 = 7.5, thus, Omega is the sum of z. But if the first term doesn’t reduce to 1, Omega becomes incomprehensible. Let’s say beta_1 = 2, with the other betas remaining as 1. Now,
@@ -139,7 +139,7 @@ We thank Reviewer 2 for raising this query; it gave us pause to reflect and be e
 
 
 
-Reviewer 2 comment 3 
+Reviewer 2 comment 3  [ ]
 ======================
 
 
@@ -157,7 +157,7 @@ We now emphasise more clearly, in words, the interpretation of equation 1 and ho
 
 
 
-Reviewer 2 comment 4 
+Reviewer 2 comment 4  [ ]
 =========================
 
 Lastly, there are a series of statements made in the Abstract that feel like they either are not followed through on or only weakly mentioned in the Discussion. For example, we are told that this unification “shows how ecological and evolutionary change are reflected in the first and second statistical moments of fitness”, but this is fleshed out in a single sentence in the Discussion (Line 236–238): “Interestingly, the rate of change in ecology and evolution are reflected in the first and second statistical moments of fitness, respectively. Population growth rate reflects mean fitness w ̄ , while the rate of evolutionary change reflects the variance in fitness Var(w).” There appears to be no other mention of this outside the Abstract. Importantly, as the authors note, each of these things are already known – both the equivalence of population growth rate with mean fitness and the rate of evolutionary change being equal to the variance in fitness are found in Fisher (1930).
@@ -172,7 +172,7 @@ We now remove this from the abstract. In the manuscript, we now clarify that our
 
 
 
-Reviewer 2 comment 5
+Reviewer 2 comment 5 [ ]
 =========================
 
 Furthermore, the Abstract claims the unification links ecosystem function to population growth rates and evolutionary change, but this is only speculated on in the last paragraph of the Discussion. The authors cite others who have explicitly done this, suggest that their equation might do the same, but there’s no demonstration of it or suggestion of what it might be. Again, this could be because it’s not obvious to me the connection, so the authors need to be a little more explicit in showing these connections.
@@ -186,7 +186,7 @@ We are grateful to Reviewer 2 for pointing this out, and we have revised to make
 
 
 
-Reviewer 2 minor comment 1
+Reviewer 2 minor comment 1 [ ]
 =========================
 
 Title – I like the title, but Darwin is never mentioned in the text! I kept expecting to see something about how “Darwin dreamed to unite these fields” or something.
@@ -199,7 +199,7 @@ We also liked the title, but it is clearly causing confusion. We have switched t
 
 
 
-Reviewer 2 minor comment 2
+Reviewer 2 minor comment 2 [ ]
 =========================
 
 Lines 26-28 – I would also cite Betty Smocovitis’ excellent paper here on the unification of biology via evolution: Smocovitis, V. B. (1992). Unifying biology: the evolutionary synthesis and evolutionary biology. Journal of the History of Biology, 25(1), 1-65.
@@ -214,7 +214,7 @@ This is a good suggestion; we have cited this paper now (Line XXX).
 
 
 
-Reviewer 2 minor comment 3
+Reviewer 2 minor comment 3 [ ]
 =========================
 
 
@@ -239,7 +239,7 @@ We now clarify this historical view (Line XXX)
 
 
 
-Reviewer 2 minor comment 4
+Reviewer 2 minor comment 4 [ ]
 =========================
 
 
@@ -254,7 +254,7 @@ Fixed (Line XXX).
 
 
 
-Reviewer 2 minor comment 5 
+Reviewer 2 minor comment 5 [ ]
 =========================
 
 Lines 273-274 – If these derivations were included here, it would dramatically clarify my confusion about the usefulness and meaning of Omega in the general formula.
@@ -264,8 +264,6 @@ Author response to Reviewer 2 minor comment 5
 =========================
 
 We are reluctant to include too much work still in preparation, or distract from what we believe is the central message of the current manuscript. But we have now included some additional derivations in supporting information.
-
-
 
 
 
