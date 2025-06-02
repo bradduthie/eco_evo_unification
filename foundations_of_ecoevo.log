@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.4.25)  1 JUN 2025 17:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.4.25)  2 JUN 2025 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -553,31 +553,31 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 182.
 [2] [3] [4] [5] [6{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}] [7] [8] 
-[9] [10] [11] [12]
+[9] [10] [11] [12] [13]
 
-LaTeX Warning: Command \' invalid in math mode on input line 706.
-
-
-LaTeX Warning: Command \` invalid in math mode on input line 706.
+LaTeX Warning: Command \' invalid in math mode on input line 743.
 
 
-LaTeX Warning: Command \' invalid in math mode on input line 708.
+LaTeX Warning: Command \` invalid in math mode on input line 743.
 
 
-LaTeX Warning: Command \' invalid in math mode on input line 713.
+LaTeX Warning: Command \' invalid in math mode on input line 745.
 
-[13] [14] [15] [16] [17] [18] (./foundations_of_ecoevo.aux)
+
+LaTeX Warning: Command \' invalid in math mode on input line 750.
+
+[14] [15] [16] [17] [18] [19] (./foundations_of_ecoevo.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14666 strings out of 474222
- 228928 string characters out of 5748733
+ 14680 strings out of 474222
+ 229125 string characters out of 5748733
  1937975 words of memory out of 5000000
- 36425 multiletter control sequences out of 15000+600000
- 618013 words of font info for 157 fonts, out of 8000000 for 9000
+ 36430 multiletter control sequences out of 15000+600000
+ 618179 words of font info for 159 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,8n,93p,1018b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
@@ -591,10 +591,10 @@ fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
 e1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmsy8.pfb>
-Output written on foundations_of_ecoevo.pdf (18 pages, 305152 bytes).
+Output written on foundations_of_ecoevo.pdf (19 pages, 309035 bytes).
 PDF statistics:
- 574 PDF objects out of 1000 (max. 8388607)
- 515 compressed objects within 6 object streams
- 110 named destinations out of 1000 (max. 500000)
- 30809 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 597 PDF objects out of 1000 (max. 8388607)
+ 537 compressed objects within 6 object streams
+ 115 named destinations out of 1000 (max. 500000)
+ 30817 words of extra memory for PDF output out of 35830 (max. 10000000)
 

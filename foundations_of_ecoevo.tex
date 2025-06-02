@@ -199,12 +199,12 @@ following a widespread recognition that ecology and evolution can happen
 on similar timescales (\citeproc{ref-Govaert2019}{Govaert et al. 2019};
 \citeproc{ref-Yamamichi2023}{Yamamichi et al. 2023}). Currently, a
 universally recognised formal definition of eco-evolutionary change is
-lacking, with some authors broadly interpreting ``eco-evolutionary
+lacking, with some theoreticians broadly interpreting ``eco-evolutionary
 dynamics'' to allow for a separation of ecological and evolutionary
 timescales (\citeproc{ref-Lion2023}{Lion et al. 2023}) and others
 advocating for a more narrow interpretation in which no such separation
 is permitted (\citeproc{ref-Bassar2021}{Bassar et al. 2021}). Bassar et
-al. (\citeproc{ref-Bassar2021}{2021}) recognise two types of
+al. (\citeproc{ref-Bassar2021}{2021}) identify two types of
 eco-evolutionary models that follow from these interpretations. The
 first type uses separate equations to model population change versus
 evolutionary change, thereby allowing for any number of ecological,
@@ -219,8 +219,8 @@ and trait distributions operating on the same timescale (e.g.,
 \citeproc{ref-Jaggi2024}{Jaggi et al. 2024}). Both model types can be
 very general, but like all predictive models, they rely on simplifying
 assumptions for tractability (\citeproc{ref-Levins1966}{Levins 1966};
-\citeproc{ref-Luque2016}{Luque 2017}). These simplifying assumptions can
-be grounded in the Price equation to demonstrate accuracy and logical
+\citeproc{ref-Luque2016}{Luque 2017}). These simplifying assumptions are
+often grounded in the Price equation to demonstrate accuracy and logical
 consistency when modelling evolutionary change (e.g.,
 \citeproc{ref-Coulson2008}{Coulson and Tuljapurkar 2008};
 \citeproc{ref-Barfield2011}{Barfield et al. 2011};
@@ -381,26 +381,29 @@ entities,
 \tag{1}
 \]
 
-From eqn 1, we can derive the most fundamental equations of population
-ecology (Box 2) and evolutionary biology (Box 1) through an appropriate
-interpretation of \(z_{i}\).
+The foundation of eco-evolutionary change is an interaction between the
+demographic processes of birth and death
+(\(\beta_{i} - \delta_{i} + 1\)) and some characteristic of an
+individual (\(z_{i} + \Delta z_{i}\)). The value of \(\Omega\) is a
+summation of individual characteristics, which takes the same units as
+\(z\). From eqn 1, we can derive the most fundamental equations of
+population ecology (Box 2) and evolutionary biology (Box 1) through an
+appropriate interpretation of \(z\). Under many interpretations of
+\(z\), we can also interpret \(\Omega\) as a metric of ecosystem
+function.
 
 \section{Population ecology}\label{population-ecology}
 
 To recover the general equation for population ecology (Box 2), we
 define \(z_{i}\) as the identity of \(i\) belonging to the population.
 In other words, we set \(z_{i} = 1\) to simply indicate that \(i\) is a
-member of the population. Further, we assume that individuals do not
-change species by setting \(\Delta z_{i} = 0\). In this case,
+member of the population. In this case, \(z\) is count, which takes the
+unit 1 {[}note that `individual' is a label, not a unit; Newell and
+Tiesinga (\citeproc{ref-NewellEtAl2019}{2019}){]}. Further, we assume
+that individuals do not change species by setting \(\Delta z_{i} = 0\).
+In this case,
 
 \[\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right).\]
-
-Since we assume that individuals are identical, we can drop the
-subscript \(i\) such that \(\beta_{i} = \beta\) and
-\(\delta_{i} = \delta\). Summing from 1 to \(N\), we can rewrite the
-above,
-
-\[\Omega = N\left(1 + \beta - \delta \right).\]
 
 We can now interpret \(\Omega\) as the population size at \(t+1\),
 \(N_{t+1}\) and note that \(N\beta\), \(N\delta\), and \(N\) are the
@@ -410,6 +413,13 @@ respectively,
 \[N_{t+1} = N_{t} + Births - Deaths.
 \tag{2}
 \]
+
+If we assume that individuals are identical, then we can drop the
+subscript \(i\) such that \(\beta_{i} = \beta\) and
+\(\delta_{i} = \delta\). Summing from 1 to \(N\), we can rewrite the
+above,
+
+\[\Omega = N\left(1 + \beta - \delta \right).\]
 
 If we define \(\lambda = 1 + \beta - \delta\) (Box 2), then we can
 rewrite,
@@ -480,11 +490,12 @@ the \(N\) individuals at \(t\) to the total \(\Omega\). Consequently,
 \]
 
 Equation 8 conserves the total probability and now clarifies \(\Omega\)
-as a summed trait value, which equals expected population growth at
-\(t\) times mean trait value at \(t + 1\). This is consistent with the
-population ecology derivation from the previous section where
-\(z_{i} = 1\) by definition, and \(\Omega = N_{t+1}\) (note
-\(\lambda = \bar{w}\)). We can therefore rewrite eqn 7,
+as a summed trait value, which has the same units as \(z\) and equals
+expected population growth at \(t\) times mean trait value at \(t + 1\).
+This is consistent with the population ecology derivation from the
+previous section where \(z_{i} = 1\) by definition, and
+\(\Omega = N_{t+1}\) (note \(\lambda = \bar{w}\)). We can therefore
+rewrite eqn 7,
 
 \[\bar{w}\bar{z}' = \mathrm{E}\left(w z \right) + \mathrm{E}\left( w \Delta z  \right).
 \tag{9}
@@ -512,10 +523,36 @@ Since \(\Delta \bar{z} = \left(\bar{z}' - \bar{z}\right)\),
 From eqn 1, which describes fundamental birth and death processes in a
 population, we can derive both the most fundamental model of population
 ecology (eqn 2; Box 2) and the fundamental equation of evolution (eqn
-10; Box 1). We might also consider \(\Omega\) to be a quantity of
-ecosystem function, in that it is the summed effect of the traits
-(\(z_{i}\)) of individual entities (\(i\)) in the population. For
-example, \(z\) might be interpreted as biomass or photosynthetic rate.
+10; Box 1).
+
+\section{Ecosystem function}\label{ecosystem-function}
+
+In some cases, we might also consider \(\Omega\) to be the total
+contribution of a population to ecosystem function. For example, \(z\)
+might be interpreted as trait that underlies a function of interest such
+as carbon capture or photosynthetic rate. When that the relevant
+characteristic (\(z_{i}\)) is additive across individuals (e.g., the
+total amount of carbon capture in a population is the sum of carbon
+captured across individuals), \(\Omega\) could be an appropriate metric
+of ecosystem function. This will not always be the case. The sum of some
+measurable traits such as leaf pH
+(\citeproc{ref-Cornelissen2011}{Cornelissen et al. 2011}) will not be
+ecologically meaningful when summed across individuals. And in other
+cases, the relationship between \(\Omega\) and some ecosystem function
+of interest is likely to be subadditive. For example, we could interpret
+\(z_{i}\) as the frequency at which a pollinator \(i\) visits plants
+(which might change from \(t\) to \(t+1\) for any number of reasons,
+including ontogenic or environmental, as reflected in \(\Delta z_{i}\)).
+While \(\Omega\) would then be the total frequency of pollinator visits
+in a population, pollinator saturation effects would likely have a
+logarithmic relationship between \(\Omega\) and total seed set (e.g.,
+\citeproc{ref-Mu2018}{Mu et al. 2018}). While we have argued that
+ecological and evolutionary change can both be derived from the same
+fundamental relationship between birth, death, and individual
+characteristics, the same is not true for ecosystem function.
+Nevertheless, Box 3 provides a toy example of four plants with different
+fitnesses and carbon captures. We use this toy example to demonstrate a
+concrete example of our proposed framework.
 
 \section{Discussion}\label{discussion}
 
@@ -772,6 +809,13 @@ approach}}. Ecology Letters 12:744--757.
 Connor, J., and D. L. Hartl. 2004. {A premier of ecological genetics}.
 Sinauer Associates Incorporated.
 
+\bibitem[\citeproctext]{ref-Cornelissen2011}
+Cornelissen, J. H. C., F. Sibma, R. S. P. V. Logtestijn, R. A. Broekman,
+and K. Thompson. 2011.
+\href{https://doi.org/10.1111/j.1365-2435.2010.01765.x}{Leaf pH as a
+plant trait: Species-driven rather than soil-driven variation}.
+Functional Ecology 25:449--455.
+
 \bibitem[\citeproctext]{ref-Coulson2008}
 Coulson, T., and S. Tuljapurkar. 2008.
 \href{https://doi.org/10.1086/591693}{The dynamics of a quantitative
@@ -953,9 +997,19 @@ are we? Genetics and twentieth century darwinism}. Pages 1--14
 Morrison, M. 2000. Unifying scientific theories: Physical concepts and
 mathematical structures. Cambridge University Press.
 
+\bibitem[\citeproctext]{ref-Mu2018}
+Mu, J., Q. Wu, Y. Yang, M. Huang, and C. M. Grozinger. 2018.
+\href{https://doi.org/10.1111/oik.04711}{Plant reproductive strategies
+vary under low and high pollinator densities}. Oikos 127:1081--1094.
+
 \bibitem[\citeproctext]{ref-Nagel1961}
 Nagel, E. 1961. The structure of science: Problems in the logic of
 scientific explanation. Harcourt, Brace \& World, New York, NY, USA.
+
+\bibitem[\citeproctext]{ref-NewellEtAl2019}
+Newell, D. B., and E. Tiesinga. 2019.
+\href{https://doi.org/10.6028/NIST.SP.330-2019}{The international system
+of units (SI)}.
 
 \bibitem[\citeproctext]{ref-Odling-smee2003}
 Odling-Smee, F. J., K. N. Laland, and M. W. Feldman. 2003. Niche
