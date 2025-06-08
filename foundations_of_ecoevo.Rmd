@@ -4,9 +4,9 @@ author: |
   | A. Bradley Duthie$^{1,a,*}$ and Victor J. Luque$^{2,a}$
 date: '[1] Department of Biological and Environmental Sciences, University of Stirling, Stirling, Scotland [2] Department of Philosophy, University of Valencia, Valencia, Spain [*] Corresponding author: alexander.duthie@stir.ac.uk [a] Equal contribution'
 output:
+  word_document: default
   pdf_document:
       keep_tex: yes
-  word_document: default
   html_document:
     df_print: paged
 header-includes:
@@ -146,7 +146,7 @@ Also need to explain units of Omega, since there is confusion here.
 The foundation of eco-evolutionary change is an interaction between the demographic processes of birth and death ($\beta_{i} - \delta_{i} + 1$) and some characteristic of an individual ($z_{i} + \Delta z_{i}$).
 The value of $\Omega$ is a summation of individual characteristics, which takes the same units as $z$.
 From eqn 1, we can derive the most fundamental equations of population ecology (Box 2) and evolutionary biology (Box 1) through an appropriate interpretation of $z$.
-Under many interpretations of $z$, we can also interpret $\Omega$ as a metric of ecosystem function.
+Under some limited interpretations of $z$, we can also interpret $\Omega$ as a metric of ecosystem function.
 
 
 <!---
@@ -274,62 +274,56 @@ From eqn 1, which describes fundamental birth and death processes in a populatio
 Ecosystem function
 ====================================================
 
-In some cases, we might also consider $\Omega$ to be the total contribution of a population to ecosystem function.
-For example, $z$ might be interpreted as a trait that underlies an ecosystem function of interest such as carbon capture or photosynthetic rate.
-When that the relevant characteristic ($z_{i}$) is additive across individuals  (e.g., the total amount of carbon capture in a population is the sum of carbon captured across individuals), $\Omega$ could be an appropriate metric of ecosystem function.
-This will not always be the case.
-Some measurable traits such as leaf pH [@Cornelissen2011] will not be ecologically meaningful when summed across individuals.
-And in other cases, the relationship between $\Omega$ and some ecosystem function of interest is likely to be subadditive.
-For example, we could interpret $z_{i}$ as the frequency at which a pollinator $i$ visits plants (which might change from $t$ to $t+1$ for any number of reasons, including ontogenic or environmental, as reflected in $\Delta z_{i}$).
-While $\Omega$ would then be the total frequency of pollinator visits in a population, pollinator saturation effects would likely have a logarithmic relationship between $\Omega$ and total seed set [e.g., @Mu2018].
-Hence, while we have argued that ecological and evolutionary change can both be derived from the same fundamental relationship between birth, death, and individual characteristics, the same is not true for ecosystem function.
-Nevertheless, Box 3 provides a toy example of four plants with different fitnesses and carbon captures.
+In some cases, $\Omega$ could also be intepreted as the total contribution of a population to ecosystem function.
+This will be restricted to cases in which $z$ is an individual characteristic defining an absolute quantity measured at the whole organism level, such as biomass, seed production, carbon capture, flower visits, or nutrient consumption.
+In these cases, the sum across individuals gives a meaningful total quantity for the population.
+When $z$ is instead defined by relative organism-level measurements such wing loading, nutrient ratio, or diet composition, or when $z$ is measured at a level of biological organisation below the organism (e.g., average cell volume or leaf surface area), $\Omega$ does not have a clear population-level interpretation.
+
+Box 3 provides a toy example of three plants with different fitnesses and carbon captures.
 We use this toy example to demonstrate a concrete example of our proposed framework.
 
+*******************
 
+> **Box 3:** As a toy example of our framework, consider a population of $N_{t} = 3$ annual plants in which individual fruit mass (kg) is measured, and change is observed over a year. For all plants, $\delta_{i} = 1$, and let plant fecundities be $\beta_{1} = 1$, $\beta_{2} = 1$, and $\beta_{3} = 2$. Applying eqn 1 to population change such that $\Omega = N_{t+1}$, $z_{i} = 1$ and $\Delta z_{i} = 0$, $N_{t+1} = (1 - 1 + 1)(1 + 0) + (1 - 1 + 1)(1 + 0) + (2 - 1 + 1)(1 + 0) = 4$ (note $\bar{w} = 4/3$, so $N_{t}\bar{w} = 4$). Focusing next on the characteristic of total fruit mass, let $z_{1} = 0.8$, $z_{2} = 1.0$, and $z_{3} = 1.5$. Also let $\Delta z_{i} = 0.1$ for all plants to reflect a change in soil environment from $t$ to $t + 1$. In this case, total fruit yield at $t+1$ is $\Omega = (1 - 1 + 1)(0.8 + 0.1) + (1 - 1 + 1)(1.0 + 0.1) + (2 - 1 + 1)(1.5 + 0.1) = 5.2$ kg. At $t$, mean fruit yield per plant was 1.1 kg, but at $t+1$, mean fruit yield per plant is $1.3$ kg. Note that $\mathrm{Cov}(w, z) = 2/15$ and $\mathrm{E}(w \Delta z) = 2/15$, so applying the Price equation, $\bar{w}\Delta z = 2/15 + 2/15 = 4/15$. Since $\bar{w} = 4/3$, multiplying both sides of the equation by $3/4$ returns $\Delta z = 0.2$, which is the mean difference in fruit yield between $t+1$ and $t$. The framework expressed in eqn 1 thereby links population change, evolutionary change, and ecosystem function.
+
+*******************
 
 Discussion
 ====================================================
 
-A classical sign of scientific progress is the ability to connect disparate theories and models to show how empirical and theoretical models are logical (mathematical) consequences of more fundamental ones [@Nagel1961].
-Conceptual unification therefore has a critical role in advancing scientific theory [@Morrison2000].
-Showing how apparently disparate phenomena follow from the same shared principles reveals what is most fundamental about the natural world and provides a foundation for further scientific investigation and the construction of more coherent and predictive models.
-Our eqn 1 provides a foundation for the conceptual unification of the fundamental equations of population ecology and evolution.
-
+A classical sign of scientific progress is the ability to connect disparate theories and models to show how empirical and theoretical models are logical (mathematical) consequences of more fundamental ones [@Nagel1961; @Morrison2000].
 Rather than making simplifying assumptions, as is the approach for most ecological and evolutionary models, we focus on fundamental axioms that are universal to closed biological systems: discrete individuals, birth, death, and change over time.
 We define an abstract sum ($\Omega$), to which all individuals within the population contribute.
 From the simple assumptions of population identity ($z_{i} = 1$) and invariability ($\Delta z_{i} = 0$), we recover the most general equation of population ecology (Box 2) and principle of exponential growth ($N_{t+1} = N_{t}\lambda$).
 By defining individual fitness ($w_{i}$) and applying the total conservation of probability to individual frequencies [@Frank2015; @Frank2016], we recover the most fundamental equation of evolution (Box 1).
-We therefore deliver a general framework to unify fundamental equations of ecological and evolutionary change.
+Our eqn 1 thereby provides a foundation for defining eco-evolutionary change in any population.
+
 
 The Price equation provides a complete and exact description of evolution in any closed evolving system [@Price1970; @Frank2012].
 It is derived by rearranging the mathematical notation defining changes in the frequencies and characteristics of any type of entity [@Price1970; @Gardner2008; @Luque2016] (e.g., individuals, alleles).
 This derivation partitions total characteristic change into different components, making it possible to isolate evolutionary mechanisms (e.g., selection) and levels of biological organisation (e.g., group, individual) [@Frank1995; @Kerr2009; @Frank2012; @Luque2016; @Okasha2020].
-Because of its abstract nature and lack of any system-specific assumptions, the Price equation makes no predictions about what will happen in any particular system [@Gardner2020].
+Because of its abstract nature and lack of any system-specific assumptions, the Price equation is not dynamically sufficient and makes no predictions about what will happen in any particular system [@Gardner2020].
 Its role is not to predict, but to formally and completely define and separate components of evolutionary change. 
 The same is true of the general equation for population change (eqns 2 and 3), at least as we have used it here where it serves to define what population growth means in ecology.
 This equation formally and completely describes population change in terms of births and deaths.
-In eqn 1, we therefore have a fundamental equation from which we can derive complete ecological and evolutionary change in any closed biological population.
+In eqn 1, we therefore have a fundamental equation from which we can derive complete ecological and evolutionary change in any closed biological population, but one that is revealed to be necessarily abstract and not dynamically sufficient.
 We anticipate that this will be useful for eco-evolutionary theory in the same way that the Price equation is useful for evolutionary theory: facilitating specific model development and identifying new conceptual insights, unresolved errors, and sources of model disagreements.
 
 
-Our unification demonstrates the equivalence between the finite rate of increase $\lambda$ (Box 2) [@Gotelli2001] and population mean evolutionary fitness $\bar{w}$ (Box 1).
-The population growth equation $N_{t+1} = N_{t}\lambda$ could therefore be rewritten as $N_{t+1} = N_{t}\bar{w}$.
-We do not claim to be the first to notice this equivalence between population growth and mean population fitness.
-Indeed, the relationship between population growth rate and evolutionary fitness has been proposed and applied many times before [@Fisher1930; @Charlesworth1980; @Lande1982; @Roff2008; @Lion2018].
-For example, @Lande1982 explicitly concludes mean absolute fitness per unit time is $\bar{w} = e^{r}$, where $r = ln(\lambda)$.
+Our unification recovers the equivalence between the finite rate of increase $\lambda$ (Box 2) [@Gotelli2001] and population mean evolutionary fitness $\bar{w}$ (Box 1).
+The population growth equation $N_{t+1} = N_{t}\lambda$ can therefore be rewritten as $N_{t+1} = N_{t}\bar{w}$.
+This specific equivalence has been proposed before [@Lande1976], as has the broader relationship between population growth rate and evolutionary fitness [@Fisher1930; @Charlesworth1980; @Lande1982; @Roff2008; @Lion2018].
 We show this from first principles and clarify the relationship between fitness and population growth.
 Over an arbitrary length of time, fitness is properly defined as $w_{i} = \beta_{i} - \delta_{i} + 1$.
-Over an individual's lifetime (which, by definition, includes death), fitness is therefore $\beta_{i}$.
-Interestingly, the rate of change in ecology and evolution are reflected in the first and second statistical moments of fitness, respectively.
-Population growth rate reflects mean fitness $\bar{w}$, while the rate of evolutionary change reflects the variance in fitness $\mathrm{Var}(w)$ (i.e., Fisher's fundamental theorem) [@Frank1997; @Rice2004; @Queller2017].
+Over an individual's lifetime (which, by definition, includes death), fitness is therefore $\beta_{i}$. 
+The rate of change in ecology and evolution are reflected in the first and second statistical moments of fitness, respectively.
+Population growth rate reflects mean fitness $\bar{w}$, while the rate of evolutionary change reflects the variance in fitness $\mathrm{Var}(w)/\bar{w}$ (i.e., Fisher's fundamental theorem) [@Frank1997; @Rice2004; @Queller2017].
 
 
 Our unification may also help explain, at least partially, some of the success of classical population genetic models. 
-For decades, population genetics (and to some extent quantitative genetics) has been accused of being a reductionistic view of evolution, reducing everything to changes in allele frequencies and abstracting away from individuals and their environments (the ecological interactions) [@MacColl2011]. 
+For decades, population genetics (and to some extent quantitative genetics) has been accused of being a reductionist view of evolution, reducing everything to changes in allele frequencies and abstracting away from individuals and their environments (the ecological interactions) [@MacColl2011]. 
 This has been a line of argumentation by some defenders of the so-called Extended Synthesis [@Pigliucci2009], especially in relation to niche construction [@Odling-smee2003].
 Famously, @Mayr1960 characterized population genetics as a simple input and output of genes, analogous to "the adding of certain beans to a beanbag and the withdrawing of others" (also called "beanbag genetics"). 
-
 Historical critics of population genetics could not articulate a clear explanation for why it works so well despite all of its idealisations and simplifications.
 From the Price equation, we are able to recover classical population and quantitative genetic models [@Queller2017] and develop new ones [@Rice2004; @Rice2020; @Luque2016; @Lion2018].
 Our eqn 1 contains ecology at its core, and we show how the Price equation logically follows from it after accounting for absolute population growth (eqn 8).
@@ -345,19 +339,18 @@ In both ecology and evolution, accounting for migration is done through the use 
 
 Our fundamental equation is complete and exact.
 It therefore implicitly includes any effects of density dependence on population growth (see Box 2), or any social effects on evolutionary change (see Box 1).
-We can make both of these effects explicit with the same partition in the summation on the right-hand side of eqn 1.
-To do this, we multiply the expression $\left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right)$ by $\left(1 - \sum_{j=1}^{N} a_{ij}\left(z_{j} + \Delta z_{j}\right)\right)$, where $j$ indexes the same individuals as $i$, and $a_{ij}$ defines the effect $j$ has on the contribution of $i$ to $\Omega$. 
-In evolutionary terms, $a_{ij}$ defines how $j$ modulates the fitness of $i$ ($w_{i}$).
-In ecological terms, $a_{ij}$ defines how $j$ modulates the contribution of $i$ to total population growth.
-If we define $\alpha$ as the summed effect of all individuals on a focal $i$ (i.e., $\alpha = \sum_{j=1}^{N} a_{ij}$), then we can partition ecological change into density-independent and density-dependent effects and derive a discrete time logistic growth equation.
-We save these derivations for a future investigations focused on evolutionary and community ecology.
+Both of these effects can be made explicit by specifying how other individuals in a population affect birth and death of a focal individual.
+Assuming that effects of individuals are additive, independent, and identical, we can derive well-established logistic growth equations and Hamilton's rule from eqn 1 (Supporting Information S1).
+
+
+
 
 We have shown that we can derive the fundamental equations of population ecology and biological evolution from a single unifying equation.
 Lastly, we propose our eqn 1 as a potential starting point for defining ecosystem function and further conceptual unification between ecology, evolution, and ecosystem function.
 The Price equation has previously been used to investigate ecosystem function [@Loreau2001; @Fox2006], but not with any attempt towards conceptual unification with evolutionary biology.
 For example, @Fox2006 applied the abstract properties of the Price equation to partition total change in ecosystem function into separate components attributable to species richness, species composition, and context dependent effects.
 This approach provides a framework for comparing the effects of biodiversity on ecosystem function in empirical systems [@Fox2006; @Winfree2015; @Mateo-Tomas2017].
-Instead, our eqn 1 defines $\Omega$ as total ecosystem function contributed by a focal population (e.g., biomass production, decomposition, photosynthetic rate).
+Instead, our eqn 1 defines $\Omega$ as total ecosystem function contributed by a focal population.
 It is therefore possible to investigate ecological, evolutionary, and ecosystem function change from the same shared framework.
 
 

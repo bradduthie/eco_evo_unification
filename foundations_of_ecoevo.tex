@@ -231,8 +231,9 @@ consistency when modelling evolutionary change (e.g.,
 ``universal law of evolution'', to place their conclusions concerning
 stage structured evolution in the broader context of evolutionary
 theory. The role of fundamental equations is therefore important for
-unifying theory (\citeproc{ref-Luque2016}{Luque 2017}), and we believe
-that a fundamental equation of eco-evolutionary change is needed.
+unifying theory (\citeproc{ref-Luque2021}{Luque and Baravalle 2021}),
+and we believe that a fundamental equation of eco-evolutionary change is
+needed.
 
 We present an equation from which the fundamental equations of ecology
 and evolutionary biology can be derived. Derivation follows by adding
@@ -258,10 +259,10 @@ notation,
 \[\bar{w}\Delta\bar{z} = \mathrm{Cov}\left(w, z\right) + \mathrm{E}\left(w\Delta z\right).\]
 In the above equation, \(\Delta\bar{z}\) is the change in the average
 character value \(z\) over a time step of arbitrary length, \(w\) is an
-individual's absolute fitness, and \(\bar{w}\) average population
-fitness. On the right-hand side of the equation, the first term is the
-covariance between a character value \(z\) and fitness \(w\), which
-reflects \(\bar{z}\) change attributable to differential survival and
+individual's fitness, and \(\bar{w}\) average population fitness. On the
+right-hand side of the equation, the first term is the covariance
+between a character value \(z\) and fitness \(w\), which reflects
+\(\bar{z}\) change attributable to differential survival and
 reproduction. The second term is the expected value of \(\Delta z\),
 which reflects the extent to which offspring deviate from parents in
 \(z\) (\citeproc{ref-Rice2004}{Rice 2004};
@@ -291,7 +292,7 @@ tautological), and useless without further modelling assumptions
 (\citeproc{ref-VanVeelen2005}{van Veelen 2005};
 \citeproc{ref-VanVeelen2012}{van Veelen et al. 2012}). The debate
 remains open (\citeproc{ref-VanVeelen2020}{van Veelen 2020};
-\citeproc{ref-Baravalle2024}{Baravalle et al. 2024}).
+\citeproc{ref-Baravalle2024}{Baravalle et al. 2025}).
 \end{quote}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -388,8 +389,8 @@ individual (\(z_{i} + \Delta z_{i}\)). The value of \(\Omega\) is a
 summation of individual characteristics, which takes the same units as
 \(z\). From eqn 1, we can derive the most fundamental equations of
 population ecology (Box 2) and evolutionary biology (Box 1) through an
-appropriate interpretation of \(z\). Under many interpretations of
-\(z\), we can also interpret \(\Omega\) as a metric of ecosystem
+appropriate interpretation of \(z\). Under some limited interpretations
+of \(z\), we can also interpret \(\Omega\) as a metric of ecosystem
 function.
 
 \section{Population ecology}\label{population-ecology}
@@ -406,9 +407,7 @@ In this case,
 \[\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right).\]
 
 We can now interpret \(\Omega\) as the population size at \(t+1\),
-\(N_{t+1}\) and note that \(N\beta\), \(N\delta\), and \(N\) are the
-total births, total deaths, and size of the population at \(t\),
-respectively,
+\(N_{t+1}\),
 
 \[N_{t+1} = N_{t} + Births - Deaths.
 \tag{2}
@@ -416,8 +415,11 @@ respectively,
 
 If we assume that individuals are identical, then we can drop the
 subscript \(i\) such that \(\beta_{i} = \beta\) and
-\(\delta_{i} = \delta\). Summing from 1 to \(N\), we can rewrite the
-above,
+\(\delta_{i} = \delta\) and note that \(N\beta\), \(N\delta\), and \(N\)
+are the total births, total deaths, and size of the population at \(t\),
+respectively,
+
+Summing from 1 to \(N\), we can rewrite the above,
 
 \[\Omega = N\left(1 + \beta - \delta \right).\]
 
@@ -527,53 +529,65 @@ ecology (eqn 2; Box 2) and the fundamental equation of evolution (eqn
 
 \section{Ecosystem function}\label{ecosystem-function}
 
-In some cases, we might also consider \(\Omega\) to be the total
-contribution of a population to ecosystem function. For example, \(z\)
-might be interpreted as trait that underlies a function of interest such
-as carbon capture or photosynthetic rate. When that the relevant
-characteristic (\(z_{i}\)) is additive across individuals (e.g., the
-total amount of carbon capture in a population is the sum of carbon
-captured across individuals), \(\Omega\) could be an appropriate metric
-of ecosystem function. This will not always be the case. The sum of some
-measurable traits such as leaf pH
-(\citeproc{ref-Cornelissen2011}{Cornelissen et al. 2011}) will not be
-ecologically meaningful when summed across individuals. And in other
-cases, the relationship between \(\Omega\) and some ecosystem function
-of interest is likely to be subadditive. For example, we could interpret
-\(z_{i}\) as the frequency at which a pollinator \(i\) visits plants
-(which might change from \(t\) to \(t+1\) for any number of reasons,
-including ontogenic or environmental, as reflected in \(\Delta z_{i}\)).
-While \(\Omega\) would then be the total frequency of pollinator visits
-in a population, pollinator saturation effects would likely have a
-logarithmic relationship between \(\Omega\) and total seed set (e.g.,
-\citeproc{ref-Mu2018}{Mu et al. 2018}). While we have argued that
-ecological and evolutionary change can both be derived from the same
-fundamental relationship between birth, death, and individual
-characteristics, the same is not true for ecosystem function.
-Nevertheless, Box 3 provides a toy example of four plants with different
-fitnesses and carbon captures. We use this toy example to demonstrate a
-concrete example of our proposed framework.
+In some cases, \(\Omega\) could also be intepreted as the total
+contribution of a population to ecosystem function. This will be
+restricted to cases in which \(z\) is an individual characteristic
+defining an absolute quantity measured at the whole organism level, such
+as biomass, seed production, carbon capture, flower visits, or nutrient
+consumption. In these cases, the sum across individuals gives a
+meaningful total quantity for the population. When \(z\) is instead
+defined by relative organism-level measurements such wing loading,
+nutrient ratio, or diet composition, or when \(z\) is measured at a
+level of biological organisation below the organism (e.g., average cell
+volume or leaf surface area), \(\Omega\) does not have a clear
+population-level interpretation.
+
+Box 3 provides a toy example of three plants with different fitnesses
+and carbon captures. We use this toy example to demonstrate a concrete
+example of our proposed framework.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{quote}
+\textbf{Box 3:} As a toy example of our framework, consider a population
+of \(N_{t} = 3\) annual plants in which individual fruit mass (kg) is
+measured, and change is observed over a year. For all plants,
+\(\delta_{i} = 1\), and let plant fecundities be \(\beta_{1} = 1\),
+\(\beta_{2} = 1\), and \(\beta_{3} = 2\). Applying eqn 1 to population
+change such that \(\Omega = N_{t+1}\), \(z_{i} = 1\) and
+\(\Delta z_{i} = 0\),
+\(N_{t+1} = (1 - 1 + 1)(1 + 0) + (1 - 1 + 1)(1 + 0) + (2 - 1 + 1)(1 + 0) = 4\)
+(note \(\bar{w} = 4/3\), so \(N_{t}\bar{w} = 4\)). Focusing next on the
+characteristic of total fruit mass, let \(z_{1} = 0.8\),
+\(z_{2} = 1.0\), and \(z_{3} = 1.5\). Also let \(\Delta z_{i} = 0.1\)
+for all plants to reflect a change in soil environment from \(t\) to
+\(t + 1\). In this case, total fruit yield at \(t+1\) is
+\(\Omega = (1 - 1 + 1)(0.8 + 0.1) + (1 - 1 + 1)(1.0 + 0.1) + (2 - 1 + 1)(1.5 + 0.1) = 5.2\)
+kg. At \(t\), mean fruit yield per plant was 1.1 kg, but at \(t+1\),
+mean fruit yield per plant is \(1.3\) kg. Note that
+\(\mathrm{Cov}(w, z) = 2/15\) and \(\mathrm{E}(w \Delta z) = 2/15\), so
+applying the Price equation, \(\bar{w}\Delta z = 2/15 + 2/15 = 4/15\).
+Since \(\bar{w} = 4/3\), multiplying both sides of the equation by
+\(3/4\) returns \(\Delta z = 0.2\), which is the mean difference in
+fruit yield between \(t+1\) and \(t\). The framework expressed in eqn 1
+thereby links population change, evolutionary change, and ecosystem
+function.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{Discussion}\label{discussion}
 
 A classical sign of scientific progress is the ability to connect
 disparate theories and models to show how empirical and theoretical
 models are logical (mathematical) consequences of more fundamental ones
-(\citeproc{ref-Nagel1961}{Nagel 1961}). Conceptual unification therefore
-has a critical role in advancing scientific theory
-(\citeproc{ref-Morrison2000}{Morrison 2000}). Showing how apparently
-disparate phenomena follow from the same shared principles reveals what
-is most fundamental about the natural world and provides a foundation
-for further scientific investigation and the construction of more
-coherent and predictive models. Our eqn 1 provides a foundation for the
-conceptual unification of the fundamental equations of population
-ecology and evolution.
-
-Rather than making simplifying assumptions, as is the approach for most
-ecological and evolutionary models, we focus on fundamental axioms that
-are universal to closed biological systems: discrete individuals, birth,
-death, and change over time. We define an abstract sum (\(\Omega\)), to
-which all individuals within the population contribute. From the simple
+(\citeproc{ref-Nagel1961}{Nagel 1961};
+\citeproc{ref-Morrison2000}{Morrison 2000}). Rather than making
+simplifying assumptions, as is the approach for most ecological and
+evolutionary models, we focus on fundamental axioms that are universal
+to closed biological systems: discrete individuals, birth, death, and
+change over time. We define an abstract sum (\(\Omega\)), to which all
+individuals within the population contribute. From the simple
 assumptions of population identity (\(z_{i} = 1\)) and invariability
 (\(\Delta z_{i} = 0\)), we recover the most general equation of
 population ecology (Box 2) and principle of exponential growth
@@ -581,8 +595,8 @@ population ecology (Box 2) and principle of exponential growth
 and applying the total conservation of probability to individual
 frequencies (\citeproc{ref-Frank2015}{Frank 2015},
 \citeproc{ref-Frank2016}{2016}), we recover the most fundamental
-equation of evolution (Box 1). We therefore deliver a general framework
-to unify fundamental equations of ecological and evolutionary change.
+equation of evolution (Box 1). Our eqn 1 thereby provides a foundation
+for defining eco-evolutionary change in any population.
 
 The Price equation provides a complete and exact description of
 evolution in any closed evolving system (\citeproc{ref-Price1970}{Price
@@ -599,52 +613,50 @@ biological organisation (e.g., group, individual)
 \citeproc{ref-Kerr2009}{Kerr and Godfrey-Smith 2009};
 \citeproc{ref-Luque2016}{Luque 2017}; \citeproc{ref-Okasha2020}{Okasha
 and Otsuka 2020}). Because of its abstract nature and lack of any
-system-specific assumptions, the Price equation makes no predictions
-about what will happen in any particular system
-(\citeproc{ref-Gardner2020}{Gardner 2020}). Its role is not to predict,
-but to formally and completely define and separate components of
-evolutionary change. The same is true of the general equation for
-population change (eqns 2 and 3), at least as we have used it here where
-it serves to define what population growth means in ecology. This
-equation formally and completely describes population change in terms of
-births and deaths. In eqn 1, we therefore have a fundamental equation
-from which we can derive complete ecological and evolutionary change in
-any closed biological population. We anticipate that this will be useful
-for eco-evolutionary theory in the same way that the Price equation is
-useful for evolutionary theory: facilitating specific model development
-and identifying new conceptual insights, unresolved errors, and sources
-of model disagreements.
+system-specific assumptions, the Price equation is not dynamically
+sufficient and makes no predictions about what will happen in any
+particular system (\citeproc{ref-Gardner2020}{Gardner 2020}). Its role
+is not to predict, but to formally and completely define and separate
+components of evolutionary change. The same is true of the general
+equation for population change (eqns 2 and 3), at least as we have used
+it here where it serves to define what population growth means in
+ecology. This equation formally and completely describes population
+change in terms of births and deaths. In eqn 1, we therefore have a
+fundamental equation from which we can derive complete ecological and
+evolutionary change in any closed biological population, but one that is
+revealed to be necessarily abstract and not dynamically sufficient. We
+anticipate that this will be useful for eco-evolutionary theory in the
+same way that the Price equation is useful for evolutionary theory:
+facilitating specific model development and identifying new conceptual
+insights, unresolved errors, and sources of model disagreements.
 
-Our unification demonstrates the equivalence between the finite rate of
+Our unification recovers the equivalence between the finite rate of
 increase \(\lambda\) (Box 2) (\citeproc{ref-Gotelli2001}{Gotelli 2001})
 and population mean evolutionary fitness \(\bar{w}\) (Box 1). The
-population growth equation \(N_{t+1} = N_{t}\lambda\) could therefore be
-rewritten as \(N_{t+1} = N_{t}\bar{w}\). We do not claim to be the first
-to notice this equivalence between population growth and mean population
-fitness. Indeed, the relationship between population growth rate and
-evolutionary fitness has been proposed and applied many times before
-(\citeproc{ref-Fisher1930}{Fisher 1930};
+population growth equation \(N_{t+1} = N_{t}\lambda\) can therefore be
+rewritten as \(N_{t+1} = N_{t}\bar{w}\). This specific equivalence has
+been proposed before (\citeproc{ref-Lande1976}{Lande 1976}), as has the
+broader relationship between population growth rate and evolutionary
+fitness (\citeproc{ref-Fisher1930}{Fisher 1930};
 \citeproc{ref-Charlesworth1980}{Charlesworth 1980};
 \citeproc{ref-Lande1982}{Lande 1982}; \citeproc{ref-Roff2008}{Roff
-2008}; \citeproc{ref-Lion2018}{Lion 2018}). For example, Lande
-(\citeproc{ref-Lande1982}{1982}) explicitly concludes mean absolute
-fitness per unit time is \(\bar{w} = e^{r}\), where \(r = ln(\lambda)\).
-We show this from first principles and clarify the relationship between
-fitness and population growth. Over an arbitrary length of time, fitness
-is properly defined as \(w_{i} = \beta_{i} - \delta_{i} + 1\). Over an
-individual's lifetime (which, by definition, includes death), fitness is
-therefore \(\beta_{i}\). Interestingly, the rate of change in ecology
-and evolution are reflected in the first and second statistical moments
-of fitness, respectively. Population growth rate reflects mean fitness
-\(\bar{w}\), while the rate of evolutionary change reflects the variance
-in fitness \(\mathrm{Var}(w)\) (i.e., Fisher's fundamental theorem)
+2008}; \citeproc{ref-Lion2018}{Lion 2018}). We show this from first
+principles and clarify the relationship between fitness and population
+growth. Over an arbitrary length of time, fitness is properly defined as
+\(w_{i} = \beta_{i} - \delta_{i} + 1\). Over an individual's lifetime
+(which, by definition, includes death), fitness is therefore
+\(\beta_{i}\). The rate of change in ecology and evolution are reflected
+in the first and second statistical moments of fitness, respectively.
+Population growth rate reflects mean fitness \(\bar{w}\), while the rate
+of evolutionary change reflects the variance in fitness
+\(\mathrm{Var}(w)/\bar{w}\) (i.e., Fisher's fundamental theorem)
 (\citeproc{ref-Frank1997}{Frank 1997}; \citeproc{ref-Rice2004}{Rice
 2004}; \citeproc{ref-Queller2017}{Queller 2017}).
 
 Our unification may also help explain, at least partially, some of the
 success of classical population genetic models. For decades, population
 genetics (and to some extent quantitative genetics) has been accused of
-being a reductionistic view of evolution, reducing everything to changes
+being a reductionist view of evolution, reducing everything to changes
 in allele frequencies and abstracting away from individuals and their
 environments (the ecological interactions)
 (\citeproc{ref-MacColl2011}{MacColl 2011}). This has been a line of
@@ -654,21 +666,19 @@ to niche construction (\citeproc{ref-Odling-smee2003}{Odling-Smee et al.
 2003}). Famously, Mayr (\citeproc{ref-Mayr1960}{1959}) characterized
 population genetics as a simple input and output of genes, analogous to
 ``the adding of certain beans to a beanbag and the withdrawing of
-others'' (also called ``beanbag genetics'').
-
-Historical critics of population genetics could not articulate a clear
-explanation for why it works so well despite all of its idealisations
-and simplifications. From the Price equation, we are able to recover
-classical population and quantitative genetic models
-(\citeproc{ref-Queller2017}{Queller 2017}) and develop new ones
-(\citeproc{ref-Rice2004}{Rice 2004}, \citeproc{ref-Rice2020}{2020};
-\citeproc{ref-Luque2016}{Luque 2017}; \citeproc{ref-Lion2018}{Lion
-2018}). Our eqn 1 contains ecology at its core, and we show how the
-Price equation logically follows from it after accounting for absolute
-population growth (eqn 8). We therefore conclude that population and
-quantitative genetic equations contain ecology (no matter how hidden),
-and the ecological nature of evolution is implicit in population and
-quantitative genetic models.
+others'' (also called ``beanbag genetics''). Historical critics of
+population genetics could not articulate a clear explanation for why it
+works so well despite all of its idealisations and simplifications. From
+the Price equation, we are able to recover classical population and
+quantitative genetic models (\citeproc{ref-Queller2017}{Queller 2017})
+and develop new ones (\citeproc{ref-Rice2004}{Rice 2004},
+\citeproc{ref-Rice2020}{2020}; \citeproc{ref-Luque2016}{Luque 2017};
+\citeproc{ref-Lion2018}{Lion 2018}). Our eqn 1 contains ecology at its
+core, and we show how the Price equation logically follows from it after
+accounting for absolute population growth (eqn 8). We therefore conclude
+that population and quantitative genetic equations contain ecology (no
+matter how hidden), and the ecological nature of evolution is implicit
+in population and quantitative genetic models.
 
 We have focused on the dynamics of a closed population, and in doing so
 leave ecological and evolutionary change attributable to migration for
@@ -689,24 +699,12 @@ additional terms on the right-hand side of the equations.
 
 Our fundamental equation is complete and exact. It therefore implicitly
 includes any effects of density dependence on population growth (see Box
-2), or any social effects on evolutionary change (see Box 1). We can
-make both of these effects explicit with the same partition in the
-summation on the right-hand side of eqn 1. To do this, we multiply the
-expression
-\(\left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right)\)
-by
-\(\left(1 - \sum_{j=1}^{N} a_{ij}\left(z_{j} + \Delta z_{j}\right)\right)\),
-where \(j\) indexes the same individuals as \(i\), and \(a_{ij}\)
-defines the effect \(j\) has on the contribution of \(i\) to \(\Omega\).
-In evolutionary terms, \(a_{ij}\) defines how \(j\) modulates the
-fitness of \(i\) (\(w_{i}\)). In ecological terms, \(a_{ij}\) defines
-how \(j\) modulates the contribution of \(i\) to total population
-growth. If we define \(\alpha\) as the summed effect of all individuals
-on a focal \(i\) (i.e., \(\alpha = \sum_{j=1}^{N} a_{ij}\)), then we can
-partition ecological change into density-independent and
-density-dependent effects and derive a discrete time logistic growth
-equation. We save these derivations for a future investigations focused
-on evolutionary and community ecology.
+2), or any social effects on evolutionary change (see Box 1). Both of
+these effects can be made explicit by specifying how other individuals
+in a population affect birth and death of a focal individual. Assuming
+that effects of individuals are additive, independent, and identical, we
+can derive well-established logistic growth equations and Hamilton's
+rule from eqn 1 (Supporting Information S1).
 
 We have shown that we can derive the fundamental equations of population
 ecology and biological evolution from a single unifying equation.
@@ -726,10 +724,9 @@ function in empirical systems (\citeproc{ref-Fox2006}{Fox 2006};
 \citeproc{ref-Winfree2015}{Winfree et al. 2015};
 \citeproc{ref-Mateo-Tomas2017}{Mateo-Tomás et al. 2017}). Instead, our
 eqn 1 defines \(\Omega\) as total ecosystem function contributed by a
-focal population (e.g., biomass production, decomposition,
-photosynthetic rate). It is therefore possible to investigate
-ecological, evolutionary, and ecosystem function change from the same
-shared framework.
+focal population. It is therefore possible to investigate ecological,
+evolutionary, and ecosystem function change from the same shared
+framework.
 
 \section{Acknowledgements}\label{acknowledgements}
 
@@ -775,9 +772,9 @@ Baravalle, L., and V. J. Luque. 2022.
 foundation for cultural evolutionary theory}. Theoria 37:209--231.
 
 \bibitem[\citeproctext]{ref-Baravalle2024}
-Baravalle, L., A. Roffé, V. J. Luque, and S. Ginnobili. 2024.
+Baravalle, L., A. Roffé, V. J. Luque, and S. Ginnobili. 2025.
 \href{https://doi.org/10.1007/s13752-024-00482-4}{The value of price}.
-Biological Theory.
+Pages 12--24 \emph{in}Biological Theory (Vol. 20).
 
 \bibitem[\citeproctext]{ref-Barfield2011}
 Barfield, M., R. D. Holt, and R. Gomulkiewicz. 2011.
@@ -808,13 +805,6 @@ approach}}. Ecology Letters 12:744--757.
 \bibitem[\citeproctext]{ref-Connor2004}
 Connor, J., and D. L. Hartl. 2004. {A premier of ecological genetics}.
 Sinauer Associates Incorporated.
-
-\bibitem[\citeproctext]{ref-Cornelissen2011}
-Cornelissen, J. H. C., F. Sibma, R. S. P. V. Logtestijn, R. A. Broekman,
-and K. Thompson. 2011.
-\href{https://doi.org/10.1111/j.1365-2435.2010.01765.x}{Leaf pH as a
-plant trait: Species-driven rather than soil-driven variation}.
-Functional Ecology 25:449--455.
 
 \bibitem[\citeproctext]{ref-Coulson2008}
 Coulson, T., and S. Tuljapurkar. 2008.
@@ -921,8 +911,12 @@ of the price equation for evolutionary change}}. Evolution 63:531--536.
 Kitcher, P. 1993. {The advancement of science}. Oxford University Press,
 New York.
 
+\bibitem[\citeproctext]{ref-Lande1976}
+Lande, R. 1976. Natural selection and random genetic drift in phenotypic
+evolution. Evolution 30:314--334.
+
 \bibitem[\citeproctext]{ref-Lande1982}
-Lande, R. 1982. \href{https://doi.org/10.2307/1936778}{{A quantitative
+---------. 1982. \href{https://doi.org/10.2307/1936778}{{A quantitative
 genetic theory of life history evolution}}. Ecology 63:607--615.
 
 \bibitem[\citeproctext]{ref-Lehtonen2016}
@@ -996,11 +990,6 @@ are we? Genetics and twentieth century darwinism}. Pages 1--14
 \bibitem[\citeproctext]{ref-Morrison2000}
 Morrison, M. 2000. Unifying scientific theories: Physical concepts and
 mathematical structures. Cambridge University Press.
-
-\bibitem[\citeproctext]{ref-Mu2018}
-Mu, J., Q. Wu, Y. Yang, M. Huang, and C. M. Grozinger. 2018.
-\href{https://doi.org/10.1111/oik.04711}{Plant reproductive strategies
-vary under low and high pollinator densities}. Oikos 127:1081--1094.
 
 \bibitem[\citeproctext]{ref-Nagel1961}
 Nagel, E. 1961. The structure of science: Problems in the logic of
