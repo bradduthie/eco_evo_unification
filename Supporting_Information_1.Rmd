@@ -1,0 +1,170 @@
+---
+title: "Foundations of community ecology: Supporting Information 1"
+author: |
+  | A. Bradley Duthie$^{1,a,*}$ and Victor J. Luque$^{2,a}$
+date: '[1] Department of Biological and Environmental Sciences, University of Stirling, Stirling, Scotland [2] Department of Philosophy, University of Valencia, Valencia, Spain [*] Corresponding author: alexander.duthie@stir.ac.uk [a] Equal contribution'
+output:
+  pdf_document:
+      keep_tex: yes
+  html_document:
+    df_print: paged
+  word_document: default
+header-includes:
+- \usepackage{fancyhdr}
+bibliography: refs.bib
+link-citations: yes
+linkcolor: blue
+biblio-style: apalike
+---
+
+We start with the fundamental equation that provides a complete description of eco-evolutionary change in any system,
+
+$$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right).
+\tag{1}
+$$
+
+
+In the main text, we derived both the Price equation and the birth-death model from the above.
+Here we integrate interactions between individuals and demonstrate how this affects population and evolutionary dynamics simultaneously.
+We can do this in a way that clarifies model assumptions by allowing an individual $j$ to modulate the birth or death of the focal individual $i$.
+We will first illustrate how this leads to two separate discrete time models of density depedent population growth, then illustrate how the same starting point can be used to recover Hamilton's rule in evolutionary ecology.
+
+Density-dependent population growth
+===========================================
+
+There are two potential ways to model the incorporation of density dependence into population growth.
+First note that here we set $\Omega = N_{t+1}$, and $z_{i} = 1$ and $\Delta z_{i} = 0$ for all individuals.
+We can define $r_{i} = \beta_{i} - \delta_{i}$ as an individual growth rate for $i$ [@Lion2018; @Lion2023].
+In this case,
+
+$$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i} + 1\right)
+\tag{S1}
+$$
+
+Mathematically, the most general approach here would be to define individual growth as a function of the entire system $\mathbf{E}$, $r_{i}(\mathbf{E})$, where $\mathbf{E}$ is a vector with elements including any parameters potentially relevant to $r_{i}$.
+Taking this approach would recover a version of eqn 2 in @Lion2018 and permit any relationship between the system and a focal individual's growth.
+Focusing on effects of other individuals ($j$) and assuming that the effects of these individuals are additive, let $a_{ij|\cdot}$ be the effect of individual $j$ on the growth rate attributable to $i$ conditioned on all other individuals within the population such that $r_{i}\left(1 + \sum_{i = j}^{N}a_{ij|\cdot} \right)$ defines the realised growth rate of $i$,
+
+$$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - \sum_{i = j}^{N_{t}}a_{ij|\cdot} \right) + 1\right).
+\tag{S2}
+$$
+
+Assuming that individual effects of $j$ on $i$ are also independent, we can remove the condition,
+
+$$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - \sum_{i = j}^{N_{t}}a_{ij} \right) + 1\right).$$
+
+Further assuming that all individuals have the same per capita effect such that $\alpha = a_{ij}$ for any $i$ and $j$ pair (as might be reasonable given resource competition in a well-mixed population),
+
+$$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - \alpha N_{t} \right) + 1\right).$$
+
+If $r_{i}$ values are identical, 
+
+$$N_{t+1} = N_{t} + r N_{t}\left(1 - \alpha N_{t} \right).
+\tag{S3}
+$$
+
+Equation S3 therefore recovers a classic version of a discrete time logistic growth by making assumptions from an exact model of eco-evolutionary change.
+An alternative approach would be to define model the effects $e_{ij}$ an individual $j$ on the fitness of $i$ ($w_{i}$), thereby replacing eqn S1 with $N_{t+1} = \sum_{i=1}^{N_{t}}w_{i}$ and replacing eqn S2 with, 
+
+$$N_{t+1} = \sum_{i=1}^{N_{t}}w_{i}\left(1 - \sum_{i = j}^{N_{t}}e_{ij|\cdot} \right).
+$$
+
+By making the same assumptions of additivity, independence, and identical effects such that $e_{ij} = \epsilon$ for all $j$ on $i$, and assuming fitness is equal ($w_{i} = w$), we can derive,
+
+$$N_{t+1} = wN_{t}(1 - \epsilon N_{t}).
+\tag{S4}
+$$
+
+
+Multi-level selection
+=============================
+
+We can recover multi-level selection from our eqn 1. 
+Here we derive the original form of the multilevel @Price1972 equation as appears in eqn 3.1 of @Lehtonen2020a.
+Individuals $i$ belong to one of $K$ total groups where $j$ indexes $K$ and groups do not overlap. 
+The size of group $j$ is denoted as $N_{j}$.
+Equation S5 below uses summations to partition how individuals within each group contribute to $\Omega$,
+
+$$\Omega = \sum_{j=1}^{K}\sum_{i=1}^{N_{j}}\left(\beta_{j,i} - \delta_{j,i} + 1 \right)\left(z_{j, i} + \Delta z_{j, i}\right).
+\tag{S5}
+$$
+
+In S5, indices $\beta_{j, i}$, $\delta_{j, i}$, and $z_{j, i}$ identify individual $i$ in group $j$.
+For simplicity, we set $w_{j, i} = \beta_{j, i} - \delta_{j, i} + 1$ and let $\Delta z_{j, i} = 0$ (i.e., no transmission bias),
+
+$$\Omega = \sum_{j=1}^{K}\sum_{i=1}^{N_{j}}w_{j,i}z_{j, i}.$$
+
+For ease of presentation, with no loss of generality, we assume all group sizes are equal with a group size of $N_{j} = n$ for all $j$.
+If group sizes differ, then weighted expectations and covariances are instead needed [@Lehtonen2020a].
+Given equal group sizes, the total number of individuals ($N$) equals $K \times n$, and,
+
+$$\frac{\Omega}{K n} = \left(\frac{1}{K}\right)\left(\frac{1}{n}\right)\sum_{j=1}^{K}\sum_{i=1}^{n}w_{j,i}z_{j, i}.$$
+
+Rearranging,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\frac{1}{n}\sum_{i=1}^{n}w_{j,i}z_{j, i}.$$
+
+The inner summation can be rewritten as an expectation,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}E\left(w_{j,i} z_{j,i}\right).$$
+
+As in the main text, we note $\mathrm{E}(XY) = \mathrm{Cov}(X,Y) + \mathrm{E}(X)\mathrm{E}(Y)$, therefore,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(w_{j,i}, z_{j,i}\right) + E\left(w_{j,i}\right)E\left(z_{j,i}\right).$$
+
+We can separate the summation for each term,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(w_{j,i}, z_{j,i}\right) + \frac{1}{K}\sum_{j=1}^{K}E\left(w_{j,i}\right)E\left(z_{j,i}\right).$$
+
+Using the notation $\bar{w}_{j} = E(w_{j,i})$ and $\bar{z}_{j} = E(z_{j,i})$,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(w_{j,i}, z_{j,i}\right) + E\left(\bar{w}_{j} \bar{z}_{j} \right).$$
+
+Similarly, defining $Cov_{j}(w_{j}, z_{j})$ as the covariance between $w_{j,i}$ and $z_{j, i}$ for group $j$,
+
+$$\frac{\Omega}{K n} = E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right) + E\left(\bar{w}_{j} \bar{z}_{j} \right).$$
+
+We can rearrange the second term on the right-hand side ($\bar{\bar{w}}$ indicates grand mean over all groups),
+
+$$\frac{\Omega}{K n} = E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right) +  Cov\left(\bar{w}_{j}, \bar{z}_{j} \right) + \bar{\bar{w}}\bar{\bar{z}}.$$
+
+We can set $\Omega = Kn\bar{\bar{w}}\bar{\bar{z'}}$, so,
+
+$$\frac{Kn\bar{\bar{w}}\bar{\bar{z'}}}{K n} - \bar{\bar{w}}\bar{\bar{z}} = E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right) +  Cov\left(\bar{w}_{j}, \bar{z}_{j} \right).$$
+
+Because $\Delta \bar{\bar{z}} = \bar{\bar{z'}} - \bar{\bar{z}}$,
+
+$$\bar{\bar{w}}\Delta = Cov\left(\bar{w}_{j}, \bar{z}_{j} \right) + E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right).$$
+
+This recovers the  multilevel @Price1972 equation [@Lehtonen2020a] from a starting point of eco-evolutionary change in different groups.
+
+
+
+References 
+==========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
