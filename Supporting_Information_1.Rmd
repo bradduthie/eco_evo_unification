@@ -17,7 +17,7 @@ linkcolor: blue
 biblio-style: apalike
 ---
 
-We start with the fundamental equation that provides a complete description of eco-evolutionary change in any system,
+This supporting information demonstrates how to derive well-established models in population ecology and evolutionary biology from equation 1 in the main text,
 
 $$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right).
 \tag{1}
@@ -25,15 +25,17 @@ $$
 
 
 In the main text, we derived both the Price equation and the birth-death model from the above.
-Here we integrate interactions between individuals and demonstrate how this affects population and evolutionary dynamics simultaneously.
+Here we integrate interactions between individuals to recover density-dependent population growth, and we integrate groups within the population to recover multi-level selection.
+Finally, we integrate both to model a system in which multi-level selection and density dependent population change occur simultaneously.
 We can do this in a way that clarifies model assumptions by allowing an individual $j$ to modulate the birth or death of the focal individual $i$.
-We will first illustrate how this leads to two separate discrete time models of density depedent population growth, then illustrate how the same starting point can be used to recover Hamilton's rule in evolutionary ecology.
+
 
 Density-dependent population growth
 ===========================================
 
 There are two potential ways to model the incorporation of density dependence into population growth.
-First note that here we set $\Omega = N_{t+1}$, and $z_{i} = 1$ and $\Delta z_{i} = 0$ for all individuals.
+We start with what is likely the most familiar model focusing on individual growth rate $r_{i}$, then use a slightly different model focusing on fitness $w_{i}$. 
+First note that here we set $\Omega = N_{t+1}$, and $z_{i} = 1$ and $\Delta z_{i} = 0$ for all individuals as in the main text.
 We can define $r_{i} = \beta_{i} - \delta_{i}$ as an individual growth rate for $i$ [@Lion2018; @Lion2023].
 In this case,
 
@@ -43,7 +45,7 @@ $$
 
 Mathematically, the most general approach here would be to define individual growth as a function of the entire system $\mathbf{E}$, $r_{i}(\mathbf{E})$, where $\mathbf{E}$ is a vector with elements including any parameters potentially relevant to $r_{i}$.
 Taking this approach would recover a version of eqn 2 in @Lion2018 and permit any relationship between the system and a focal individual's growth.
-Focusing on effects of other individuals ($j$) and assuming that the effects of these individuals are additive, let $a_{ij|\cdot}$ be the effect of individual $j$ on the growth rate attributable to $i$ conditioned on all other individuals within the population such that $r_{i}\left(1 + \sum_{i = j}^{N}a_{ij|\cdot} \right)$ defines the realised growth rate of $i$,
+Limiting our focus to the effects of other individuals ($j$) and assuming that the effects of these individuals are additive, let $a_{ij|\cdot}$ be the effect of individual $j$ on the growth rate attributable to $i$ conditioned on all other individuals within the population such that $r_{i}\left(1 + \sum_{i = j}^{N}a_{ij|\cdot} \right)$ defines the realised growth rate of $i$,
 
 $$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - \sum_{i = j}^{N_{t}}a_{ij|\cdot} \right) + 1\right).
 \tag{S2}
@@ -53,35 +55,42 @@ Assuming that individual effects of $j$ on $i$ are also independent, we can remo
 
 $$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - \sum_{i = j}^{N_{t}}a_{ij} \right) + 1\right).$$
 
-Further assuming that all individuals have the same per capita effect such that $\alpha = a_{ij}$ for any $i$ and $j$ pair (as might be reasonable given resource competition in a well-mixed population),
+Further assuming that all individuals have the same per capita effect such that $a = a_{ij}$ for any $i$ and $j$ pair (as might be reasonable given resource competition in a well-mixed population),
 
-$$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - \alpha N_{t} \right) + 1\right).$$
+$$N_{t+1} = \sum_{i=1}^{N_{t}}\left(r_{i}\left(1 - a N_{t} \right) + 1\right).$$
 
 If $r_{i}$ values are identical, 
 
-$$N_{t+1} = N_{t} + r N_{t}\left(1 - \alpha N_{t} \right).
+$$N_{t+1} = N_{t} + r N_{t}\left(1 - a N_{t} \right).
 \tag{S3}
 $$
 
 Equation S3 therefore recovers a classic version of a discrete time logistic growth by making assumptions from an exact model of eco-evolutionary change.
-An alternative approach would be to define model the effects $e_{ij}$ an individual $j$ on the fitness of $i$ ($w_{i}$), thereby replacing eqn S1 with $N_{t+1} = \sum_{i=1}^{N_{t}}w_{i}$ and replacing eqn S2 with, 
 
-$$N_{t+1} = \sum_{i=1}^{N_{t}}w_{i}\left(1 - \sum_{i = j}^{N_{t}}e_{ij|\cdot} \right).
+
+An alternative approach would be to define model the effects of an individual $j$ on the fitness of $i$ ($w_{i}$), thereby replacing eqn S1 with $N_{t+1} = \sum_{i=1}^{N_{t}}w_{i}$ and replacing eqn S2 with, 
+
+$$N_{t+1} = \sum_{i=1}^{N_{t}}w_{i}\left(1 - \sum_{i = j}^{N_{t}}\alpha_{ij|\cdot} \right).
 $$
 
-By making the same assumptions of additivity, independence, and identical effects such that $e_{ij} = \epsilon$ for all $j$ on $i$, and assuming fitness is equal ($w_{i} = w$), we can derive,
+Note that we have used $\alpha_{ij}$ to represent the effect of $j$ on the fitness of $i$ for clarity in the sections below.
+By making the same assumptions of additivity, independence, and identical effects such that $\alpha = \alpha_{ij}$ for all $j$ on $i$, and assuming fitness is equal ($w_{i} = \bar{w}$), we can derive,
 
-$$N_{t+1} = wN_{t}(1 - \epsilon N_{t}).
+$$N_{t+1} = \bar{w}N_{t}(1 - \alpha N_{t}).
 \tag{S4}
 $$
+
+This is an alternative way to express logistic growth.
+
 
 
 Multi-level selection
 =============================
 
 We can recover multi-level selection from our eqn 1. 
-Here we derive the original form of the multilevel @Price1972 equation as appears in eqn 3.1 of @Lehtonen2020a.
-Individuals $i$ belong to one of $K$ total groups where $j$ indexes $K$ and groups do not overlap. 
+Here we derive the original form of the multi-level @Price1972 equation as it appears in eqn 3.1 of @Lehtonen2020a.
+Individuals belong to one of $K$ total groups where $j$ indexes $K$ groups and $i$ indexes individuals. 
+Individuals do not overlap in group membership. 
 The size of group $j$ is denoted as $N_{j}$.
 Equation S5 below uses summations to partition how individuals within each group contribute to $\Omega$,
 
@@ -104,39 +113,264 @@ Rearranging,
 
 $$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\frac{1}{n}\sum_{i=1}^{n}w_{j,i}z_{j, i}.$$
 
-The inner summation can be rewritten as an expectation,
+The inner summation can be rewritten as an expectation for group $j$,
 
-$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}E\left(w_{j,i} z_{j,i}\right).$$
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\mathrm{E}_{j}\left(w_{j,i} z_{j,i}\right).$$
 
-As in the main text, we note $\mathrm{E}(XY) = \mathrm{Cov}(X,Y) + \mathrm{E}(X)\mathrm{E}(Y)$, therefore,
+As in the main text, we note $\mathrm{E}(XY) = \mathrm{Cov}(X,Y) + \mathrm{E}(X)\mathrm{E}(Y)$.
+Defining $Cov_{j}(w_{j}, z_{j})$ as the covariance between $w_{j,i}$ and $z_{j, i}$ for group $j$,
 
-$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(w_{j,i}, z_{j,i}\right) + E\left(w_{j,i}\right)E\left(z_{j,i}\right).$$
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\mathrm{Cov}_{j}\left(w_{j,i}, z_{j,i}\right) + \mathrm{E}_{j}\left(w_{j,i}\right)\mathrm{E}_{j}\left(z_{j,i}\right).$$
 
 We can separate the summation for each term,
 
-$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(w_{j,i}, z_{j,i}\right) + \frac{1}{K}\sum_{j=1}^{K}E\left(w_{j,i}\right)E\left(z_{j,i}\right).$$
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\mathrm{Cov}_{j}\left(w_{j,i}, z_{j,i}\right) + \frac{1}{K}\sum_{j=1}^{K}\mathrm{E}_{j}\left(w_{j,i}\right)\mathrm{E}_{j}\left(z_{j,i}\right).$$
 
-Using the notation $\bar{w}_{j} = E(w_{j,i})$ and $\bar{z}_{j} = E(z_{j,i})$,
+Using the notation $\bar{w}_{j} = E_{j}(w_{j,i})$ and $\bar{z}_{j} = E_{j}(z_{j,i})$ to indicate the expectation in group $j$,
 
-$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(w_{j,i}, z_{j,i}\right) + E\left(\bar{w}_{j} \bar{z}_{j} \right).$$
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\mathrm{Cov}_{j}\left(w_{j,i}, z_{j,i}\right) + \mathrm{E}\left(\bar{w}_{j} \bar{z}_{j} \right).$$
 
-Similarly, defining $Cov_{j}(w_{j}, z_{j})$ as the covariance between $w_{j,i}$ and $z_{j, i}$ for group $j$,
+We can also rewrite the first term on the right-hand side as an expectation,
 
-$$\frac{\Omega}{K n} = E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right) + E\left(\bar{w}_{j} \bar{z}_{j} \right).$$
+$$\frac{\Omega}{K n} = \mathrm{E}\left(\mathrm{Cov}_{j}\left(w_{j}, z_{j}\right)\right) + \mathrm{E}\left(\bar{w}_{j} \bar{z}_{j} \right).$$
 
 We can rearrange the second term on the right-hand side ($\bar{\bar{w}}$ indicates grand mean over all groups),
 
-$$\frac{\Omega}{K n} = E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right) +  Cov\left(\bar{w}_{j}, \bar{z}_{j} \right) + \bar{\bar{w}}\bar{\bar{z}}.$$
+$$\frac{\Omega}{K n} = \mathrm{E}\left(\mathrm{Cov}_{j}\left(w_{j}, z_{j}\right)\right) +  \mathrm{Cov}\left(\bar{w}_{j}, \bar{z}_{j} \right) + \bar{\bar{w}}\bar{\bar{z}}.$$
 
-We can set $\Omega = Kn\bar{\bar{w}}\bar{\bar{z'}}$, so,
+As in the main text, note that $Kn\bar{\bar{w}}$ accounts for differences in total population size from $t$ to $t+1$, with $\bar{\bar{w}}$ being mean fitness across all groups.
+We can therefore set $\Omega = Kn\bar{\bar{w}}\bar{\bar{z'}}$, so,
 
-$$\frac{Kn\bar{\bar{w}}\bar{\bar{z'}}}{K n} - \bar{\bar{w}}\bar{\bar{z}} = E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right) +  Cov\left(\bar{w}_{j}, \bar{z}_{j} \right).$$
+$$\frac{Kn\bar{\bar{w}}\bar{\bar{z'}}}{K n} - \bar{\bar{w}}\bar{\bar{z}} = \mathrm{E}\left(\mathrm{Cov}_{j}\left(w_{j}, z_{j}\right)\right) +  \mathrm{Cov}\left(\bar{w}_{j}, \bar{z}_{j} \right).$$
 
 Because $\Delta \bar{\bar{z}} = \bar{\bar{z'}} - \bar{\bar{z}}$,
 
-$$\bar{\bar{w}}\Delta = Cov\left(\bar{w}_{j}, \bar{z}_{j} \right) + E\left(Cov_{j}\left(w_{j}, z_{j}\right)\right).$$
+$$\bar{\bar{w}}\Delta = \mathrm{Cov}\left(\bar{w}_{j}, \bar{z}_{j} \right) + \mathrm{E}\left(\mathrm{Cov}_{j}\left(w_{j}, z_{j}\right)\right).
+\tag{S6}
+$$
 
-This recovers the  multilevel @Price1972 equation [@Lehtonen2020a] from a starting point of eco-evolutionary change in different groups.
+This recovers the multi-level @Price1972 equation [@Lehtonen2020a] from a starting point of eco-evolutionary change in different groups.
+This starting point can be found in @Lehtonen2016 B2.I, which then derives a multi-level selection version of Hamilton's rule predicting the evolution of altruism.
+
+
+
+Integration of ecology and evolution
+========================================
+
+For simplicity, we now focus on showing an integration between ecology and evolution using a population with no multi-level selection and let $\Delta z_{j, i} = 0$ (i.e., no transmission bias).
+As above in the section on density-dependent population growth, we define $w_{i} = \beta_{i} - \delta_{i} + 1$ and use $\alpha_{i,j}$ to represent the effect of $j$ on the fitness of $i$.
+Our starting equation is therefore,
+
+$$\Omega = \sum_{i=1}^{N}w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)z_{i}.
+\tag{S7}
+$$
+
+We have already demonstrated that if we assume all individuals have the same effect on a focal individual such that $\alpha = \alpha_{i,j}$ for all $i$ and $j$ pairs, we can recover equation S4 when $z_{i} = 1$ and $\Omega$ is therefore interpreted as the count of entities,
+
+$$N_{t+1} = \bar{w} N_{t} \left(1 - \alpha N_{t}\right).$$
+
+
+We now start from S7 to derive $\Delta \bar{z}$.
+The objective is to use our definition of eco-evolutionary change to simultaneously recover how interactions between individuals affect population change and evolutionary change.
+
+We start by dividing both sides of S7 by $N$,
+
+$$\frac{\Omega}{N} = \frac{1}{N}\sum_{i=1}^{N}w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)z_{i}.
+\tag{S8}
+$$
+
+
+We can express the right-hand side of eqn S8 as an expectation,
+
+$$\frac{\Omega}{N} = \mathrm{E}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)z_{i}\right).
+\tag{S9}
+$$
+
+
+We can rewrite the right-hand side in terms of covariances,
+
+
+$$\frac{\Omega}{N} = \mathrm{Cov}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right), z_{i}  \right) + \mathrm{E}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)\right)\mathrm{E}\left(z_{i}\right). 
+\tag{S9}
+$$
+
+
+The expectations in the second term on the right-hand side can be replaced with overbars to represent the mean,
+
+$$\frac{\Omega}{N} = \mathrm{Cov}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right), z_{i}  \right) + \overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}    \bar{z}_{i}. 
+\tag{S9}
+$$
+
+In the main text, we noted that $\Omega = N\bar{w}\bar{z}'$.
+Here mean fitness incorporates individual interactions, therefore,
+
+$$\Omega = N\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\bar{z}'.
+\tag{S10}
+$$
+
+
+We can therefore rewrite S9,
+
+$$\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\bar{z}' -  \overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}    \bar{z}_{i} = \mathrm{Cov}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right), z_{i}  \right). 
+\tag{S11}
+$$
+
+
+Noting again $\Delta \bar{z} = \bar{z}' - \bar{z}$,
+
+$$\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right), z_{i}  \right). 
+\tag{S11}
+$$
+
+
+We can rewrite the left-hand side of S11,
+
+$$\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i} - w_{i}\sum_{j=1}^{N}\alpha_{i, j}, z_{i}  \right). 
+\tag{S12}
+$$
+
+
+The covariance term can be split without any additional assumptions,
+
+$$\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i}, z_{i}  \right) - \mathrm{Cov}\left(w_{i}\sum_{j=1}^{N}\alpha_{i, j}, z_{i}  \right). 
+\tag{S13}
+$$
+
+
+If we are able to further assume that $w_{i}$ and the summation over $\alpha_{i,j}$ are independent, then we could rewrite,
+
+$$\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i}, z_{i}  \right) - \mathrm{Cov}\left(\sum_{j=1}^{N}\alpha_{i, j}, z_{i}  \right)\bar{w_{i}}. 
+\tag{S14}
+$$
+
+Partitioning fitness into different components with the Price equation is commonplace.
+But this derivation highlights, e.g., the ecological and evolutionary relationship between nonsocial and social components of fitness, and population size.
+For example, the second term on the right-hand side of S13 shows the covariance between the sum of social interactions and a trait.
+When traits covary with the interaction between sociality and fitness, they will have a stronger effect on trait change.
+The magnitude of this second term will also increase with $N$, which reflects the stronger effect of the interaction between sociality and fitness when there are more individuals interacting with a focal individual.
+
+
+
+<!---
+
+
+We can start again with $K$ groups and let $\Delta z_{j, i} = 0$ (i.e., no transmission bias).
+But for simplicity, now consider the case in which $\delta_{j,i} = 1$ (complete mortality), and consider $w_{j, i} = \beta_{j, i}(1 - \sum_{p=1}^{K}\sum_{q=1}^{n} \alpha^{j, i}_{p,q})$, where $\alpha^{j, i}_{p,q}$ is the effect that individual $q$ from group $p$ has on a focal individual $i$ from group $j$.
+To keep the model tractable, we assume that all individuals within a group $p$ have identical effects on any focal individual in the group $j$, such that $w_{j, i} = \beta_{j, i}(1 - \sum_{p=1}^{K} \alpha^{j}_{p} n)$
+
+$$\Omega = \sum_{j=1}^{K}\sum_{i=1}^{n}\beta_{j, i}\left(1 - \sum_{p=1}^{K} \alpha^{j}_{p} n\right)z_{j, i}.
+\tag{S7}
+$$
+
+Our objective here is to start from the above equation and recover population growth and multi-level selection given this parameterisation focused on individual birth as affected by other individuals in the population.
+If we set $z_{j, i} = 1$ as we have done for population ecology, we can recover logistic growth,
+
+$$N_{t+1} = \sum_{j=1}^{K}\sum_{i=1}^{n}\beta_{j, i}\left(1 - \sum_{p=1}^{K} \alpha^{j}_{p} n\right).$$
+
+If we ignore groups and note $N_{t} = nK$, and we assume that the per capita effect of every individual from every group on a focal individual is equal (i.e., $\alpha = \alpha^{j}_{p}$ for all groups), 
+
+$$N_{t+1} = N_{t}\beta_{j, i}\left(1 - \alpha N_{t}\right).$$
+
+We therefore derive the model for population change.
+
+We now use the same starting point to carry the effects of individuals on fitness through a model of multi-level selection.
+Rearranging S7,
+
+
+$$\Omega = \sum_{j=1}^{K}\sum_{i=1}^{n}\left(\beta_{j, i} - \beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)z_{j, i}.$$
+
+As we have done previously, we can multiply both sides of the equation by $(1/K)(1/n)$,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}\frac{1}{n}\sum_{i=1}^{n}\left(\beta_{j, i} - \beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)z_{j, i}.$$
+
+We can rewrite the inner summation as an expectation for group $j$,
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}E\left(\left(\beta_{j, i} - \beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)z_{j, i}\right).$$
+
+We can rewrite the product within the expectation as a covariance plus a product of the expectations and split the covariance (note that $Cov(X-Y, Z) = Cov(X, Z) - Cov(Y, Z)$),
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) + E\left(\beta_{j, i} - \beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right) E\left(z_{j, i}\right).$$
+
+All terms are within the summation, which can therefore be separated,
+
+
+$$\frac{\Omega}{K n} = \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) + \frac{1}{K}\sum_{j=1}^{K}E\left(\beta_{j, i} - \beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right) E\left(z_{j, i}\right).$$
+
+
+Note that because $E(X - Y) \times E(Z) = E(X)E(Z) - E(Y)E(Z)$, the third term on the right-hand side can be split,
+
+\begin{align*}
+\frac{\Omega}{K n} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) \\
+                   &+ \frac{1}{K}\sum_{j=1}^{K}E\left(\beta_{j, i}\right)E\left(z_{j, i}\right) - E\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)E\left(z_{j, i}\right).
+\end{align*}
+
+
+We can rewrite this third term as an expectation,
+
+\begin{align*}
+\frac{\Omega}{K n} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) \\
+                   &+ E\left(E\left(\beta_{j, i}\right)E\left(z_{j, i}\right) - E\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)E\left(z_{j, i}\right)\right).
+\end{align*}
+
+Because of the linearity of expectation, we can again separate the third term on the right-hand side of the equation,
+
+\begin{align*}
+\frac{\Omega}{K n} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) \\
+                   &+ E\left(E\left(\beta_{j, i}\right)E\left(z_{j, i}\right)\right) - E\left(E\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)E\left(z_{j, i}\right)\right).
+\end{align*}
+
+For convenience, we substitute $E(\beta_{j,i}) = \bar{\beta}_{j,i}$ and $E(z_{j,i}) = \bar{z}_{j,i}$,
+
+\begin{align*}
+\frac{\Omega}{K n} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) \\
+                   &+ E\left(\bar{\beta}_{j, i} \bar{z}_{j, i}\right) - E\left(E\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)E\left(z_{j, i}\right)\right).
+\end{align*}
+
+We can split the third term above into a covariance and product of means,
+
+\begin{align*}
+\frac{\Omega}{K n} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right)\\ 
+                   &+ Cov\left(\bar{\beta}_{j, i}, \bar{z}_{j, i}\right) + \bar{\bar{\beta}}_{j,i}\bar{\bar{z}}_{j,i} - E\left(E\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n\right)E\left(z_{j, i}\right)\right).
+\end{align*}
+
+We can then do the same for the last term on the right-hand side,
+
+\begin{align*}
+\frac{\Omega}{K n} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) \\
+                   &+ Cov\left(\bar{\beta}_{j, i}, \bar{z}_{j, i}\right) + \bar{\bar{\beta}}_{j,i}\bar{\bar{z}}_{j,i} - Cov(\overline{\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n}, \bar{z}_{j,i}) - \overline{\overline{\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n}}\times\bar{\bar{z}}_{j,i}.
+\end{align*}
+
+
+
+
+
+
+As in the previous section of this supporting information, we note that $\Omega = Kn\bar{\bar{w}}\bar{\bar{z'}}$.
+In this case, fitness $w_{j, i} = \beta_{j, i}(1 - \sum_{p=1}^{K} \alpha^{j}_{p} n)$
+
+\begin{align*}
+\bar{\bar{w}}\Delta\bar{\bar{z}} &= \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}, z_{j,i}\right) - \frac{1}{K}\sum_{j=1}^{K}Cov\left(\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right) \\ 
+                                 &+ Cov\left(\bar{\beta}_{j, i}, \bar{z}_{j, i}\right) - Cov(\overline{\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n}, \bar{z}_{j,i}).
+\end{align*}
+
+
+
+
+And finally,
+
+$$\bar{\bar{w}}\Delta\bar{\bar{z}} = E\left(Cov\left(\beta_{j}, z_{j}\right)\right) - E\left(Cov\left(\beta_{j}\sum_{p=1}^{K} \alpha^{j}_{p} n, z_{j,i}\right)\right) + Cov\left(\bar{\beta}_{j, i}, \bar{z}_{j, i}\right) - Cov(\overline{\beta_{j, i}\sum_{p=1}^{K} \alpha^{j}_{p} n}, \bar{z}_{j,i}).$$
+
+This seems intuitive in that it just adds two terms to the derivation of multi-level selection.
+And given how we have defined $\alpha$, this should relate the evolutoinary change in some trait $z$ to interactions, specifically density dependent decreases in fitness in this case.
+Note that if $\alpha = 0$, the second and fourth terms drop out, as they should because the covariance with the trait is zero.
+
+
+
+--->
+
+
+
+
 
 
 
