@@ -4,9 +4,9 @@ author: |
   | A. Bradley Duthie$^{1,a,*}$ and Victor J. Luque$^{2,a}$
 date: '[1] Department of Biological and Environmental Sciences, University of Stirling, Stirling, Scotland [2] Department of Philosophy, University of Valencia, Valencia, Spain [*] Corresponding author: alexander.duthie@stir.ac.uk [a] Equal contribution'
 output:
-  word_document: default
   pdf_document:
       keep_tex: yes
+  word_document: default
   html_document:
     df_print: paged
 header-includes:
@@ -238,7 +238,7 @@ The left-hand side of eqn 7 describes contributions to the sum trait value from 
 But we cannot treat $\Omega/N$ as the mean of $z$ at $t+1$ ($\bar{z}'$) because we need to weigh $N$ by the mean fitness of the population at $t$ to account for any change in population size from $t$ to $t+1$.
 
 For example, if mean fitness at $t$ is 2 (i.e., $\bar{w} = 2$), then half as many individuals will have contributed to $\Omega$ in $t + 1$ than would have if $\bar{w} = 1$ (i.e., there are $N$ individuals at $t$ and $2N$ individuals at $t + 1$).
-We therefore need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by the mean fitness $\bar{w}$ (at $t$) to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$.
+We therefore need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by the mean fitness $\bar{w}$ (at $t$) to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$ [this is noted in the context of population genetics by @Ewens2014].
 Consequently, 
 
 $$\Omega = N\bar{w}\bar{z}'
@@ -340,10 +340,7 @@ In both ecology and evolution, accounting for migration is done through the use 
 Our fundamental equation is complete and exact.
 It therefore implicitly includes any effects of density dependence on population growth (see Box 2), or any social effects on evolutionary change (see Box 1).
 Both of these effects can be made explicit by specifying how other individuals in a population affect birth and death of a focal individual.
-Assuming that effects of individuals are additive, independent, and identical, we can derive well-established logistic growth equations and Hamilton's rule from eqn 1 (Supporting Information S1).
-
-
-
+Assuming that effects of individuals are additive, independent, and identical, we can derive well-established logistic growth equations and multi-level selection from eqn 1 (Supporting Information S1).
 
 We have shown that we can derive the fundamental equations of population ecology and biological evolution from a single unifying equation.
 Lastly, we propose our eqn 1 as a potential starting point for defining ecosystem function and further conceptual unification between ecology, evolution, and ecosystem function.
