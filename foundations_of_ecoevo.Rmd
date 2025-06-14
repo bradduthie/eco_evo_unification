@@ -56,9 +56,9 @@ The Price equation is therefore fundamental, in the sense that it binds together
 Using this formal definition, the scope of, and relationships among, sub-disciplines within evolutionary theory can be clarified.
 For example, fundamental equations of both population and quantitative genetics can be derived from the Price equation [@Queller2017].
 This provides conceptual clarity by demonstrating the logical consistency of different theoretical frameworks within evolutionary biology.
-Our aim here is to propose an equation that extends this conceptual clarity to include population change and thereby provide a formal and exact definition for joint ecological and evolutionary change.
+Our aim here is to propose an equation that extends this conceptual clarity to include population size change and thereby provide a formal and exact definition for joint ecological and evolutionary change.
 
-In biological populations, ecological change is caused by the same processes of individual birth and death that cause changes in allele frequencies and phenotypes [@Turchin2001; @Connor2004; @Barfield2011].
+In biological populations, ecological change is caused by the same processes of individual birth and death that cause evolutionary changes in allele frequencies and phenotypes [@Turchin2001; @Connor2004; @Barfield2011].
 As with evolution, a fundamental equation can exhaustively and exactly define population change.
 Unlike the Price equation, this fundamental equation is perhaps self-evident. Population change is simply the addition of individuals minus the removal of individuals from current population size ($N_{t}$), which recovers the new population size ($N_{t+1}$; Box 2).
 By definition, this relationship of $N_{t+1} = N_{t} + Births - Deaths$ applies to any closed population.
@@ -68,7 +68,7 @@ Any unifying definition of joint ecological and evolutionary change must be able
 The union of ecological and evolutionary processes has long been recognised [e.g., @Darwin1859; @Fisher1958; @Pelletier2009], but the rise of eco-evolutionary models, which incorporate both, is relatively recent following a widespread recognition that ecology and evolution can happen on similar timescales [@Govaert2019; @Yamamichi2023].
 Currently, a universally recognised formal definition of eco-evolutionary change is lacking, with some theoreticians broadly interpreting "eco-evolutionary dynamics" to allow for a separation of ecological and evolutionary timescales [@Lion2023] and others advocating for a more narrow interpretation in which no such separation is permitted [@Bassar2021].
 @Bassar2021 identify two types of eco-evolutionary models that follow from these interpretations.
-The first type uses separate equations to model population change versus evolutionary change, thereby allowing for any number of ecological, evolutionary, or environmental feedbacks [e.g., @Lion2018; @Patel2018; @Lion2023].
+The first type uses separate equations to model population size change versus evolutionary change, thereby allowing for any number of ecological, evolutionary, or environmental feedbacks [e.g., @Lion2018; @Patel2018; @Lion2023].
 The second type models population demographics as functions of quantitative traits with ecological and evolutionary change following from demographic processes and trait distributions operating on the same timescale [e.g., @Barfield2011; @Simmonds2020; @Jaggi2024]. 
 Both model types can be very general, but like all predictive models, they rely on simplifying assumptions for tractability [@Levins1966; @Luque2016].
 These simplifying assumptions are often grounded in the Price equation to demonstrate accuracy and logical consistency when modelling evolutionary change [e.g., @Coulson2008; @Barfield2011; @Rees2016; @Lion2018].
@@ -122,7 +122,7 @@ This is useful for demonstrating mathematical equivalence [@Page2002] or expecte
 
 
 We therefore begin with the most fundamental axioms underlying the ecology and evolution of living systems [@Rice2004; @Rice2009].
-In such systems, diversity is discontinuous and can be defined in terms of discrete entities [@Dobzhansky1970].
+In such systems, diversity is discontinuous, in the sense that living systems are composed of discrete entities including individual organisms and groups of organisms [@Dobzhansky1970].
 Our framework is general enough that entities can be anything discrete, but we will focus on each entity $i$ as an individual organism.
 Individuals give rise to new individuals through birth such that $\beta_{i}$ is the number of births attributable to $i$.
 Individuals are removed from the population through death such that $\delta_{i}$ is an indicator variable that takes a value of 1 (death of $i$) or 0 (persistence of $i$).
@@ -212,7 +212,7 @@ $$w_{i} = \beta_{i} - \delta_{i} + 1.
 $$
 
 In this definition, the longevity of the individual matters.
-An individual that survives from $t$ to $t + 1$ has a higher fitness than one that dies, even if both have the same reproductive output.
+By definition, an individual that survives from $t$ to $t + 1$ has a higher fitness than one that dies, even if both have the same reproductive output.
 With this definition of fitness (eqn 4), we substitute,
 
 $$\Omega = \sum_{i=1}^{N} \left(w_{i}z_{i} + w_{i}\Delta z_{i} \right).
@@ -360,7 +360,7 @@ This manuscript was supported by joint funding between the French Foundation for
 It was written as part of the Unification of Modern Coexistence Theory and Price Equation (UNICOP) project.
 Victor J. Luque was also supported by the Spanish Ministry of Science and Innovation (Project: PID2021-128835NB-I00), and the Conselleria  d’Innovaci$\'{o}$, Universitats, Ci$\`{e}$ncia i Societat Digital – Generalitat  Valenciana (Project: CIGE/2023/16).
 We are grateful for many conversations with S$\'{e}$bastien Lion, Kelsey Lyberger, Swati Patel, and especially Lynn Govaert, whose questions helped us clarify the relationship between population growth and fitness.
-Brad Duthie would also like to thank Brent Danielson and Stan Harpole.
+Brad Duthie would also like to thank Matt Tinsley, Brent Danielson, and Stan Harpole.
 Victor J. Luque would also like to thank Lorenzo Baravalle, Pau Carazo, Santiago Ginnobili, Manuel Serra, and Ariel Roff$\'{e}$.
 
 
