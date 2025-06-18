@@ -170,6 +170,66 @@ Summations can be made over different scales too, but I think that this gets us 
 
 
 
+
+**IDEAS**
+
+Do we have an issue because *only* a trait of j's should affect both i's contribution to the sum population size and the sum trait quantity omega, right? The existence of j shouldn't matter, unless we're multiplying 1 by j's trait. But we shouldn't double count j's existence and its trait value to predict how it affects i (or anything about i).
+
+Or maybe the original formula isn't quite right. We need alpha to actually be imaginary. So maybe if we have 0 + i\alpha_{ij}, something like $(0 + i1)\alpha * (i\tau_{ij})$
+
+Well, could try to have an individual with the property $(1 + 0.5i)$ and define ($\alpha = 1 + 0.1i$, but something seems off here. Then again, if we have fitness as 2, then set an individual and trait to $(1 + 0.5i)$, affected by competition of a j individual, $a_{ij} = (0 + 0.5i)$. I'm not sure. I can't get the density to change while also getting the trait to change. Unless it's something like $z = 1 + 0.5i$, then $a_{ij} = (0 + 0.1i)$, so $z + za$.
+
+One last try before bed, if w = 2, let's say, $2 (1 + 0.5i) * (1 - (0 - 0i) * (1 + 0.4i))$, where $\alpha = (0 - 0i)$ and j is $(1 + 0.4i)$. But alpha is the effect of a *trait* on fitness, so something isn't quite right here.
+
+
+Okay, try making a_{ij} into an imaginary number. This should work.
+
+
+Deriving Price like
+=====================
+
+$$\frac{\Omega}{N} = \underbrace{\mathbb{E}[w z]}_{\text{Term 1}} + \underbrace{\mathbb{E}[w \Delta z]}_{\text{Term 2}} - \underbrace{\mathbb{E}\left[w \sum_{j=1}^N a_{ij} z_i^2 \right]}_{\text{Term 3}} - \underbrace{\mathbb{E}\left[w \sum_{j=1}^N \left( 2 a_{ij} z_i \Delta z_i + a_{ij} (\Delta z_i)^2 \right) \right]}_{\text{Term 4}}.$$
+
+Then,
+
+$$\bar{w} \bar{z}' = \underbrace{\text{Cov}(w, z) + \bar{w} \bar{z}}_{\text{Term 1}} + \underbrace{\mathbb{E}[w \Delta z]}_{\text{Term 2}} - \underbrace{\mathbb{E}\left[w \sum_{j=1}^N a_{ij} z_i^2 \right]}_{\text{Term 3}} - \underbrace{\mathbb{E}\left[w \sum_{j=1}^N \left( 2 a_{ij} z_i \Delta z_i + a_{ij} (\Delta z_i)^2 \right) \right]}_{\text{Term 4}}.$$
+
+Then,
+
+$$\bar{w} \Delta \bar{z} = \text{Cov}(w, z) + \mathbb{E}[w \Delta z] - \mathbb{E}\left[w \sum_{j=1}^N a_{ij} z_i^2 \right] - \mathbb{E}\left[w \sum_{j=1}^N \left( 2 a_{ij} z_i \Delta z_i + a_{ij} (\Delta z_i)^2 \right) \right].$$
+If we are willing to assume that all individuals $j$ have the same effect on a focal $i$, then we can rewrite as,
+
+$\bar{w} \Delta \bar{z} = \text{Cov}(w, z) + \mathbb{E}[w \Delta z] - N \mathbb{E}[w \alpha_i z_i^2] - N \mathbb{E}\left[w \alpha_i \left( 2 z_i \Delta z_i + (\Delta z_i)^2 \right) \right].$
+
+
+
+This simplifies again,
+
+$$\begin{align*}
+\bar{w} \Delta \bar{z} &= \text{Cov}(w, z) + \mathbb{E}[w \Delta z] - N \mathbb{E}\left[ w \alpha_i \left( z_i^2 + 2 z_i \Delta z_i + (\Delta z_i)^2 \right) \right] \\
+&= \text{Cov}(w, z) + \mathbb{E}[w \Delta z] - N \mathbb{E}\left[ w \alpha_i (z_i + \Delta z_i)^2 \right].
+\end{align*}$$
+
+
+$$\bar{w} \Delta \bar{z} = \text{Cov}(w, z) + \mathbb{E}[w \Delta z] - N \mathbb{E}\left[ w \alpha_i (z_i + \Delta z_i)^2 \right].$$
+Let's assume that $\Delta z_{i} = 0$, where the middle term will drop out and we can focus on population level effects on trait change (selection and drift) and the effect of interaction coefficients,
+
+$$\bar{w} \Delta \bar{z} = \text{Cov}(w, z) - N \mathbb{E}[w \alpha_i z_i^2].$$
+
+Let's just drop the subscripts in the second term as in the first,
+
+$$\bar{w} \Delta \bar{z} = \text{Cov}(w, z) - N \mathbb{E}[w \alpha z^2].$$
+
+It's reassuring that the sign of z doesn't affect the second term. Verbally, 
+I *think* the first term represents the change in a trait attributable to selection (and drift) in the absence of interspecific interactions, while the second term represents trait change attributable to selection attributable to interactions? 
+
+Note that the second term is the expected interaction between fitness and interaction strength $w \alpha$ times $z^2$, which embeds the variance of $z^{2}$ because,
+
+$$E[z_{i}^{2}] = Var(z) + \bar{z}^{2}$$
+
+
+
+
 References 
 ==========================
 
