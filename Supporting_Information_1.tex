@@ -225,8 +225,8 @@ to partition how individuals within each group contribute to \(\Omega\),
 \]
 
 In S5, indices \(\beta_{j, i}\), \(\delta_{j, i}\), and \(z_{j, i}\)
-identify individual \(i\) in group \(j\). For simplicity, we set
-\(w_{j, i} = \beta_{j, i} - \delta_{j, i} + 1\) and let
+identify individual \(i\) in group \(j\). We set
+\(w_{j, i} = \beta_{j, i} - \delta_{j, i} + 1\), and for simplicity let
 \(\Delta z_{j, i} = 0\) (i.e., no transmission bias),
 
 \[\Omega = \sum_{j=1}^{K}\sum_{i=1}^{N_{j}}w_{j,i}z_{j, i}.\]
@@ -284,16 +284,16 @@ set \(\Omega = Kn\bar{\bar{w}}\bar{\bar{z'}}\), so,
 
 Because \(\Delta \bar{\bar{z}} = \bar{\bar{z'}} - \bar{\bar{z}}\),
 
-\[\bar{\bar{w}}\Delta = \mathrm{Cov}\left(\bar{w}_{j}, \bar{z}_{j} \right) + \mathrm{E}\left(\mathrm{Cov}_{j}\left(w_{j}, z_{j}\right)\right).
+\[\bar{\bar{w}}\Delta \bar{\bar{z}} = \mathrm{Cov}\left(\bar{w}_{j}, \bar{z}_{j} \right) + \mathrm{E}\left(\mathrm{Cov}_{j}\left(w_{j}, z_{j}\right)\right).
 \tag{S6}
 \]
 
 This recovers the multi-level Price (\citeproc{ref-Price1972}{1972})
 equation (\citeproc{ref-Lehtonen2020a}{Lehtonen 2020}) from a starting
-point of eco-evolutionary change in different groups. This starting
-point can be found in Lehtonen (\citeproc{ref-Lehtonen2016}{2016}) B2.I,
-which then derives a multi-level selection version of Hamilton's rule
-predicting the evolution of altruism.
+point of eco-evolutionary change in different groups. Equation S6 can be
+found in Lehtonen (\citeproc{ref-Lehtonen2016}{2016}) B2.I, who then
+derives a multi-level selection version of Hamilton's rule predicting
+the evolution of altruism.
 
 \section{Integration of ecology and
 evolution}\label{integration-of-ecology-and-evolution}
@@ -364,26 +364,26 @@ We can therefore rewrite S9,
 Noting again \(\Delta \bar{z} = \bar{z}' - \bar{z}\),
 
 \[\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right), z_{i}  \right). 
-\tag{S11}
+\tag{S12}
 \]
 
-We can rewrite the left-hand side of S11,
+We can rewrite the left-hand side of S12,
 
 \[\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i} - w_{i}\sum_{j=1}^{N}\alpha_{i, j}, z_{i}  \right). 
-\tag{S12}
+\tag{S13}
 \]
 
 The covariance term can be split without any additional assumptions,
 
 \[\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i}, z_{i}  \right) - \mathrm{Cov}\left(w_{i}\sum_{j=1}^{N}\alpha_{i, j}, z_{i}  \right). 
-\tag{S13}
+\tag{S14}
 \]
 
 If we are able to further assume that \(w_{i}\) and the summation over
 \(\alpha_{i,j}\) are independent, then we could rewrite,
 
 \[\overline{w_{i}\left(1 - \sum_{j=1}^{N}\alpha_{i, j}\right)}\Delta\bar{z} = \mathrm{Cov}\left(w_{i}, z_{i}  \right) - \mathrm{Cov}\left(\sum_{j=1}^{N}\alpha_{i, j}, z_{i}  \right)\bar{w_{i}}. 
-\tag{S14}
+\tag{S15}
 \]
 
 Partitioning fitness into different components with the Price equation

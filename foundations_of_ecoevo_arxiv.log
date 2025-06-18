@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.19)  18 JUN 2025 12:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.19)  16 JUN 2025 09:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**foundations_of_ecoevo.tex
-(./foundations_of_ecoevo.tex
+**foundations_of_ecoevo_arxiv.tex
+(./foundations_of_ecoevo_arxiv.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -391,49 +391,68 @@ File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )) (/usr/share/texlive/texmf-dist/tex/latex/xurl/xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 109.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12
-0.
+Package hyperref Info: Option `colorlinks' set `true' on input line 107.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+8.
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count302
 \l__pdf_internal_box=\box55
-) (./foundations_of_ecoevo.aux)
-\openout1 = `foundations_of_ecoevo.aux'.
+) (./foundations_of_ecoevo_arxiv.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 120.
-LaTeX Font Info:    ... okay on input line 120.
-LaTeX Info: Redefining \microtypecontext on input line 120.
-Package microtype Info: Applying patch `item' on input line 120.
-Package microtype Info: Applying patch `toc' on input line 120.
-Package microtype Info: Applying patch `eqnum' on input line 120.
-Package microtype Info: Applying patch `footnote' on input line 120.
-Package microtype Info: Applying patch `verbatim' on input line 120.
+LaTeX Warning: Label `ref-Lehtonen2016' multiply defined.
+
+
+LaTeX Warning: Label `ref-Lehtonen2020a' multiply defined.
+
+
+LaTeX Warning: Label `ref-Lion2018' multiply defined.
+
+
+LaTeX Warning: Label `ref-Lion2023' multiply defined.
+
+
+LaTeX Warning: Label `ref-Price1972' multiply defined.
+
+
+LaTeX Warning: Label `refs' multiply defined.
+
+)
+\openout1 = `foundations_of_ecoevo_arxiv.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Info: Redefining \microtypecontext on input line 118.
+Package microtype Info: Applying patch `item' on input line 118.
+Package microtype Info: Applying patch `toc' on input line 118.
+Package microtype Info: Applying patch `eqnum' on input line 118.
+Package microtype Info: Applying patch `footnote' on input line 118.
+Package microtype Info: Applying patch `verbatim' on input line 118.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 120.
+LaTeX Info: Redefining \showhyphens on input line 118.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -495,106 +514,137 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 120.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
-22.
-(/usr/share/texmf/tex/latex/lm/t1lmss.fd
-File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
+Package hyperref Info: Link coloring ON on input line 118.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-22.
+20.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-22.
+20.
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-122.
+120.
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-122.
+120.
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 122.
+(Font)              <12> on input line 120.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 122.
+(Font)              <8> on input line 120.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 122.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 122
+(Font)              <6> on input line 120.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 120
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 122
+LaTeX Font Info:    Trying to load font information for U+msb on input line 120
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [1
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 188.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 188.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 188.
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/
 dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/t
 exmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-m
-athsy.enc}]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 190.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 190.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 190.
-[2] [3] [4] [5] [6{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}] [7] [8] 
-[9] [10] [11] [12] [13]
+athsy.enc}] [2] [3] [4{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}] [5] 
+[6] [7]
+
+LaTeX Warning: Command \' invalid in math mode on input line 766.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 766.
+
 
 LaTeX Warning: Command \' invalid in math mode on input line 768.
 
 
-LaTeX Warning: Command \` invalid in math mode on input line 768.
+LaTeX Warning: Command \' invalid in math mode on input line 774.
 
+[8] [9] [10] [11] [12
 
-LaTeX Warning: Command \' invalid in math mode on input line 770.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 776.
-
-[14] [15] [16] [17] [18] [19] [20] (./foundations_of_ecoevo.aux)
+] [13] [14] [15]
+pdfTeX warning (ext4): destination with the same identifier (name{cite.ref-Leht
+onen2016}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1470 \bibitem[\citeproctext]{ref-Lehtonen2016}
+                                                
+pdfTeX warning (ext4): destination with the same identifier (name{cite.ref-Leht
+onen2020a}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1475 \bibitem[\citeproctext]{ref-Lehtonen2020a}
+                                                 
+pdfTeX warning (ext4): destination with the same identifier (name{cite.ref-Lion
+2018}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1481 \bibitem[\citeproctext]{ref-Lion2018}
+                                            
+pdfTeX warning (ext4): destination with the same identifier (name{cite.ref-Lion
+2023}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1487 \bibitem[\citeproctext]{ref-Lion2023}
+                                            
+pdfTeX warning (ext4): destination with the same identifier (name{cite.ref-Pric
+e1972}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1493 \bibitem[\citeproctext]{ref-Price1972}
+                                              [16] (./foundations_of_ecoevo_arx
+iv.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 14691 strings out of 474222
- 229280 string characters out of 5748732
- 1938975 words of memory out of 5000000
- 36432 multiletter control sequences out of 15000+600000
- 618475 words of font info for 162 fonts, out of 8000000 for 9000
+ 14701 strings out of 474222
+ 229198 string characters out of 5748732
+ 1943975 words of memory out of 5000000
+ 36412 multiletter control sequences out of 15000+600000
+ 622138 words of font info for 169 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,8n,93p,1018b,547s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,8n,93p,1024b,534s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
+ublic/lm/lmmi5.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/publ
 ic/lm/lmsy8.pfb>
-Output written on foundations_of_ecoevo.pdf (20 pages, 314656 bytes).
+Output written on foundations_of_ecoevo_arxiv.pdf (16 pages, 324228 bytes).
 PDF statistics:
- 609 PDF objects out of 1000 (max. 8388607)
- 548 compressed objects within 6 object streams
- 118 named destinations out of 1000 (max. 500000)
- 30817 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 618 PDF objects out of 1000 (max. 8388607)
+ 560 compressed objects within 6 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 32913 words of extra memory for PDF output out of 35830 (max. 10000000)
 
