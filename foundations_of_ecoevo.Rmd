@@ -22,6 +22,11 @@ csl: the-american-naturalist.csl
 biblio-style: apalike
 ---
 
+<!---
+
+NOTE: ADD CASE AND TAPER (2000) AS A REFERENCE FOR Delta N = N bar(w)
+
+--->
 
 
 Abstract
@@ -139,9 +144,9 @@ $$
 
 <!---
 
-Something around here verbally presenting the logic of eqn 1, discussing how we are talking about an interaction between birth-death (individual fitness) and a individual's characteristic.
+There's an odd technicality if the time between t and t + 1 is large. I defined beta as 'births attributable to i', which is correct, but maybe it would be more correct to define it as 'descendents of i'. Then, delta needs to be more technically 'deaths of i and its descendents'). Nothing changes in effect, but now if a focal individual i has a bunch of descendents that die between t and t + 1, the correct fitness is still preserved.
 
-Also need to explain units of Omega, since there is confusion here.
+Put this after the sentence about Omega?
 
 --->
 
@@ -174,9 +179,9 @@ Population ecology
 ====================================================
 
 To recover the general equation for population ecology (Box 2), we define $z_{i}$ as the identity of $i$ belonging to the population.
-In other words, we set $z_{i} = 1$ to simply indicate that $i$ is one member of the population.
+In other words, we set $z_{i} = 1$ to simply indicate that $i$ is one member of the population. <!--- and therefore contributes one unit toward the total population size. --->
 In this restricted case, $z$ is count, which takes the unit 1 [note that 'individual' is a label, not a unit, see @NewellEtAl2019].
-Further, we assume that individuals do not change species by setting $\Delta z_{i} = 0$.
+Further, we assume that individuals do not change species by setting $\Delta z_{i} = 0$. <!--- Further, we assume that individual membership and contribution to population size does not change by... --->
 In this case,
 
 $$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right).$$
@@ -190,9 +195,9 @@ $$
 
 If we assume that individuals are identical, then we can drop the subscript $i$ such that $\beta_{i} = \beta$ and $\delta_{i} = \delta$ and note that $N\beta$, $N\delta$, and $N$ are the total births, total deaths, and size of the population at $t$, respectively,
 
-Summing from 1 to $N$, we can rewrite the above,
+Summing from 1 to $N_{t}$, we can rewrite the above,
 
-$$\Omega = N\left(1 + \beta - \delta \right).$$
+$$N_{t+1} = N_{t}\left(1 + \beta - \delta \right).$$
 
 If we define $\lambda = 1 + \beta - \delta$ (Box 2), then we can rewrite,
 
@@ -244,7 +249,7 @@ For example, if mean fitness at $t$ is 2 (i.e., $\bar{w} = 2$), then half as man
 We therefore need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by the mean fitness $\bar{w}$ (at $t$) to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$ [this has been applied in the context of population genetics by @Ewens2014].
 Consequently, 
 
-$$\Omega = N\bar{w}\bar{z}'
+$$\Omega = N\bar{w}\bar{z}'.
 \tag{8}
 $$
 
@@ -284,8 +289,8 @@ In such cases, the sum across individuals gives a meaningful total quantity for 
 When $z$ is instead defined by relative organism-level measurements such wing loading, nutrient ratio, or diet composition, or when $z$ is measured at a level of biological organisation below the organism (e.g., average cell volume or leaf surface area), $\Omega$ does not have a clear population-level interpretation.
 In such cases, eqn 1 still defines eco-evolutionary change; the interpretation of $\Omega$ by itself is just not as interesting, biologically.
 
-Box 3 provides an instructive example of three plants with different fitnesses and carbon captures.
-We use this example to demonstrate a concrete example of our proposed framework.
+Box 3 provides an instructive example of three plants with different fitnesses and fruit masses.
+We use this to demonstrate a concrete example of our proposed framework.
 
 *******************
 
@@ -298,7 +303,7 @@ Discussion
 
 An important aspect of scientific progress is the ability to connect disparate theories and models to show how specific empirical and theoretical models are logical (mathematical) consequences of more fundamental ones [@Nagel1961; @Morrison2000].
 Rather than making simplifying assumptions, as is the approach for specific ecological and evolutionary models, we focus on fundamental axioms that are universal to closed biological systems: discrete individuals, birth, death, and change over time.
-We define an abstract sum ($\Omega$), to which all individuals within the population contribute.
+We define an abstract sum ($\Omega$), to which all individuals in the population contribute.
 From the basic axiom that each individual is one member of a specific population ($z_{i} = 1$ and $\Delta z_{i} = 0$), we recover the most general equation of population ecology (Box 2) and the principle of exponential growth ($N_{t+1} = N_{t}\lambda$).
 By defining individual fitness ($w_{i}$) and applying the total conservation of probability to individual frequencies [@Frank2015; @Frank2016], we recover the most fundamental equation of evolution, the Price equation (Box 1).
 Our eqn 1 thereby provides a foundation for defining eco-evolutionary change in any population.
@@ -306,7 +311,7 @@ Our eqn 1 thereby provides a foundation for defining eco-evolutionary change in 
 
 The Price equation provides a complete and exact description of evolution in any closed evolving system [@Price1970; @Frank2012].
 It is derived by rearranging the mathematical notation defining changes in the frequencies and characteristics of any type of entity [e.g., individuals, alleles, @Price1970; @Gardner2008; @Luque2016].
-This derivation partitions total characteristic change into different components, making it possible to isolate evolutionary mechanisms (e.g., selection) and levels of biological organisation (e.g., group, individual) [@Frank1995; @Kerr2009; @Frank2012; @Luque2016; @Okasha2020].
+This derivation partitions total characteristic change into different components, making it possible to isolate evolutionary mechanisms (e.g., selection) and levels of biological organisation [e.g., group, individual, @Frank1995; @Kerr2009; @Frank2012; @Luque2016; @Okasha2020].
 Because of its abstract nature and lack of any system-specific assumptions, the Price equation is not dynamically sufficient and makes no predictions about what will happen in any particular system [@Gardner2020].
 Its role is not to predict, but to formally and completely define and separate components of evolutionary change [@Baravalle2024]. 
 The same is true of the general equation for population change (eqn 2), at least as we have used it here where it serves to define what population growth means in ecology.
@@ -315,16 +320,14 @@ In eqn 1, we therefore have a fundamental equation from which we can derive comp
 Like all fundamental equations, our equation is necessarily abstract and not dynamically sufficient.
 We believe that it will be useful for eco-evolutionary theory in a similar way that the Price equation is useful for evolutionary theory: potentially facilitating specific model development and identifying new conceptual insights, unresolved errors, and sources of model disagreements (see below and Supporting Information S1).
 
-
 Our unification recovers the equivalence between the finite rate of increase $\lambda$ (Box 2) and population mean evolutionary fitness $\bar{w}$ (Box 1).
 The population growth equation $N_{t+1} = N_{t}\lambda$ can always be rewritten as $N_{t+1} = N_{t}\bar{w}$.
-This specific equivalence has been proposed before [e.g., @Lande1976], as has the broader relationship between population growth rate and evolutionary fitness [@Fisher1930; @Charlesworth1980; @Lande1982; @Roff2008; @Lion2018].
+This specific equivalence has been proposed before [e.g., @Lande1976], as has the broader relationship between population growth rate and evolutionary fitness [e.g., @Fisher1930; @Charlesworth1980; @Lande1982; @Case2000; @Roff2008; @Lion2018].
 We show this from first principles and clarify the relationship between fitness and population growth.
-Over an arbitrary length of time, fitness is properly defined as $w_{i} = \beta_{i} - \delta_{i} + 1$.
+Over an arbitrary length of time, fitness is properly defined as $w_{i} = \beta_{i} - \delta_{i} + 1$. <!--- For simplicity, we defined beta and delta as births and deaths, but we could more generally define beta as the count of descendents of i, and delta as the count of deaths in i and all of its descendents --->
 Over an individual's lifetime (which, by definition, includes death), fitness is therefore $\beta_{i}$. 
 Rates of change in ecology and evolution are reflected in the first and second statistical moments of fitness, respectively.
 Population growth rate reflects mean fitness $\bar{w}$, while the rate of evolutionary change reflects the variance in fitness $\mathrm{Var}(w)/\bar{w}$ [i.e., Fisher's fundamental theorem, @Frank1997; @Rice2004; @Queller2017].
-
 
 Our unification may also help explain, at least partially, some of the success of classical population genetic models. 
 For decades, population genetics (and to some extent quantitative genetics) has been accused of being a reductionist view of evolution, reducing everything to changes in allele frequencies and abstracting away from individuals and their environments [the ecological interactions, @MacColl2011]. 
@@ -357,6 +360,15 @@ This approach provides a framework for comparing the effects of biodiversity on 
 Instead, our eqn 1 defines $\Omega$ as total ecosystem function contributed by a focal population.
 It is therefore possible to investigate ecological, evolutionary, and ecosystem function change from the same shared framework.
 
+<!---
+
+Over 120 years ago, @Needham1904 described natural history as "the study of the phenomena of fitness".
+Fundamentally, we show why eco-evolutionary change is a statistical interaction between fitness and an individual characteristic.
+From this definition, we can recover both population size change and evolutionary change.
+Our $\Omega$ can be therefore be interpreted as characteristic-scaled population change, with the special case of $z = 1$ recovering population size change by recognising that each individual contributes one to the total.
+
+
+--->
 
 Acknowledgements
 ====================================================
@@ -367,7 +379,7 @@ Victor J. Luque was also supported by the Spanish Ministry of Science and Innova
 We are grateful for many conversations with S$\'{e}$bastien Lion, Kelsey Lyberger, Swati Patel, and especially Lynn Govaert, whose questions helped us clarify the relationship between population growth and fitness.
 Brad Duthie would also like to thank Matt Tinsley, Brent Danielson, and Stan Harpole.
 Victor J. Luque would also like to thank Lorenzo Baravalle, Pau Carazo, Santiago Ginnobili, Manuel Serra, and Ariel Roff$\'{e}$.
-
+Lastly, we thank two anonymous reviewers.
 
 
 Author Contributions
@@ -393,7 +405,11 @@ References
 ====================================================
 
 
+<!---
 
+Note, for blog and appendix: Eqn 1 constrains ecology and evolution. What if we want a model in which there is a strong density-dependent effect of conspecifics but not evolutionary effect on traits? This means that the covariance between z and w must be low. But social effects cannot decrease another conspecific's fitness in a population without also decreasing population growth. Covariance between fitness and a trait implies that there is variance in fitness, which should slow population growth?
+
+--->
 
 
 
