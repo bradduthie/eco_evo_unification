@@ -309,15 +309,11 @@ This approach provides a framework for comparing the effects of biodiversity on 
 Instead, our eqn 1 defines $\Omega$ as total ecosystem function contributed by a focal population.
 It is therefore possible to investigate ecological, evolutionary, and ecosystem function change from the same shared framework.
 
-<!---
-
 Over 120 years ago, @Needham1904 described natural history as "the study of the phenomena of fitness".
-Fundamentally, we show why eco-evolutionary change is a statistical interaction between fitness and an individual characteristic.
+Fundamentally, we show why eco-evolutionary change is a statistical interaction between fitness and individual characteristics.
 From this definition, we can recover both population size change and evolutionary change.
-Our $\Omega$ can be therefore be interpreted as characteristic-scaled population change, with the special case of $z = 1$ recovering population size change by recognising that each individual contributes one to the total.
 
 
---->
 
 Acknowledgements
 ====================================================
@@ -328,7 +324,7 @@ Victor J. Luque was also supported by the Spanish Ministry of Science and Innova
 We are grateful for many conversations with S$\'{e}$bastien Lion, Kelsey Lyberger, Swati Patel, and especially Lynn Govaert, whose questions helped us clarify the relationship between population growth and fitness.
 Brad Duthie would also like to thank Matt Tinsley, Brent Danielson, and Stan Harpole.
 Victor J. Luque would also like to thank Lorenzo Baravalle, Pau Carazo, Santiago Ginnobili, Manuel Serra, and Ariel Roff$\'{e}$.
-Lastly, we thank two anonymous reviewers.
+Lastly, we thank two anonymous reviewers and Andy Gardner for helpful comments.
 
 
 Author Contributions
