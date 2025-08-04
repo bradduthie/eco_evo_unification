@@ -114,7 +114,6 @@ But despite its flexibility, the Price equation still relies on relative frequen
 This is because the Price equation describes the average change in a population; the frequency of entities is scaled thereby conserving total probability [@Frank2015; @Frank2016].
 But to recover the fundamental principle of exponential population growth [@Turchin2001], this scaling must be avoided.
 
-
 We therefore begin with the most fundamental axioms underlying the ecology and evolution of living systems [@Rice2004; @Rice2009].
 In such systems, diversity is discontinuous, in the sense that living systems are composed of discrete entities including individual organisms and groups of organisms [@Dobzhansky1970].
 Our framework is general enough that entities can be anything discrete, but we will focus on each entity $i$ as an individual organism.
@@ -138,14 +137,13 @@ From eqn 1, we can derive the most fundamental equations of population ecology a
 Under more limited interpretations of $z$, we can also interpret $\Omega$ as a metric of ecosystem function.
 
 
-
 Population ecology
 ====================================================
 
 To recover the general equation for population ecology (Box 2), we define $z_{i}$ as the identity of $i$ belonging to the population.
-In other words, we set $z_{i} = 1$ to simply indicate that $i$ is one member of the population. <!--- and therefore contributes one unit toward the total population size. --->
+In other words, we set $z_{i} = 1$ to simply indicate that $i$ is one member of the population and therefore contributes one unit to the total population size.
 In this restricted case, $z$ is count, which takes the unit 1 [note that 'individual' is a label, not a unit, see @NewellEtAl2019].
-Further, we assume that individuals do not change species by setting $\Delta z_{i} = 0$. <!--- Further, we assume that individual membership and contribution to population size does not change by... --->
+Further, we assume that individual membership and the unit contribution to population size does not change by setting $\Delta z_{i} = 0$
 In this case,
 
 $$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right).$$
@@ -157,19 +155,8 @@ $$N_{t+1} = N_{t} + Births - Deaths.
 \tag{2}
 $$
 
-If we assume that individuals are identical, then we can drop the subscript $i$ such that $\beta_{i} = \beta$ and $\delta_{i} = \delta$ and note that $N\beta$, $N\delta$, and $N$ are the total births, total deaths, and size of the population at $t$, respectively,
+Using the classical assumptions of population ecology [Box 2, @Gotelli2001], we can recover the fundamental tendency for populations to grow (or decline) exponentially [eqn 3, @Turchin2001].
 
-Summing from 1 to $N_{t}$, we can rewrite the above,
-
-$$N_{t+1} = N_{t}\left(1 + \beta - \delta \right).$$
-
-If we define $\lambda = 1 + \beta - \delta$ (Box 2), then we can rewrite,
-
-$$N_{t+1} = N_{t}\lambda.
-\tag{3}
-$$
-
-We therefore recover the general equation for population ecology (eqn 2) and the fundamental tendency for populations to grow (or decline) exponentially [eqn 3, @Turchin2001].
 
 
 Evolutionary biology
@@ -179,34 +166,34 @@ Recovering the Price equation requires a few more steps.
 We start by defining individual fitness,
 
 $$w_{i} = \beta_{i} - \delta_{i} + 1.
-\tag{4}
+\tag{3}
 $$
 
 In this definition, the longevity of the individual matters.
 By definition, an individual that survives from $t$ to $t + 1$ has a higher fitness than one that dies, even if both have the same reproductive output.
-With this definition of fitness (eqn 4), we substitute,
+With this definition of fitness (eqn 3), we substitute,
 
 $$\Omega = \sum_{i=1}^{N} \left(w_{i}z_{i} + w_{i}\Delta z_{i} \right).
+\tag{4}
+$$
+
+We can break eqn 4 down further and multiply each side by $1/N$,
+
+$$\frac{1}{N}\Omega = \frac{1}{N}\sum_{i=1}^{N} \left(w_{i}z_{i} \right) + \frac{1}{N}\sum_{i=1}^{N}\left( w_{i}\Delta z_{i} \right).
 \tag{5}
 $$
 
-We can break eqn 5 down further and multiply each side by $1/N$,
+We can rewrite the terms on the right-hand side of eqn 5 as expected values and remove the subscripts,
 
-$$\frac{1}{N}\Omega = \frac{1}{N}\sum_{i=1}^{N} \left(w_{i}z_{i} \right) + \frac{1}{N}\sum_{i=1}^{N}\left( w_{i}\Delta z_{i} \right).
+$$\frac{1}{N}\Omega = \mathrm{E}\left(w z \right) + \mathrm{E}\left( w \Delta z  \right).
 \tag{6}
 $$
 
-We can rewrite the terms on the right-hand side of eqn 6 as expected values and remove the subscripts,
-
-$$\frac{1}{N}\Omega = \mathrm{E}\left(w z \right) + \mathrm{E}\left( w \Delta z  \right).
-\tag{7}
-$$
-
 Now we must consider the total conservation of probability [@Frank2015; @Frank2016].
-In eqn 7, $\Omega$ is the total sum trait values ($z_{i}$) across the entire population at $t + 1$ divided by the number of individuals ($N$) in the population at $t$.
+In eqn 6, $\Omega$ is the total sum trait values ($z_{i}$) across the entire population at $t + 1$ divided by the number of individuals ($N$) in the population at $t$.
 But the size of the population can change from $t$ to $t + 1$.
 To recover mean trait change for the Price equation (and therefore conserve total probability), we need to account for this change in population size.
-The left-hand side of eqn 7 describes contributions to the sum trait value from the new population at $t + 1$.
+The left-hand side of eqn 6 describes contributions to the sum trait value from the new population at $t + 1$.
 But we cannot treat $\Omega/N$ as the mean of $z$ at $t+1$ ($\bar{z}'$) because we need to weight $N$ by the mean fitness of the population at $t$ to account for any change in population size from $t$ to $t+1$.
 
 For example, if mean fitness at $t$ is 2 (i.e., $\bar{w} = 2$), then half as many individuals will have contributed to $\Omega$ in $t + 1$ than would have if $\bar{w} = 1$ (i.e., there are $N$ individuals at $t$ and $2N$ individuals at $t + 1$).
@@ -214,19 +201,19 @@ We therefore need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by th
 Consequently, 
 
 $$\Omega = N\bar{w}\bar{z}'.
-\tag{8}
+\tag{7}
 $$
 
 Equation 8 conserves the total probability and now clarifies $\Omega$ as a summed trait value, which has the same units as $z$ and equals expected population growth at $t$ times mean trait value at $t + 1$.
 This is consistent with the population ecology derivation from the previous section where $z_{i} = 1$ by definition, and $\Omega = N_{t+1}$ (note $\lambda = \bar{w}$).
-We can therefore rewrite eqn 7,
+We can therefore rewrite eqn 6,
 
 $$\bar{w}\bar{z}' = \mathrm{E}\left(w z \right) + \mathrm{E}\left( w \Delta z  \right).
-\tag{9}
+\tag{8}
 $$
 
-We can rearrange eqn 9 to derive the Price equation by expressing covariance as $\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y)$, and therefore $\mathrm{E}(XY) = \mathrm{Cov}(X,Y) + \mathrm{E}(X)\mathrm{E}(Y)$.
-Substituting into eqn 9,
+We can rearrange eqn 8 to derive the Price equation by expressing covariance as $\mathrm{Cov}(X,Y) = \mathrm{E}(XY) - \mathrm{E}(X)\mathrm{E}(Y)$, and therefore $\mathrm{E}(XY) = \mathrm{Cov}(X,Y) + \mathrm{E}(X)\mathrm{E}(Y)$.
+Substituting into eqn 8,
 
 $$\bar{w}\bar{z}' = \mathrm{Cov}\left(w ,z \right) + \bar{w}\bar{z} + \mathrm{E}\left( w \Delta z  \right).$$
 
@@ -237,11 +224,11 @@ $$\bar{w}\left(\bar{z}' - \bar{z}\right) = \mathrm{Cov}\left(w ,z \right) + \mat
 Since $\Delta \bar{z} = \left(\bar{z}' - \bar{z}\right)$,
 
 $$\bar{w}\Delta \bar{z} = \mathrm{Cov}\left(w ,z \right) + \mathrm{E}\left( w \Delta z  \right).
-\tag{10}
+\tag{9}
 $$
 
 Equation 10 is the Price equation.
-From eqn 1, which describes fundamental birth and death processes in a population, we can therefore derive both the most fundamental model of population ecology (eqn 2; Box 2) and the fundamental equation of evolution (eqn 10; Box 1).
+From eqn 1, which describes fundamental birth and death processes in a population, we can therefore derive both the most fundamental model of population ecology (eqn 2; Box 2) and the fundamental equation of evolution (eqn 9; Box 1).
 
 
 Ecosystem function
@@ -299,7 +286,7 @@ This has been a line of argumentation by some defenders of the so-called Extende
 Famously, @Mayr1960 characterised population genetics as a simple input and output of genes, analogous to "the adding of certain beans to a beanbag and the withdrawing of others" (also called "beanbag genetics"). 
 Historical critics of population genetics could not articulate a clear explanation for why it works so well despite all of its idealisations and simplifications.
 From the Price equation, we are able to recover classical population and quantitative genetic models [@Queller2017] and develop new ones [@Rice2004; @Rice2020; @Luque2016; @Lion2018].
-Our eqn 1 contains ecology at its core, and we show how the Price equation logically follows from it after accounting for absolute population growth (eqn 8).
+Our eqn 1 contains ecology at its core, and we show how the Price equation logically follows from it after accounting for absolute population growth (eqn 7).
 We therefore conclude that population and quantitative genetic equations contain ecology (no matter how hidden), and the ecological nature of evolution is implicit in population and quantitative genetic models.
 
 
