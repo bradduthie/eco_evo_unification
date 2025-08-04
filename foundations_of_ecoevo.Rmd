@@ -122,7 +122,7 @@ Individuals give rise to new individuals through birth such that $\beta_{i}$ is 
 Individuals are removed from the population through death such that $\delta_{i}$ is an indicator variable that takes a value of 1 (death of $i$) or 0 (persistence of $i$).
 All individuals are defined by some characteristic $z_{i}$, and $\Delta z_{i}$ defines any change in $z_{i}$ from one time step $t$ to the next $t + 1$.
 The total number of individuals in the population is $N$.
-From this foundation, we can define $\Omega$ to be a summed characteristic across $N$ entities,
+From this foundation, we can define $\Omega$ to be the sum of character values in $t+1$,
 
 $$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right).
 \tag{1}
@@ -138,7 +138,7 @@ Put this after the sentence about Omega?
 --->
 
 This foundation of eco-evolutionary change is a statistical interaction between the demographic processes of birth and death ($\beta_{i} - \delta_{i} + 1$) and some characteristic of an individual ($z_{i} + \Delta z_{i}$).
-The value of $\Omega$ is a summation of individual characteristics and takes the same units as $z$.
+The value of $\Omega$ takes the same units as $z$.
 From eqn 1, we can derive the most fundamental equations of population ecology and evolutionary biology through an appropriate interpretation of $z$.
 Under more limited interpretations of $z$, we can also interpret $\Omega$ as a metric of ecosystem function.
 
