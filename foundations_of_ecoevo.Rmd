@@ -170,7 +170,7 @@ $$w_{i} = \beta_{i} - \delta_{i} + 1.
 $$
 
 In this definition, the longevity of the individual matters.
-By definition, an individual that survives from $t$ to $t + 1$ has a higher fitness than one that dies, even if both have the same reproductive output.
+All else being equal, an individual that survives from $t$ to $t + 1$ has a higher fitness than one that dies, even if both have the same reproductive output.
 With this definition of fitness (eqn 3), we substitute,
 
 $$\Omega = \sum_{i=1}^{N} \left(w_{i}z_{i} + w_{i}\Delta z_{i} \right).
