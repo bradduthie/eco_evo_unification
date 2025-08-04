@@ -195,16 +195,14 @@ But the size of the population can change from $t$ to $t + 1$.
 To recover mean trait change for the Price equation (and therefore conserve total probability), we need to account for this change in population size.
 The left-hand side of eqn 6 describes contributions to the sum trait value from the new population at $t + 1$.
 But we cannot treat $\Omega/N$ as the mean of $z$ at $t+1$ ($\bar{z}'$) because we need to weight $N$ by the mean fitness of the population at $t$ to account for any change in population size from $t$ to $t+1$.
-
-For example, if mean fitness at $t$ is 2 (i.e., $\bar{w} = 2$), then half as many individuals will have contributed to $\Omega$ in $t + 1$ than would have if $\bar{w} = 1$ (i.e., there are $N$ individuals at $t$ and $2N$ individuals at $t + 1$).
-We therefore need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by the mean fitness $\bar{w}$ (at $t$) to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$ [this has been applied in the context of population genetics by @Ewens2014].
+We need to multiply the mean trait value $\bar{z}'$ (at $t + 1$) by the mean fitness $\bar{w}$ (at $t$) to recover the mean contribution of the $N$ individuals at $t$ to the total $\Omega$ [@Case2000; @Ewens2014].
 Consequently, 
 
 $$\Omega = N\bar{w}\bar{z}'.
 \tag{7}
 $$
 
-Equation 8 conserves the total probability and now clarifies $\Omega$ as a summed trait value, which has the same units as $z$ and equals expected population growth at $t$ times mean trait value at $t + 1$.
+Equation 7 conserves the total probability and now clarifies $\Omega$ as a summed trait value, which has the same units as $z$ and equals expected population growth at $t$ times mean trait value at $t + 1$.
 This is consistent with the population ecology derivation from the previous section where $z_{i} = 1$ by definition, and $\Omega = N_{t+1}$ (note $\lambda = \bar{w}$).
 We can therefore rewrite eqn 6,
 
@@ -227,7 +225,7 @@ $$\bar{w}\Delta \bar{z} = \mathrm{Cov}\left(w ,z \right) + \mathrm{E}\left( w \D
 \tag{9}
 $$
 
-Equation 10 is the Price equation.
+Equation 9 is the Price equation.
 From eqn 1, which describes fundamental birth and death processes in a population, we can therefore derive both the most fundamental model of population ecology (eqn 2; Box 2) and the fundamental equation of evolution (eqn 9; Box 1).
 
 
