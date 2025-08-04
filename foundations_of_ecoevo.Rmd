@@ -118,48 +118,25 @@ But to recover the fundamental principle of exponential population growth [@Turc
 We therefore begin with the most fundamental axioms underlying the ecology and evolution of living systems [@Rice2004; @Rice2009].
 In such systems, diversity is discontinuous, in the sense that living systems are composed of discrete entities including individual organisms and groups of organisms [@Dobzhansky1970].
 Our framework is general enough that entities can be anything discrete, but we will focus on each entity $i$ as an individual organism.
-Individuals give rise to new individuals through birth such that $\beta_{i}$ is the number of births attributable to $i$.
-Individuals are removed from the population through death such that $\delta_{i}$ is an indicator variable that takes a value of 1 (death of $i$) or 0 (persistence of $i$).
+Change occurs between the current time step $t$ and a future time step $t + 1$, and time steps can be arbitrarily short or long.
+Let $\beta_{i}$ be the count of direct descendants of $i$ at $t + 1$ (e.g., offspring if a time step is a single generation).
+Similarly, let $\delta_{i}$ be the count of deaths summed across $i$ and any of its descendants from $t$ to $t+1$.
+For example, if $i$ and all of its descendants persist at $t + 1$, then $\delta_{i} = 0$, or if a time step is a single non-overlapping generation, then $\delta_{i} = 1$.
 All individuals are defined by some characteristic $z_{i}$, and $\Delta z_{i}$ defines any change in $z_{i}$ from one time step $t$ to the next $t + 1$.
+The value $z_{i} + \Delta z_{i}$ is the average characteristic across extant individuals and their descendants at $t+1$.
 The total number of individuals in the population is $N$.
-From this foundation, we can define $\Omega$ to be the sum of character values in $t+1$,
+From this foundation, we can define $\Omega$ to be the sum of characteristic values in $t+1$,
 
 $$\Omega = \sum_{i=1}^{N} \left(\beta_{i} - \delta_{i} + 1 \right)\left(z_{i} + \Delta z_{i} \right).
 \tag{1}
 $$
 
+The value $\Omega$ will have the same units as $z$.
 
-<!---
-
-There's an odd technicality if the time between t and t + 1 is large. I defined beta as 'births attributable to i', which is correct, but maybe it would be more correct to define it as 'descendents of i'. Then, delta needs to be more technically 'deaths of i and its descendents'). Nothing changes in effect, but now if a focal individual i has a bunch of descendents that die between t and t + 1, the correct fitness is still preserved.
-
-Put this after the sentence about Omega?
-
---->
-
-This foundation of eco-evolutionary change is a statistical interaction between the demographic processes of birth and death ($\beta_{i} - \delta_{i} + 1$) and some characteristic of an individual ($z_{i} + \Delta z_{i}$).
-The value of $\Omega$ takes the same units as $z$.
+The foundation of eco-evolutionary change defined by eqn 1 is therefore a statistical interaction between the demographic processes of birth and death ($\beta_{i} - \delta_{i} + 1$) and the average characteristic of an individual's offspring ($z_{i} + \Delta z_{i}$).
 From eqn 1, we can derive the most fundamental equations of population ecology and evolutionary biology through an appropriate interpretation of $z$.
 Under more limited interpretations of $z$, we can also interpret $\Omega$ as a metric of ecosystem function.
 
-
-<!---
-
-19 MAY: Point out here that by itself, Omega has the same terms as z. 
-
-- Verbally, our equation shows interaction between fitness and an individual's characteristic, summed
-- Because it is summing across individuals, some characteristics can be interpreted as measure of ecosystem function
-- Ecosystem function will make the assumption of additivity of z_i across all N
-- We will see that mean fitness is population ecology
-- Variance is evolutionary change
-- Summation is ecosystem function
-
-Eqn 1 captures an invariant relationship between individual fitness and an individual's characteristic
-
-
-Also note that directly tying fitness to demography
-
---->
 
 
 Population ecology
