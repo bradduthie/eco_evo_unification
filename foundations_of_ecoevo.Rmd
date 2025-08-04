@@ -22,11 +22,6 @@ csl: the-american-naturalist.csl
 biblio-style: apalike
 ---
 
-<!---
-
-NOTE: ADD CASE AND TAPER (2000) AS A REFERENCE FOR Delta N = N bar(w)
-
---->
 
 
 Abstract
@@ -273,8 +268,7 @@ Our unification recovers the equivalence between the finite rate of increase $\l
 The population growth equation $N_{t+1} = N_{t}\lambda$ can always be rewritten as $N_{t+1} = N_{t}\bar{w}$.
 This specific equivalence has been proposed before [e.g., @Lande1976], as has the broader relationship between population growth rate and evolutionary fitness [e.g., @Fisher1930; @Charlesworth1980; @Lande1982; @Case2000; @Roff2008; @Lion2018].
 We show this from first principles and clarify the relationship between fitness and population growth.
-Over an arbitrary length of time, fitness is properly defined as $w_{i} = \beta_{i} - \delta_{i} + 1$. <!--- For simplicity, we defined beta and delta as births and deaths, but we could more generally define beta as the count of descendents of i, and delta as the count of deaths in i and all of its descendents --->
-Over an individual's lifetime (which, by definition, includes death), fitness is therefore $\beta_{i}$. 
+Over an arbitrary length of time, fitness is properly defined as $w_{i} = \beta_{i} - \delta_{i} + 1$.
 Rates of change in ecology and evolution are reflected in the first and second statistical moments of fitness, respectively.
 Population growth rate reflects mean fitness $\bar{w}$, while the rate of evolutionary change reflects the variance in fitness $\mathrm{Var}(w)/\bar{w}$ [i.e., Fisher's fundamental theorem, @Frank1997; @Rice2004; @Queller2017].
 
